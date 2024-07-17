@@ -1,5 +1,3 @@
-import "./App.module.css";
-
-function App() {}
+const App = () => {};
 
 export default App;
