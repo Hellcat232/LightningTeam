@@ -1,7 +1,3 @@
-import TrackerPage from '../../pages/TrackerPage/TrackerPage.jsx';
-
-const App = () => {
-  return <TrackerPage />;
-};
+const App = () => {};
 
 export default App;
