@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import css from './AdvantagesSection.module.css';
-import { girl1, girl2, boy } from '../../images';
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import css from "./AdvantagesSection.module.css";
+import { girl1 } from "../../images/";
+import { girl2 } from "../../images/";
+import { boy } from "../../images/";
 const AdvantagesSection = () => {
-
-    
   const dispatch = useDispatch();
   const userCount = useSelector((state) => state.user.count);
   const todaySumamryWater = useSelector(
@@ -43,7 +43,6 @@ const AdvantagesSection = () => {
             <img className={css.img} src={girl1} alt="girl2" />
           </li>
         </ul>
-
       </div>
 
       <div className={css.group}>
