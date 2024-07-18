@@ -4,7 +4,7 @@ import { useState } from "react";
 import Modal from "react-modal";
 import WaterModal from "../../components/WaterModal/WaterModal.jsx";
 
-const TrackerPage = () => {
+export default function TrackerPage() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = () => {
@@ -28,4 +28,4 @@ const TrackerPage = () => {
       </Modal>
     </>
   );
-};
+}

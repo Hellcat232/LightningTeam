@@ -5,6 +5,7 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/store.js";
+import { BrowserRouter } from "react-router-dom";
 import Modal from "react-modal";
 
 Modal.setAppElement(document.getElementById("root"));
