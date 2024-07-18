@@ -1,3 +1,1 @@
-const SignUpPage = () => {};
-
-export default SignUpPage;
+export default function SignUpPage() {}
