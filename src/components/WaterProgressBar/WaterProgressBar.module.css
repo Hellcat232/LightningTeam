@@ -1,0 +1,64 @@
+.container {
+    box-sizing: border-box;
+    width: 198px;
+    padding: 12px;
+    margin: 0 auto;
+    margin-bottom: 42px;
+    background: white;
+    border-radius: 15px;
+}
+
+.header {
+    margin: 0;
+    margin-bottom: 8px;
+    color: #323F47;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+}
+
+.progressPercentList {
+    width: 174px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.progressPercentItem {
+    color: #2F2F2F;
+    opacity: 60%;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 10px;
+}
+
+@media (min-width: 768px) {
+
+    .container {
+        width: 295px;
+        padding: 20px;
+        margin-bottom: 26px;
+    }
+
+    .progressPercentList {
+        width: 255px;
+    }
+
+    .header {
+        line-height: 22px;
+    }
+
+    .progressPercentItem {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 22px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .container {
+        margin-bottom: 56px;
+    }
+}
