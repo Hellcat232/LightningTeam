@@ -18,12 +18,15 @@
 }
 
 .progressPercentList {
-    width: 174px;
     padding: 0;
     margin: 0;
     list-style: none;
     display: flex;
     justify-content: space-between;
+}
+
+.progressPercentItem:nth-child(2) {
+    margin-left: 20px;
 }
 
 .progressPercentItem {
@@ -40,10 +43,6 @@
         width: 295px;
         padding: 20px;
         margin-bottom: 26px;
-    }
-
-    .progressPercentList {
-        width: 255px;
     }
 
     .header {
