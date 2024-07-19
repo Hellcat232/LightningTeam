@@ -1,6 +1,8 @@
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { TextField, Button, Box, FormControl, FormLabel } from "@mui/material";
+import styles from "./SignUpForm.module.css";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
