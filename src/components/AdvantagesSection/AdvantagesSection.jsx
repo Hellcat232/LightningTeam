@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import css from "./AdvantagesSection.module.css";
-import { girl1 } from "../../images/";
-import { girl2 } from "../../images/";
-import { boy } from "../../images/";
+import girl1 from "../../images/girl1.png";
+import girl2 from "../../images/girl2.png";
+import boy from "../../images/boy.png";
 const AdvantagesSection = () => {
   const dispatch = useDispatch();
   const userCount = useSelector((state) => state.user.count);
