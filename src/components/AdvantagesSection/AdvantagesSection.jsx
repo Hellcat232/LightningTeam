@@ -24,12 +24,9 @@ const AdvantagesSection = () => {
 
   return (
     <div className={css.section}>
-      <div className={css.totalBox}>
-        <p className={css.customerTextLiters}>
-          Our <span className={css.span}>userCount</span> happy customers
-        </p>
-      </div>
+          
       <div className={css.customersBox}>
+        
         <ul className={css.customerImg}>
           <li className={css.item}>
             <img className={css.img} src={girl2} alt="girl1" />
@@ -43,6 +40,10 @@ const AdvantagesSection = () => {
             <img className={css.img} src={girl1} alt="girl2" />
           </li>
         </ul>
+        <p className={css.customerTextLiters}>
+          Our <span className={css.span}>
+             happy </span>customers
+        </p>
       </div>
 
       <div className={css.group}>
