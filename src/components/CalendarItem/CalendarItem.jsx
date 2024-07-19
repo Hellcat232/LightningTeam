@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import css from "./CalendarItem.module.css";
 
-const CalendarItem = ({date, waterPart}) => {
-	const dispatch = useDispatch();
+const CalendarItem = ({ date, waterPart }) => {
+  const dispatch = useDispatch();
   const handleClick = () => {
     // запрос на бекенд
 
@@ -13,7 +13,7 @@ const CalendarItem = ({date, waterPart}) => {
       <button onClick={handleClick} className={css.btn}>
         {date}
       </button>
-      <p>{waterPart}</p>
+      <p className={css.p}>{waterPart}</p>
     </div>
   );
 };

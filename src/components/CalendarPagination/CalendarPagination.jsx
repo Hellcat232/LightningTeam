@@ -1,66 +1,37 @@
-import { useState } from "react";
 import css from "./CalendarPagination.module.css";
-import { useDispatch } from "react-redux";
 
-const CalendarPagination = () => {
-  //   let date = new Date();
-  const dispatch = useDispatch();
-  const mounthsArray = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const [switchData, setSwitchData] =
-    useState[
-      {
-        mounth: mounthsArray[new Date().getMonth()],
-        year: new Date().getFullYear(),
-      }
-    ];
+const CalendarPagination = ({
+  switchMounth,
+  setSwitchMounth,
+  mounthsArray,
+}) => {
 
   const handleClickBack = () => {
-    setSwitchData({
-      mounth: mounthsArray[new Date().getMonth() - 1],
-      year: new Date().getFullYear(),
-    });
-    dispatch();
+    if (switchMounth !== "January") {
+    setSwitchMounth(mounthsArray[new Date().getMonth() - 1]);
+  }
   };
+
   const handleClickForward = () => {
-    if (
-      switchData.year <= new Date().getFullYear() &&
-      switchData.mounth <= new Date().getMonth()
-    ) {
-      setSwitchData({
-        mounth: mounthsArray[new Date().getMonth() + 1],
-        year: new Date().getFullYear(),
-      });
-      dispatch();
+    if (switchMounth != mounthsArray[new Date().getMonth()]) {
+      setSwitchMounth(mounthsArray[new Date().getMonth() + 1]);
     }
   };
 
   return (
-    <div>
-      <h2>Month</h2>
-      <div>
-        <button onClick={handleClickBack} className={css.btn1}>
+    <div className={css.gendiv}>
+      <div className={css.btndiv}>
+        <button onClick={handleClickBack} className={css.btn}>
           {"<"}
         </button>
-        <p>
-          {switchData.mounth}, {switchData.year}
+        <p className={css.p}>
+          {switchMounth}, {"2024"}
         </p>
-        <button onClick={handleClickForward} className={css.btn2}>
+        <button onClick={handleClickForward} className={css.btn}>
           {">"}
         </button>
       </div>
+      <button className={css.addbtn}></button>
     </div>
   );
 };

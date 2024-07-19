@@ -1,20 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CalendarItem from "../CalendarItem/CalendarItem";
 import css from "./Calendar.module.css";
 
-const Calendar = () => {
-  let items = [{ date: 17, waterPart: "70%" }]; //заглушка
+const Calendar = ({ switchMounth }) => {
+  const [mounthWaterArray, setMounthWaterArray] = useState();
+
+
+  setMounthWaterArray(switchMounth);   //заглушка
 
   useEffect(() => {
-    // запрос на бекенд и получение items по дате и воде
+    // запрос на бекенд и получение mounthWaterArray за нужный месяц по датам и по воде
+    
   }, []);
 
   return (
     <ul className={css.ul}>
-      {items.map((item) => {
+      {mounthWaterArray.map((item) => {
         return (
-          <li key={item.id}>
-            <CalendarItem date={item.date} waterPart={item.waterPart} />
+          <li className={css.li} key={item.id}>
+            <CalendarItem
+              date={mounthWaterArray.date}
+              waterPart={mounthWaterArray.waterPart}
+            />
           </li>
         );
       })}
