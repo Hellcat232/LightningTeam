@@ -28,7 +28,7 @@ export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
   try {
     const response = await axios.post("user/login", text);
     console.log(response.data);
-    setAuthToken(response.data.data.accessToken);
+    setAuthToken(response.data.accessToken);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -54,7 +54,7 @@ export const refreshing = createAsyncThunk(
 
     try {
       setAuthToken(persistedToken);
-      const response = await axios.get("users/current");
+      const response = await axios.get("user/current");
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

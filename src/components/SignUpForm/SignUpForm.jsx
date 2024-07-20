@@ -1,6 +1,7 @@
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { register } from "../../redux/auth/operations";
 import styles from "./SignUpForm.module.css";
 
 const SignUpForm = () => {
