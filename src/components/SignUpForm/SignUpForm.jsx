@@ -1,4 +1,3 @@
-import { register } from "../../redux/auth/operations";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
