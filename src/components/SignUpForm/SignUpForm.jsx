@@ -28,11 +28,13 @@ const SignUpForm = () => {
   });
 
   const onSubmit = (data) => {
-    if (formData.password !== formData.repeatPassword) {
+    console.log(data);
+
+    if (data.password !== data.repeatPassword) {
       alert("Passwords do not match!");
       return;
     }
-    dispatch(register(data));
+    dispatch(register({ email: data.email, password: data.password }));
   };
 
   const handleChange = (e) => {
@@ -70,11 +72,11 @@ const SignUpForm = () => {
         <input
           className={styles.FormInput}
           onChange={handleChange}
-          name="RepeatPassword"
+          name="repeatPassword"
           type="password"
           placeholder="Repeat password"
           required
-          {...formRegister("password")}
+          {...formRegister("repeatPassword")}
         />
         {errors.password && <p>{errors.password.message}</p>}
 

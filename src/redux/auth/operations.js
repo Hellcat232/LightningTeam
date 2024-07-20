@@ -48,13 +48,16 @@ export const refreshing = createAsyncThunk(
   "auth/refreshing",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.refreshToken;
+
     if (persistedToken === null)
       return thunkAPI.rejectWithValue("User not authorized");
 
     try {
       setAuthToken(persistedToken);
-      const response = await axios.get("user/current");
+      const response = await axios.post("/user/refresh", persistedToken, {
+        headers: { Authorization: persistedToken },
+      });
       console.log(response);
       return response.data;
     } catch (error) {

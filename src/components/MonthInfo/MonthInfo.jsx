@@ -1,6 +1,6 @@
 import { useState } from "react";
 import css from "./MonthInfo.module.css";
-// import Calendar from "../Calendar/Calendar";
+import Calendar from "../Calendar/Calendar";
 import CalendarPagination from "../CalendarPagination/CalendarPagination";
 
 const MonthInfo = () => {
