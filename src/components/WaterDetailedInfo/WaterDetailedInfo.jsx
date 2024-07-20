@@ -10,7 +10,7 @@ const WaterDetailedInfo = ({ openModal }) => {
   return (
     <section className={css.section}>
       <UserPanel openModal={openModal} userData={userName} />
-      <DailyInfo />
+      <DailyInfo openModal={openModal} />
       <MonthInfo />
     </section>
   );

@@ -1,0 +1,14 @@
+.header {
+    color: #323F47;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+@media (min-width: 768px) {
+    .header {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 32px;
+    }
+}

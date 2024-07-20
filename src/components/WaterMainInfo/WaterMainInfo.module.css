@@ -16,9 +16,10 @@
     line-height: 20px;
 }
 
+
 @media (min-width: 375px) {
     .section {
-        width: 343px;
+        width: 345px;
     }
 }
 
@@ -42,8 +43,9 @@
 
     @media (min-width: 1440px) {
         .section {
-            width: 672px;
+            width: 675px;
             box-shadow: none;
+            margin-bottom: 0;
         }
     }
 
