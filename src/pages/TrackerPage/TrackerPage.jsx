@@ -6,6 +6,7 @@ import WaterModal from '../../components/WaterModal/WaterModal.jsx';
 import UserSettingsModal from '../../components/UserSettingsModal/UserSettingsModal.jsx';
 import LogOutModal from '../../components/LogOutModal/LogOutModal.jsx';
 import css from './TrackerPage.module.css';
+import WaterList from '../../components/WaterList/WaterList.jsx'
 
 const TrackerPage = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -32,6 +33,7 @@ const TrackerPage = () => {
         {modalType === 'settingsModal' && <UserSettingsModal />}
         {modalType === 'logoutModal' && <LogOutModal />}
       </Modal>
+      {/* <WaterList/> */}
     </section>
   );
 };

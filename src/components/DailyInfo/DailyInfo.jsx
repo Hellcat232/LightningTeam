@@ -7,8 +7,8 @@ const DailyInfo = ({ openModal }) => {
   return (
     <section className={css.section}>
       <div className={css.container}>
-        <ChooseDate />
-        <AddWaterBtn openModal={openModal} className="waterDailyBtn" />
+        {/* <ChooseDate /> */}
+        {/* <AddWaterBtn openModal={openModal} className="waterDailyBtn" /> */}
       </div>
       <WaterList />
     </section>

@@ -1,0 +1,72 @@
+.waterItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(33.599998474121094px);
+  background: #fff;
+  width: 192px;
+  height: 86px;
+  border-radius: 15px;
+  padding: 20px;
+  width: 192px;
+  height: 86px;
+}
+
+.waterAmount {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 22px;
+  line-height: 1.49333;
+  color: #323f47;
+}
+
+.waterTime {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+  line-height: 1.86667;
+  color: rgba(47, 47, 47, 0.6);
+}
+
+.waterActions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.waterActions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+.cont-info-item {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .waterItem {
+    width: 149px;
+    height: 74px;
+    padding: 18px 14px;
+  }
+  .waterAmount {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 14px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .waterTime {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    line-height: 1;
+  }
+}
