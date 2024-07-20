@@ -9,12 +9,12 @@ const CalendarItem = ({ date, waterPart }) => {
     dispatch();
   };
   return (
-    <div className={css.div}>
+    <>
       <button onClick={handleClick} className={css.btn}>
         {date}
       </button>
       <p className={css.p}>{waterPart}</p>
-    </div>
+    </>
   );
 };
 
