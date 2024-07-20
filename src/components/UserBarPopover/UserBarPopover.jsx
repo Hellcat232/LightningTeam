@@ -1,13 +1,23 @@
 import css from './UserBarPopover.module.css';
 import spriteHref from '../../images/icons_sprite_dev.svg';
+import Modal from 'react-modal';
+import { useState } from 'react';
 
-const UserBarPopover = ({ openModal }) => {
+const UserBarPopover = () => {
+  const [modalType, setModalType] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModal = modalType => {
+    setModalOpen(prevState => !prevState);
+    setModalType(modalType);
+  };
+
   return (
     <div className={css.container}>
       <button
         className={`${css.button} ${css.settingsBtn}`}
         onClick={() => {
-          openModal('settingsModal');
+          handleModal('settingsModal');
         }}
       >
         <svg className={css.icon}>
@@ -18,7 +28,7 @@ const UserBarPopover = ({ openModal }) => {
       <button
         className={`${css.button} ${css.logOutBtn}`}
         onClick={() => {
-          openModal('logoutModal');
+          handleModal('logoutModal');
         }}
       >
         <svg className={css.iconLogOut}>
@@ -26,6 +36,9 @@ const UserBarPopover = ({ openModal }) => {
         </svg>
         Log out
       </button>
+      <Modal isOpen={modalOpen} onRequestClose={handleModal}>
+        {modalType === 'settingsModal' ? 'settings' : 'logout'}
+      </Modal>
     </div>
   );
 };

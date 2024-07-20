@@ -4,13 +4,12 @@ import MonthInfo from '../MonthInfo/MonthInfo.jsx';
 
 import css from './WaterDetailedInfo.module.css';
 
-const WaterDetailedInfo = ({ openModal }) => {
+const WaterDetailedInfo = ({ waterItems, addWaterItem }) => {
   //TODO: component will receive user data with
-  const userName = 'Roger';
   return (
     <section className={css.section}>
-      <UserPanel openModal={openModal} userData={userName} />
-      <DailyInfo openModal={openModal} />
+      <UserPanel />
+      <DailyInfo addWaterItem={addWaterItem} waterItems={waterItems} />
       <MonthInfo />
     </section>
   );

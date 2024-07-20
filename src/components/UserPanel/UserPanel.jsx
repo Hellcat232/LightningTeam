@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import UserBar from '../UserBar/UserBar.jsx';
 import UserBarPopover from '../UserBarPopover/UserBarPopover.jsx';
 import css from './UserPanel.module.css';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors.js';
 
-const UserPanel = ({ userData, openModal }) => {
+const UserPanel = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const popoverRef = useRef(null);
   const buttonRef = useRef(null);
+  const userName = useSelector(selectUser);
 
   const togglePopover = event => {
     event.stopPropagation();
@@ -33,20 +36,22 @@ const UserPanel = ({ userData, openModal }) => {
   return (
     <header className={css.userPanelContainer}>
       <p className={css.greeting}>
-        Hello<span className={css.userName}>, {userData}!</span>
+        Hello
+        <span className={css.userName}>
+          , {userName ? userName.name : userName.email}!
+        </span>
       </p>
       <div className={css.userBarContainer}>
         <div ref={buttonRef}>
           <UserBar
             isPopoverOpen={isPopoverOpen}
             togglePopover={togglePopover}
-            userData={userData}
           />
         </div>
 
         {isPopoverOpen && (
           <div ref={popoverRef}>
-            <UserBarPopover openModal={openModal} />
+            <UserBarPopover />
           </div>
         )}
       </div>

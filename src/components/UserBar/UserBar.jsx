@@ -1,14 +1,17 @@
 import css from './UserBar.module.css';
 import spriteHref from '../../images/icons_sprite_dev.svg';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors.js';
 
-const UserBar = ({ userData, togglePopover, isPopoverOpen }) => {
+const UserBar = ({ togglePopover, isPopoverOpen }) => {
+  const userName = useSelector(selectUser);
   return (
     <button
       className={css.button}
       type="button"
       onClick={() => togglePopover(event)}
     >
-      {userData}
+      {userName ? userName.name : userName.email}
       <img
         className={css.userImg}
         src="https://thumbs.dreamstime.com/b/people-person-fun-joy-funny-facial-expression-concept-close-up-phoyo-portrait-charming-glad-gorgeous-nice-cute-lovely-lady-272795823.jpg"

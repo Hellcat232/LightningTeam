@@ -17,7 +17,7 @@ const AddWaterBtn = ({ onAddWater }) => {
         type="button"
         aria-label="Add water"
       >
-        
+
         {/* <svg className={styles.iconStyle}>
           <use href="#your-icon-id" />
         </svg> */}

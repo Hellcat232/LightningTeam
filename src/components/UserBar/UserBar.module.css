@@ -1,21 +1,22 @@
 .button {
-    width: 140px;
+    display: flex;
+    /*width: 140px;*/
     border: none;
     padding: 6px 12px 6px 12px;
     gap: 8px;
     margin: 0;
-    display: flex;
     align-items: center;
     justify-content: center;
     background: #323F47;
     border-radius: 30px;
     color: white;
     text-align: center;
-    font-size: 14px;
+    font-size: 14px; /* Initial font size */
     font-weight: 700;
     line-height: 18px;
     outline: none;
     transition: transform 0.2s ease, color 0.2s ease;
+    overflow: hidden;
 }
 
 .userImg {
@@ -28,8 +29,8 @@
 }
 
 .icon {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     justify-content: center;
     align-items: center;
     display: inline-flex;
@@ -38,7 +39,7 @@
 
 @media (min-width: 768px) {
     .button {
-        width: 160px;
+        max-width: 300px;
         gap: 10px;
         font-size: 16px;
         line-height: 24px;
