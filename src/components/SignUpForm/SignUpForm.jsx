@@ -14,6 +14,7 @@ const SignUpSchema = yup.object().shape({
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const {
+    register: formRegister,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -52,6 +53,7 @@ const SignUpForm = () => {
           type="email"
           placeholder="Enter your email"
           required
+          {...formRegister("email")}
         />
 
         <label className={styles.FormLabel}>Password</label>
@@ -62,6 +64,7 @@ const SignUpForm = () => {
           type="password"
           placeholder="Enter your password"
           required
+          {...formRegister("password")}
         />
         <label className={styles.FormLabel}>Repeat Password</label>
         <input
@@ -71,6 +74,7 @@ const SignUpForm = () => {
           type="password"
           placeholder="Repeat password"
           required
+          {...formRegister("password")}
         />
         {errors.password && <p>{errors.password.message}</p>}
 
