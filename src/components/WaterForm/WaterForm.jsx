@@ -1,9 +1,25 @@
 import { useState } from "react";
 import css from "./WaterForm.module.css";
-// import { useForm } from "react-hook-form"
 // import sprite from "../../images/icons_sprite_dev.svg";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup
+  .object({
+    time: yup.string().required(),
+    qtyWater: yup.number().positive().integer().required(),
+  })
+  .required();
 
 const WaterForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
   // const iconMinus = `${sprite}#icon-minus_water`;
   // const iconPlus = `${sprite}#icon-plus_water`;
 
@@ -34,7 +50,7 @@ const WaterForm = () => {
     setVolume(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const onSubmit = () => {
     //dispatch or post or patch
   };
 
@@ -55,26 +71,34 @@ const WaterForm = () => {
           +
         </button>
       </div>
-      <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
+      <form
+        className={css.form}
+        onSubmit={handleSubmit(onSubmit)}
+        autoComplete="off"
+      >
         <label className={css.labelTime}>
           Recording time:
           <input
+            {...register("time")}
             className={css.inputTime}
             type="time"
             name="time"
             value={inputTime}
             onChange={handleChangeTime}
           />
+          <p>{errors.time?.message}</p>
         </label>
         <label className={css.labelWAter}>
           Enter the value of the water used:
           <input
+            {...register("qtyWater")}
             className={css.inputWAter}
-            type="number"
+            type="text"
             name="qtyWater"
             value={volume}
             onChange={handleChangeVolume}
           />
+          <p>{errors.qtyWater?.message}</p>
         </label>
         <button className={css.btnsubmit} type="submit">
           Save
