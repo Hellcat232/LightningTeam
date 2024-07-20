@@ -31,7 +31,7 @@ const UserPanel = ({ userData, openModal }) => {
   }, []);
 
   return (
-    <div className={css.userPanelContainer}>
+    <header className={css.userPanelContainer}>
       <p className={css.greeting}>
         Hello<span className={css.userName}>, {userData}!</span>
       </p>
@@ -50,7 +50,7 @@ const UserPanel = ({ userData, openModal }) => {
           </div>
         )}
       </div>
-    </div>
+    </header>
   );
 };
 
