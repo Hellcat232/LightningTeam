@@ -1,0 +1,281 @@
+.main {
+    display: flex;
+    width: 840px;
+    height: 100%;
+    gap: 40px;
+    font: Poppins;
+    /* overflow-y: auto; 
+    overflow-x: hidden; */
+}
+
+.form {
+   
+    color: #2F2F2F;
+    background: #ffffff;
+}
+
+.setting {
+    align-items: baseline;
+    margin-bottom: 20px;
+}
+
+.avatar-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 840px;
+  height: 186px;
+  margin-bottom: 40px;
+}
+
+.avatar-preview {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  font-size: 16px;
+  color: #999;
+}
+
+.avatar-upload-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.avatar-upload-input {
+  display: none;
+}
+
+.upload-icon {
+  fill:#2F2F2F;
+}
+
+.upload-icon-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color:#2F2F2F;
+}
+
+.label {
+    
+display: block;
+font-size: 18px;
+font-weight: 700;
+line-height: 24px;
+letter-spacing: -0.01em;
+font-weight: bold;
+color:#323F47;
+}
+
+.input {
+    width: 400px;
+    height: 56px;
+    border-radius: 15px;
+    border: 1px solid #00000010;
+}
+
+.gender {
+    margin-bottom: 14px;
+}
+
+.radio-container {
+  display: flex;
+  align-items:center;
+  cursor: pointer;
+  gap: 20px;
+}
+
+.radio {
+    display: none;
+}
+
+/* Створюємо новий стиль для радіокнопок */
+.radio-checkmark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #9BE1A0; 
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+/* Стилізація внутрішньої точки вибраної радіокнопки */
+.radio-checkmark::before{
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radio:checked + .radio-checkmark::before {
+    background-color:  #9BE1A0;
+}
+
+
+
+.radio-gender {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+
+.email {
+    margin-top: 14px;
+    margin-bottom: 8px;
+}
+
+.norma {
+    margin-top: 24px;
+    margin-bottom: 14px;
+}
+
+.container-formula {
+    display: flex;
+    gap: 28px;
+}
+
+.formula {
+    font-size: 16px;
+    font-weight: 700;
+    color: #9BE1A0;
+}
+
+.text-formula {
+  width: 368px;
+  height: 152px; 
+  color:#2F2F2F; 
+  font-size: 14px;
+  line-height: 1.5; 
+  padding: 10px; 
+  border: 1px solid #00000010;
+  border-radius: 15px; 
+  resize: none;
+  padding: 16px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.textarea-container {
+  width: 100%;
+  height: 152px;
+  border: 1px solid #00000010;
+  border-radius: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  background-color: #ffffff; 
+  font: Poppins; 
+  font-size: 14px; 
+  color:#2F2F2F 
+}
+
+.styled-text {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 24px;
+  color: #2F2F2F;
+}
+
+.highlight {
+  color: #9BE1A0; /* Змінює колір зірочки на червоний */
+}
+
+.sign-container {
+  display: flex;
+  justify-content: center; 
+}
+
+
+.sign {
+  display: flex;
+  align-items: center;
+ 
+}
+
+.svg {
+    margin-bottom: 24px;
+}
+
+.hours {
+  margin-left: 10px; 
+  margin-bottom: 40px;
+}
+
+.weight {
+     margin-top: 86px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    font-weight: normal;
+    line-height: 24px;
+}
+
+.active {
+  font-size: 16px;
+    font-weight: 400;
+    font-weight: normal;
+    line-height: 24px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+}  
+ 
+
+.amount {
+    font-size: 16px;
+    font-weight: 400;
+    font-weight: normal;
+    line-height: 24px;
+    margin-top: 24px;
+    margin-bottom: 14px;
+}
+
+.water-drink {
+    margin-bottom: 8px;
+}
+
+.button {
+    width: 141px;
+    height: 56px;
+    background-color:#9BE1A0;
+    border-radius: 30px;
+}
+
+.button:hover {
+    background-color: #87D28D;
+
+}
+
