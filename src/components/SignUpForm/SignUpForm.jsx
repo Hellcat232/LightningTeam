@@ -1,22 +1,38 @@
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import * as yup from "yup";
 import { register } from "../../redux/auth/operations";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./SignUpForm.module.css";
+
+const SignUpSchema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup.string().required("Password is required"),
+});
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  useEffect(() => {
-    dispatch(register({ email: "m@gmail.com", password: "123456789" }));
-  }, [dispatch]);
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(SignUpSchema),
+  });
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     repeatPassword: "",
   });
+
+  const onSubmit = (data) => {
+    if (formData.password !== formData.repeatPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+    dispatch(register(data));
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,17 +42,9 @@ const SignUpForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formData.password !== formData.repeatPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-  };
-
   return (
     <>
-      <form onSubmit={handleSubmit} className={styles.registerForm}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.registerForm}>
         <label className={styles.FormLabel}>Email</label>
         <input
           className={styles.FormInput}
@@ -64,6 +72,7 @@ const SignUpForm = () => {
           placeholder="Repeat password"
           required
         />
+        {errors.password && <p>{errors.password.message}</p>}
 
         <button type="submit">Sign Up</button>
       </form>
