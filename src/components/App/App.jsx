@@ -13,43 +13,6 @@ import SharedLayout from "../SharedLayout/SharedLayout";
 import RestrictedRoute from "../RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
-// const App = () => {
-//   const dispatch = useDispatch();
-//   const isRefresh = useSelector(selectIsRefreshing);
-
-//   useEffect(() => {
-//     dispatch(refreshing());
-//   }, [dispatch]);
-
-//   return isRefresh ? (
-//     <p>Reload...</p>
-//   ) : (
-//     <SharedLayout>
-//       <Routes>
-//         <Route path="/" element={<HomePage />} />
-//         <Route
-//           path="/signup"
-//           element={
-//             <RestrictedRoute redirectTo="/tracker" component={<SignUpPage />} />
-//           }
-//         />
-//         <Route
-//           path="/signin"
-//           element={
-//             <RestrictedRoute redirectTo="/tracker" component={<SignInPage />} />
-//           }
-//         />
-//         <Route
-//           path="/tracker"
-//           element={
-//             <PrivateRoute redirectTo="/signin" component={<TrackerPage />} />
-//           }
-//         />
-//       </Routes>
-//     </SharedLayout>
-//   );
-// };
-
 const App = () => {
   const dispatch = useDispatch();
   const isRefresh = useSelector(selectIsRefreshing);
@@ -58,7 +21,9 @@ const App = () => {
     dispatch(refreshing());
   }, [dispatch]);
 
-  return (
+  return isRefresh ? (
+    <p>Reload...</p>
+  ) : (
     <SharedLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />

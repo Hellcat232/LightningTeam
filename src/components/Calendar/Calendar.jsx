@@ -5,12 +5,10 @@ import css from "./Calendar.module.css";
 const Calendar = ({ switchMounth }) => {
   const [mounthWaterArray, setMounthWaterArray] = useState();
 
-
-  setMounthWaterArray(switchMounth);   //заглушка
+  setMounthWaterArray(switchMounth); //заглушка
 
   useEffect(() => {
     // запрос на бекенд и получение mounthWaterArray за нужный месяц по датам и по воде
-    
   }, []);
 
   return (

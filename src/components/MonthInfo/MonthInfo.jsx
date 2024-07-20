@@ -1,6 +1,6 @@
 import { useState } from "react";
-import css from "./MonthInfo.module.css"
-import Calendar from "../Calendar/Calendar";
+import css from "./MonthInfo.module.css";
+// import Calendar from "../Calendar/Calendar";
 import CalendarPagination from "../CalendarPagination/CalendarPagination";
 
 const MonthInfo = () => {
@@ -33,7 +33,7 @@ const MonthInfo = () => {
           mounthsArray={mounthsArray}
         />
       </div>
-      <Calendar switchMounth={switchMounth} />
+      {/* <Calendar switchMounth={switchMounth} /> */}
     </>
   );
 };
