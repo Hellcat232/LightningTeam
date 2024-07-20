@@ -1,23 +1,11 @@
-.container {
-    box-sizing: border-box;
+.button {
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 140px;
     margin-left: auto;
-    padding: 14px 20px 14px 20px;
-    background: #323F47;
     border-radius: 30px;
     cursor: pointer;
-}
-
-.button {
-    flex: 1;
     border: none;
-    padding: 0;
-    margin: 0;
-    background: transparent;
-    color: white;
     text-align: center;
     font-size: 14px;
     font-weight: 700;
@@ -26,20 +14,68 @@
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
+.icon {
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    fill: white;
+    border-radius: 50%;
+}
+
 .button:hover, .button:focus, .button:active {
     transform: translateY(1px);
+    /*color: #9BE1A0;*/
+}
+
+.waterMainBtn {
+    width: 140px;
+    padding: 14px 20px 14px 20px;
+    background: #323F47;
+    color: white;
+}
+
+.waterMainBtn:hover, .waterMainBtn:focus, .waterMainBtn:active {
     color: #9BE1A0;
+}
+
+.waterMainBtn:hover .icon, .waterMainBtn:focus .icon, .waterMainBtn:active .icon {
+    fill: #9BE1A0;
+}
+
+.waterDailyBtn .icon {
+    width: 30px;
+    height: 30px;
+    background: #9BE1A0;
+}
+
+.waterDailyBtn {
+    padding: 0;
+    background-color: transparent;
+    color: #323F47;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.waterDailyBtn:hover .icon, .waterDailyBtn:focus .icon, .waterDailyBtn:active .icon {
+    background: #323F47;
 }
 
 
 @media (min-width: 768px ) {
-    .container {
+    .button {
         width: 178px;
         padding: 18px 30px 18px 30px;
-    }
-
-    .button {
         font-size: 16px;
         line-height: 24px;
+    }
+
+    .waterDailyBtn {
+        padding: 0 0 0 30px;
+        text-align: center;
+        font-size: 18px;
     }
 }

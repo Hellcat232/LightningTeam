@@ -1,0 +1,30 @@
+.section {
+    box-sizing: border-box;
+    padding: 24px 16px 32px 16px;
+    background: #F0EFF4;
+    border-radius: 30px;
+    width: 100%;
+}
+
+@media (min-width: 375px) {
+    .section {
+        width: 345px;
+    }
+}
+
+@media (min-width: 768px) {
+    .section {
+        width: 704px;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        padding: 32px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .section {
+        width: 675px;
+        box-shadow: none;
+    }
+}
+
+

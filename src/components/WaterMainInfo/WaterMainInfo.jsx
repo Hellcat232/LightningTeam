@@ -9,7 +9,7 @@ const WaterMainInfo = ({ openModal }) => {
       <h2 className={css.sectionHeader}>AquaTrack</h2>
       <WaterDailyNorma />
       <WaterProgressBar />
-      <AddWaterBtn openModal={openModal} />
+      <AddWaterBtn openModal={openModal} className="waterMainBtn" />
     </section>
   );
 };
