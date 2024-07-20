@@ -4,8 +4,9 @@ import { register, refreshing, login, logout } from "./operations";
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    accessToken: null,
-    refreshToken: null,
+    // accessToken: null,
+    // refreshToken: null,
+    token: null,
     isLoggedIn: false,
     isRefreshing: false,
     isLoading: false,
@@ -17,48 +18,56 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(register.pending, (state, action) => {
-        state.accessToken = null;
-        state.refreshToken = null;
+        // state.accessToken = null;
+        // state.refreshToken = null;
+        state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = true;
         state.user = null;
       })
       .addCase(register.fulfilled, (state, action) => {
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
+        // state.accessToken = action.payload.accessToken;
+        // state.refreshToken = action.payload.refreshToken;
+        state.token = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = action.payload.user;
       })
       .addCase(register.rejected, (state, action) => {
-        state.accessToken = null;
-        state.refreshToken = null;
+        // state.accessToken = null;
+        // state.refreshToken = null;
+        state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = null;
       })
       .addCase(login.pending, (state, action) => {
-        state.accessToken = null;
-        state.refreshToken = null;
+        // state.accessToken = null;
+        // state.refreshToken = null;
+        state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = true;
         state.user = null;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
+        // state.accessToken = action.payload.accessToken;
+        // state.refreshToken = action.payload.refreshToken;
+        console.log(action);
+        state.token = action.payload.refreshToken;
+        console.log(state.token);
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = action.payload.user;
       })
       .addCase(login.rejected, (state, action) => {
-        state.accessToken = null;
-        state.refreshToken = null;
+        // state.accessToken = null;
+        // state.refreshToken = null;
+        state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = false;
@@ -68,8 +77,9 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(logout.fulfilled, (state, action) => {
-        state.accessToken = null;
-        state.refreshToken = null;
+        // state.accessToken = null;
+        // state.refreshToken = null;
+        state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = false;
