@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import styles from './WaterModal.module.css';
-
+import Iconsvg from '../Icon/Icon';
 
 Modal.setAppElement('#root'); 
 
@@ -26,14 +26,12 @@ const WaterModal = ({ isOpen, closeModal, onAddWater }) => {
       overlayClassName={styles.overlay}
     >
       <button className={styles.closeButton} onClick={closeModal} aria-label="Close modal">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M21 7L7 21" stroke="#2F2F2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-          <path d="M7 7L21 21" stroke="#2F2F2F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-
-           {/* <svg className={styles.icon}>
-            <use href="#icon-close" />
-          </svg> */}
+      <Iconsvg
+      width="28"
+      height="28"
+      iconName="close"
+      className={styles['icon-close']}
+      />
       </button>
       <h2 className={styles['title-txt']}>Add water</h2>
       <div className={styles['cont-sec-two-modal-add']}>
@@ -44,26 +42,21 @@ const WaterModal = ({ isOpen, closeModal, onAddWater }) => {
           <p className={styles['amount-txt-txt']}>Amount of water:</p>
           <div className={styles.amountControls}>
             <button onClick={decreaseAmount} className={styles.iconButton}>
-              <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0.75" y="0.75" width="41.5" height="41.5" rx="20.75" stroke="#323F47" stroke-width="1.5" />
-                <path d="M13.8213 21.5H29.1784" stroke="#323F47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-
-                 {/* <svg className={styles.icon}>
-            <use href="#icon-close" />
-          </svg> */}
+               <Iconsvg
+            width="43"
+            height="43"
+            iconName="minus"
+            className={styles['icon-mod-math']}
+          />
             </button>
             <span className={styles['amount-ml']}>{amount} ml</span>
             <button onClick={increaseAmount} className={styles.iconButton}>
-              <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0.75" y="0.75" width="41.5" height="41.5" rx="20.75" stroke="#323F47" stroke-width="1.5" />
-                <path d="M21.5 13.8215V29.1787" stroke="#323F47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M13.8213 21.5H29.1784" stroke="#323F47" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-
-                 {/* <svg className={styles.icon}>
-            <use href="#icon-close" />
-          </svg> */}
+            <Iconsvg
+            width="43"
+            height="43"
+            iconName="plus"
+            className={styles['icon-mod-math']}
+            />
             </button>
           </div>
         </div>

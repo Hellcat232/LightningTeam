@@ -1,5 +1,4 @@
 .buttonStyle {
-  color: #fff;
   border: none;
   cursor: pointer;
   display: flex;
@@ -7,22 +6,22 @@
   gap: 10px;
   font-weight: bold;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  color-scheme: none;
 }
 
-.iconStyle:hover {
-  background-color: #6c757d;
-}
-
-.iconStyle {
+.iconns {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   width: 30px;
   height: 30px;
-  fill: #ffffff;
-  transition: fill 0.3s ease;
+  background-color: #9be1a0;
+  border-radius: 50%;
+  stroke-width: 1px;
+  transition: background-color 0.3s, stroke 0.3s;
 }
-
-.buttonStyle:hover .iconStyle {
-  fill: #6c757d;
+.iconns:hover {
+  background-color: #323f47;
 }
 
 .textStyle {

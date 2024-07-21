@@ -42,9 +42,8 @@
   cursor: pointer;
 }
 
-.icon {
-  width: 24px;
-  height: 24px;
+.iconns {
+  stroke: black;
 }
 .cont-info-item {
   display: flex;
