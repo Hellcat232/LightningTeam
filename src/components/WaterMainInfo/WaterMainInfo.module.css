@@ -5,6 +5,16 @@
     border-radius: 30px;
     width: 100%;
     margin-bottom: 16px;
+    background-image: url("../../images/transparent_bottle_for_water_1x_mobile.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 260px 335px;
+}
+
+@media only screen and (min-resolution: 192dpi) {
+    .section {
+        background-image: url('../../images/transparent_bottle_for_water_2x_mobile.png');
+    }
 }
 
 .sectionHeader {
@@ -28,6 +38,14 @@
         width: 704px;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         padding: 32px 32px 64px 32px;
+        background-image: url("../../images/transparent_bottle_for_water_1x_tablet.png");
+        background-size: 375px 475px;
+    }
+
+    @media only screen and (min-resolution: 192dpi) {
+        .section {
+            background-image: url('../../images/transparent_bottle_for_water_2x_tablet.png');
+        }
     }
 
     .sectionHeader {
@@ -46,6 +64,14 @@
             width: 675px;
             box-shadow: none;
             margin-bottom: 0;
+            background-image: url("../../images/transparent_bottle_for_water_1x_desktop.png");
+            background-size: 475px 605px;
+        }
+
+        @media only screen and (min-resolution: 192dpi) {
+            .section {
+                background-image: url('../../images/transparent_bottle_for_water_2x_desktop.png');
+            }
         }
     }
 

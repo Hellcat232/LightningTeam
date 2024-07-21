@@ -2,16 +2,11 @@ import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo.jsx';
 import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo.jsx';
 import css from './TrackerPage.module.css';
 import useWaterItems from '../../hooks/useWaterItems.js';
-import axios from 'axios';
 
 const TrackerPage = () => {
   const { waterItems, addWaterItem } = useWaterItems();
   // TODO: Create state that will be storing query results.
   // TODO: Write write query for water data when the page is being loaded.
-
-  const response = axios
-    .get('https://lightningbackend.onrender.com/')
-    .then(data => console.log(data));
 
   return (
     <section className={css.section}>
