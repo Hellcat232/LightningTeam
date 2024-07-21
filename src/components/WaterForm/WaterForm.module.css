@@ -1,0 +1,85 @@
+.gendiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.btnSign {
+    width: 40px;
+    height: 40px;
+    background-color: #e0e0e0;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    margin: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnSign:hover {
+    background-color: #b0b0b0;
+}
+
+p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.labelTime,
+.labelWater {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+input[type="time"],
+input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.amount-control {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.amount-value {
+    margin: 0 15px;
+    font-size: 20px;
+}
