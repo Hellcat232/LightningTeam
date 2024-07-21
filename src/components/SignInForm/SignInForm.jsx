@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import css from './SignInForm.module.css'
+
 
 const SignInSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -14,7 +16,6 @@ const SignInSchema = yup.object().shape({
 
 const SignInForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -31,13 +32,6 @@ const SignInForm = () => {
 
   const onSubmit = (data) => {
     dispatch(login(data))
-    .unwrap()
-      .then(() => {
-        navigate("/tracker");
-      })
-      .catch((error) => {
-        errorToast(`${error}`);
-      });
   };
 
   return (
@@ -51,26 +45,38 @@ const SignInForm = () => {
           }`}
           type="email"
           placeholder={errors.email ? "Invalid email" : "Enter your email"}
-          {...register("email")}/>
-        {errors.email && (<p className={css.errorMessage}>{errors.email.message}</p>)}
-        
+          {...register("email")}
+        />
+        {errors.email && (
+          <p className={css.errorMessage}>{errors.email.message}</p>
+        )}
+
         <label className={css.signInFormLabel}>Password</label>
         <input
-        className={`${css.signInFormInput} ${errors.password ? `${css.errorPlaceholder} ${css.errorInput}` : "" }`}
-              type={showPassword ? "text" : "password"}
-              placeholder={
-                errors.password ? "Invalid password" : "Enter your password"
-              }
-              {...register("password")}
-            />
+          className={`${css.signInFormInput} ${
+            errors.password ? `${css.errorPlaceholder} ${css.errorInput}` : ""
+          }`}
+          type={passwordShown ? "text" : "password"}
+          placeholder={
+            errors.password ? "Invalid password" : "Enter your password"
+          }
+          {...register("password")}
+        />
         <FaRegEyeSlash onClick={togglePasswordVisibility} />
 
-        {errors.password && (<p className={css.errorMessage}>{errors.password.message}</p>)}
+        {errors.password && (
+          <p className={css.errorMessage}>{errors.password.message}</p>
+        )}
 
-        <button type="submit" className={css.signInBtn}>Sign In</button>
+        <button type="submit" className={css.signInBtn}>
+          Sign In
+        </button>
       </form>
       <p className={css.signInPageText}>
-        Don't have an account? <Link to="/signup" className={css.SignInPageLink}>Sign Up</Link>
+        Don't have an account?{" "}
+        <Link to="/signup" className={css.SignInPageLink}>
+          Sign Up
+        </Link>
       </p>
     </div>
   );
