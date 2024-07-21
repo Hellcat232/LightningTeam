@@ -1,9 +1,11 @@
-
 import styles from './WaterItem.module.css';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import WaterModalEdit from '../WaterModalEdit/WaterModalEdit';
 import DeleteModal from '../DeleteModal/DeleteModal';
+
 import Iconsvg from '../Icon/Icon';
+
+
 
 const WaterItem = ({ id, amount, time, onEdit, onDelete }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -27,17 +29,21 @@ const WaterItem = ({ id, amount, time, onEdit, onDelete }) => {
 
   return (
     <div className={styles.waterItem}>
+
         <Iconsvg
             width="44"
             height="45"
         iconName="mage_water-glass-fill"
         />
+
+
       <div className={styles['cont-info-item']}>
-      <div className={styles.waterAmount}>{amount} ml</div>
+        <div className={styles.waterAmount}>{amount} ml</div>
         <div className={styles.waterTime}>{time}</div>
-        </div>
+      </div>
       <div className={styles.waterActions}>
         <button className={styles.editButton} onClick={openEditModal}>
+
           <Iconsvg
             width="16"
             height="16"
@@ -52,6 +58,8 @@ const WaterItem = ({ id, amount, time, onEdit, onDelete }) => {
             iconName="trash"
             className={styles.iconns}
           />
+        </button>
+        <button className={styles.deleteButton} onClick={openDeleteModal}>
         </button>
       </div>
       <WaterModalEdit

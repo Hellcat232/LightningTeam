@@ -1,5 +1,6 @@
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import { Logo } from "../../components/Logo/Logo.jsx";
+import { Link } from "react-router-dom";
 import styles from "./SignUpPage.module.css";
 
 const SignUpPage = () => {
@@ -9,7 +10,7 @@ const SignUpPage = () => {
       <h1>Sign Up</h1>
       <SignUpForm />
       <p>
-        Already have account? <a href="/">Sign In</a>
+        Already have account? <Link to="/signin">Sign In</Link>
       </p>
     </div>
   );

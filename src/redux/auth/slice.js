@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, refreshing, login, logout } from "./operations";
+import { register, refreshing, login, logout, updateUser } from "./operations";
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
+    // accessToken: null,
+    // refreshToken: null,
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
@@ -11,11 +13,18 @@ const authSlice = createSlice({
     user: {
       name: null,
       email: null,
+      avatarUrl: null,
+      gender: "woman",
+      weight: null,
+      sportsActivity: null,
+      waterRate: "1.5",
     },
   },
   extraReducers: (builder) => {
     builder
       .addCase(register.pending, (state, action) => {
+        // state.accessToken = null;
+        // state.refreshToken = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -23,13 +32,17 @@ const authSlice = createSlice({
         state.user = null;
       })
       .addCase(register.fulfilled, (state, action) => {
-        state.token = action.payload.token;
+        // state.accessToken = action.payload.accessToken;
+        // state.refreshToken = action.payload.refreshToken;
+        state.token = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = action.payload.user;
       })
       .addCase(register.rejected, (state, action) => {
+        // state.accessToken = null;
+        // state.refreshToken = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -37,6 +50,8 @@ const authSlice = createSlice({
         state.user = null;
       })
       .addCase(login.pending, (state, action) => {
+        // state.accessToken = null;
+        // state.refreshToken = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -44,13 +59,19 @@ const authSlice = createSlice({
         state.user = null;
       })
       .addCase(login.fulfilled, (state, action) => {
-        state.token = action.payload.accessToken;
+        // state.accessToken = action.payload.accessToken;
+        // state.refreshToken = action.payload.refreshToken;
+        console.log(action);
+        state.token = action.payload.refreshToken;
+        console.log(state.token);
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = action.payload.user;
       })
       .addCase(login.rejected, (state, action) => {
+        // state.accessToken = null;
+        // state.refreshToken = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -61,6 +82,8 @@ const authSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(logout.fulfilled, (state, action) => {
+        // state.accessToken = null;
+        // state.refreshToken = null;
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
@@ -72,6 +95,8 @@ const authSlice = createSlice({
       })
       .addCase(refreshing.pending, (state, action) => {
         state.isRefreshing = true;
+        // state.accessToken = action.payload.accessToken;
+        // state.refreshToken = action.payload.refreshToken;
       })
       .addCase(refreshing.fulfilled, (state, action) => {
         state.isRefreshing = false;
@@ -80,6 +105,20 @@ const authSlice = createSlice({
       })
       .addCase(refreshing.rejected, (state, action) => {
         state.isRefreshing = false;
+      })
+      .addCase(updateUser.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+
+        state.user = {
+          ...state.user,
+          ...action.payload.user,
+        };
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.isLoading = false;
       });
   },
 });

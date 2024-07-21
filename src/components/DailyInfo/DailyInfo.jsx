@@ -3,14 +3,14 @@ import AddWaterBtn from '../AddWaterBtn/AddWaterBtn.jsx';
 import WaterList from '../WaterList/WaterList.jsx';
 import css from './DailyInfo.module.css';
 
-const DailyInfo = ({ openModal }) => {
+const DailyInfo = ({ waterItems, addWaterItem }) => {
   return (
     <section className={css.section}>
       <div className={css.container}>
-        {/* <ChooseDate /> */}
-        {/* <AddWaterBtn openModal={openModal} className="waterDailyBtn" /> */}
+        <ChooseDate />
+        <AddWaterBtn className="waterDailyBtn" onAddWater={addWaterItem} />
       </div>
-      <WaterList />
+      <WaterList waterItems={waterItems} />
     </section>
   );
 };
