@@ -1,20 +1,29 @@
-import DeleteWaterModal from '../WaterModal/waterDeleteModal/DeleteWaterModal';
-import LogOutModal from "../LogOutModal/LogOutModal";
-import UserSettingForm from '../UserSettingsForm/UserSettingsForm';
-import { useState } from 'react';
 
+import { useState } from 'react';
+import UserSettingsModal from "./components/ModalUserSetting/ModalUserSetting";
+import UserSettingForm from './components/Modal/UserSettingForm';
 
 const App = () => {
-    const [modalState, setModalState] = useState(false);
-    const handleSubmit = (data) => {
-    console.log(data);
+   const [showModal, setShowModal] = useState(false);
+  const handleOpenModal = () => {
+    setShowModal(true);
   };
-     return <div className="App">
-        <DeleteWaterModal call={modalState} onClose={() => setModalState(false)}/>
-        <LogOutModal call={modalState} onClose={() => setModalState(false)} /> 
-        <UserSettingForm onSubmit={handleSubmit} />
-    </div> 
 
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+ 
+
+  return (
+    <div>
+      <button onClick={handleOpenModal}>Open Modal</button>
+      <UserSettingsModal showModal={showModal} handleClose={handleCloseModal}>
+        <UserSettingForm />
+      </UserSettingsModal>
+      
+    </div>
+  );
 };
 
 export default App;
