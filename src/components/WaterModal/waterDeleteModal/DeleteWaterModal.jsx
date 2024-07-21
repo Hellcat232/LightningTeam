@@ -6,6 +6,7 @@ export default function DeleteWaterModal(props) {
         return null;
     }
 
+    
     return (
         
         <div className="modal" onClick={props.onClose}>
