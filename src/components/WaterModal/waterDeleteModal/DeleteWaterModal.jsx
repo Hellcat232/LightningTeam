@@ -1,6 +1,6 @@
-import './LogOutModal.module.css'
+import './DeleteWaterModal.module.css'
 
-export default function LogOutModal(props) {
+export default function DeleteWaterModal(props) {
     
     if (!props.call) {
         return null;
@@ -11,10 +11,10 @@ export default function LogOutModal(props) {
         <div className="modal" onClick={props.onClose}>
             <div className="modal-content" onClick={(e) => {e.stopPropagation()}}>
                 <button className="close" onClick={props.onClose} >×</button>
-                <h2>Log out</h2>
-                <p>Do you really want to leave??</p>
+                <h2>Delete entry</h2>
+                <p>Are you sure you want to delete the entry?</p>
                 <div className='btn'>
-                    <button className="accept" type="button" >Log out</button>
+                    <button className="accept" type="button" >Delete</button>
                     <button className="reject" type="button" >Cancel</button> 
                 </div>    
             </div>
