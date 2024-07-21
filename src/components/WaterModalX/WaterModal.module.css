@@ -48,7 +48,11 @@
   padding: 18px 50px;
   width: 141px;
   height: 60px;
-  background-color: #a3d3ac;
+  background-color: #9be1a0;
+  transition: background-color 0.3s, stroke 0.3s;
+}
+.saveButton:hover {
+  background-color: #87d28d;
 }
 .amount-ml {
   border-radius: 30px;
@@ -94,15 +98,15 @@
   padding: 16px 16px 16px 16px;
   width: 438px;
   height: 56px;
+  color-scheme: none;
 }
 .input-time-choose {
   display: flex;
   flex-direction: column;
 }
 
-.icon {
-  width: 43px;
-  height: 43px;
+.iconns {
+  stroke: #2f2f2f;
 }
 
 .amountControls {
@@ -123,6 +127,18 @@
   position: absolute;
   top: 16px;
   right: 16px;
+}
+.icon-mod-math {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1.8px solid black;
+  padding: 5px;
+  stroke: #2f2f2f;
+}
+.icon-close {
+  stroke: black;
 }
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .modal {
