@@ -58,47 +58,63 @@ const SignUpForm = () => {
   };
 
   return (
-    <>
+    <div className={css.signUpForm}>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.registerForm}>
-        <label className={styles.FormLabel}>Email</label>
+        <label className={css.signUpFormHeader}>Email</label>
         <input
-          className={styles.FormInput}
+          className={`${css.signUpFormInput}
+            ${errors.email ? `${css.errorPlaceholder} ${css.errorInput}` : ""}`}
           name="email"
           type="email"
-          placeholder="Enter your email"
-          required
-          {...formRegister("email")}
+          placeholder={errors.email ? "Invalid email" : "Enter your email"}
+            {...formRegister("email")}
         />
+        {errors.email && (
+            <p className={css.errorMessage}>{errors.email.message}</p>
+          )}
 
-        <label className={styles.FormLabel}>Password</label>
+        <label className={css.signUpFormLabel}>Password</label>
         <input
-          className={styles.FormInput}
+          className={`${css.signUpFormInput} ${
+                errors.password
+                  ? `${css.errorPlaceholder} ${css.errorInput}`
+                  : ""
+              }`}
           onChange={handleChange}
           name="password"
           type={passwordShown ? "text" : "password"}
-          placeholder="Enter your password"
-          required
+          placeholder={
+                errors.password ? "Invalid password" : "Enter your password"
+              }
           {...formRegister("password")}
         />
 
         <FaRegEyeSlash onClick={togglePasswordVisibility} />
-        <label className={styles.FormLabel}>Repeat Password</label>
+        <label className={css.signUpFormLabel}>Repeat Password</label>
         <input
-          className={styles.FormInput}
+          className={`${css.signUpFormInput} ${
+                errors.repeatPassword
+                  ? `${css.errorPlaceholder} ${css.errorInput}`
+                  : ""
+              }`}
           onChange={handleChange}
           name="repeatPassword"
           type={repeatPasswordShown ? "text" : "password"}
-          placeholder="Repeat password"
+          placeholder={
+                errors.repeatPassword
+                  ? "Passwords do not match"
+                  : "Repeat password"
+              }
           required
           {...formRegister("repeatPassword")}
         />
         <FaRegEyeSlash onClick={toggleRepeatPasswordVisibility} />
 
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.password && (<p className={css.errorMessage}>{errors.password.message}</p>)}
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" className={css.signUpFormBtn}>Sign Up</button>
       </form>
-    </>
+    </div>
   );
 };
 
