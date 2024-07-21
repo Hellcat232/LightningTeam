@@ -5,6 +5,7 @@ import { register } from "../../redux/auth/operations";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./SignUpForm.module.css";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
 const SignUpSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -21,11 +22,22 @@ const SignUpForm = () => {
     resolver: yupResolver(SignUpSchema),
   });
 
+  const [passwordShown, setPasswordShown] = useState(false);
+  const [repeatPasswordShown, setRepeatPasswordShown] = useState(false);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     repeatPassword: "",
   });
+
+  const togglePasswordVisibility = () => {
+    setPasswordShown(!passwordShown);
+  };
+
+  const toggleRepeatPasswordVisibility = () => {
+    setRepeatPasswordShown(!repeatPasswordShown);
+  };
 
   const onSubmit = (data) => {
     console.log(data);
@@ -63,21 +75,25 @@ const SignUpForm = () => {
           className={styles.FormInput}
           onChange={handleChange}
           name="password"
-          type="password"
+          type={passwordShown ? "text" : "password"}
           placeholder="Enter your password"
           required
           {...formRegister("password")}
         />
+
+        <FaRegEyeSlash onClick={togglePasswordVisibility} />
         <label className={styles.FormLabel}>Repeat Password</label>
         <input
           className={styles.FormInput}
           onChange={handleChange}
           name="repeatPassword"
-          type="password"
+          type={repeatPasswordShown ? "text" : "password"}
           placeholder="Repeat password"
           required
           {...formRegister("repeatPassword")}
         />
+        <FaRegEyeSlash onClick={toggleRepeatPasswordVisibility} />
+
         {errors.password && <p>{errors.password.message}</p>}
 
         <button type="submit">Sign Up</button>
