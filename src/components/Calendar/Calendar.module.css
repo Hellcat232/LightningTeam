@@ -1,0 +1,15 @@
+.li {
+	display: flex;
+	flex-direction: column;
+	height: 65px;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.ul {
+	display: flex;
+	flex-wrap: wrap;
+	width: 680px;
+	gap: 43px;
+}

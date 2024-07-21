@@ -1,0 +1,18 @@
+.gendiv {
+	display: flex;
+	flex-direction: column;
+}
+
+.btndiv {
+	display: flex;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+.btnsubmit {
+	width: 141px;
+	height: 60px;
+}

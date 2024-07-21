@@ -1,25 +1,30 @@
-import { useState } from "react";
-import ModalPart from "react-modal";
-import css from "./Modal.module.css";
+// import { useState } from "react";
+import Modal from "react-modal";
+// import css from "./Modal.module.css";
 
-const Modal = ({ isOpen, children }) => {
-  const [modalIsOpen, setModalIsOpen] = useState(isOpen);
+const CustomModal = () => {
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+  // console.log(props);
+
+// console.log(children);
+
+  // const [modalIsOpen, setModalIsOpen] = useState(open);
+
+  // const closeModal = () => {
+  //   setModalIsOpen(false);
+  // };
   return (
-    <ModalPart
-      appElement={document.getElementById("root")}
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
-    >
-      <button className={css.btnClose} onClick={closeModal}>
+    <Modal>
+      {/* appElement={document.getElementById("root")}
+      isOpen={open}
+      onRequestClose={props.closeModal}
+     */}
+      {/* <button className={css.btnClose} onClick={props.closeModal}>
         X
-      </button>
-      {children}
-    </ModalPart>
+      </button> */}
+      {/* {props.children} */}
+    </Modal>
   );
 };
 
-export default Modal;
+export default CustomModal;
