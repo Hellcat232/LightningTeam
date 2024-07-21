@@ -27,7 +27,7 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
   try {
     const response = await axios.post("user/login", text);
-    console.log(response.data.accessToken);
+
     setAuthToken(response.data.refreshToken);
     return response.data;
   } catch (error) {
@@ -50,15 +50,29 @@ export const refreshing = createAsyncThunk(
     const state = thunkAPI.getState();
 
     const persistedToken = { refreshToken: state.auth.token };
-    console.log(persistedToken);
+
     if (persistedToken === null)
       return thunkAPI.rejectWithValue("User not authorized");
 
     try {
       setAuthToken(persistedToken);
       const response = await axios.post("/user/refresh", persistedToken);
-      console.log(response);
+      // console.log(response);
       return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  "user/update",
+  async (someValue, thunkAPI) => {
+    try {
+      const response = await axios.put("user/update", someValue);
+
+      console.log(response);
+      return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
