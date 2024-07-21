@@ -4,6 +4,7 @@ import Modal from 'react-modal';
 import { useState } from 'react';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
 import LogOutModal from '../LogOutModal/LogOutModal.jsx';
+import UserSettingForm from '../UserSettingsForm/UserSettingsForm.jsx';
 
 const UserBarPopover = () => {
   const [modalType, setModalType] = useState(null);
@@ -38,13 +39,9 @@ const UserBarPopover = () => {
         </svg>
         Log out
       </button>
-      <Modal isOpen={modalOpen} onRequestClose={handleModal}>
-        {modalType === 'settingsModal' ? (
-          <UserSettingsModal />
-        ) : (
-          <LogOutModal />
-        )}
-      </Modal>
+      <UserSettingsModal showModal={modalOpen} handleClose={handleModal}>
+        {modalType === 'settingsModal' ? <UserSettingForm /> : <LogOutModal />}
+      </UserSettingsModal>
     </div>
   );
 };
