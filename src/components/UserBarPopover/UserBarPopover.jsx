@@ -2,6 +2,8 @@ import css from './UserBarPopover.module.css';
 import spriteHref from '../../images/icons_sprite_dev.svg';
 import Modal from 'react-modal';
 import { useState } from 'react';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
+import LogOutModal from '../LogOutModal/LogOutModal.jsx';
 
 const UserBarPopover = () => {
   const [modalType, setModalType] = useState(null);
@@ -37,7 +39,11 @@ const UserBarPopover = () => {
         Log out
       </button>
       <Modal isOpen={modalOpen} onRequestClose={handleModal}>
-        {modalType === 'settingsModal' ? 'settings' : 'logout'}
+        {modalType === 'settingsModal' ? (
+          <UserSettingsModal />
+        ) : (
+          <LogOutModal />
+        )}
       </Modal>
     </div>
   );
