@@ -1,0 +1,19 @@
+.section {
+    padding: 16px;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: 32px;
+    }
+}
+
+
+@media (min-width: 1440px) {
+    .section {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        padding: 32px;
+    }
+}

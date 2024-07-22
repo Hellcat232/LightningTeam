@@ -1,0 +1,277 @@
+.section {
+    background-image: url(../../images/women.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 736px;
+    border-radius: 30px;
+    padding: 0 16px 32px 16px;
+    position: relative;
+    width: 672px;
+}
+
+
+
+.customersBox {
+    display: flex;
+    position: absolute;
+    top: 568px;
+    right: 420px;
+    width: 160px;
+    padding: 10px 14px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    background: #ffffff;
+    box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+}
+
+.item {
+    height:28px;
+    width: 26px;
+    border-radius: 50%;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+.img {
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.customerImg {
+    display: inline-flex;
+  
+}
+
+.item:nth-child(1) {
+    z-index: 3;
+    position: relative;
+}
+
+.item:nth-child(2) {
+    z-index: 2;
+    left: -10px;
+    position: relative;
+}
+
+.item:nth-child(3) {
+    z-index: 1;
+    left: -20px;
+    position: relative;
+}
+
+.customerText {
+    color: #323f47;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.16;
+    margin-left: -20px;
+}
+
+.customerTextLiters {
+    color: #323f47;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.16;
+    margin-left: -10px;
+
+}
+
+.span {
+    color: #9be1a0;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+}
+
+.ellipse {
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: #9be1a0;
+}
+
+.textAdvantage {
+    display: flex;
+    padding: 9px 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+}
+
+.textAdvantage:nth-child(2) {
+    background: #9be1a0;
+    width: 83px;
+}
+
+.textAdvantage:nth-child(1) {
+    background:#323f47;
+    width: 81px;
+    gap: 4px;
+}
+
+.textAdvantage:nth-child(3) {
+    background:white;
+    width: 108px;
+}
+
+.text {
+    color:white;
+    text-align: center;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 8px;
+    letter-spacing: -0.08px;
+}
+
+.textBlack {
+    color: #323f47;
+    text-align: center;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 8px;
+    letter-spacing: -0.08px;
+}
+
+.advantagesGroup {
+    max-width: 168px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.group {
+    position: absolute;
+    bottom: 32px;
+    right: 16px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+    .customersBox {
+            display: flex;
+            position: absolute;
+            top: 568px;
+            right: 420px;
+            width: 237px;
+            padding: 10px 20px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            background: #ffffff;
+            box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+        };
+    .section {
+       
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-bottom: 32px;
+    }
+
+    
+
+   
+
+    .item {
+        height: 47px;
+        width: 47px;
+    }
+
+    .item:nth-child(2) {
+        left: -18px;
+    }
+
+    .item:nth-child(3) {
+        left: -36px;
+    }
+
+    .customerText {
+        font-size: 15px;
+        line-height: 1.49;
+        margin-left: -34px;
+    }
+
+    .customerTextLiters {
+        font-size: 15px;
+        line-height: 1.49;
+        margin-left: -30px;
+    }
+
+    .span {
+        font-size: 15px;
+        line-height: 1.49;
+    }
+
+    .group {
+        position: absolute;
+        right: 32px;
+        height: 78px;
+    }
+
+    .advantagesGroup {
+        gap: 10px;
+        max-width: 242px;
+        height: 78px;
+    }
+
+    .textAdvantage {
+        font-size: 12px;
+        height: 34px;
+        padding: 11px 16px;
+    }
+
+    .textAdvantage:nth-child(2) {
+        width: 121px;
+    }
+
+    .textAdvantage:nth-child(1) {
+        width: 111px;
+        gap: 4px;
+    }
+
+    .textAdvantage:nth-child(3) {
+        width: 158px;
+    }
+
+    .text {
+        font-size: 12px;
+        line-height: 1;
+        letter-spacing: -0.12px;
+    }
+
+    .textBlack {
+        font-size: 12px;
+        line-height: 1;
+        letter-spacing: -0.12px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .section {
+        padding-bottom: 64px;
+        min-width: 672px;
+        height: 736px;
+    }
+
+   .customersBox {
+       display: flex;
+       position: absolute;
+       top: 568px;
+       right: 420px;
+       width: 237px;
+       padding: 10px 20px;
+       align-items: center;
+       justify-content: center;
+       border-radius: 30px;
+       background: #ffffff;
+       box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+   }
+
+    .group {
+        bottom: 64px;
+    }
+}

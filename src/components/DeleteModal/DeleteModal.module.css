@@ -1,0 +1,161 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  position: relative;
+  background-color: white;
+  border-radius: 15px;
+  padding: 40px;
+  width: 516px;
+  height: 244px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.title-txt {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+  line-height: 1.14286;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #323f47;
+}
+
+.message-txt {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  line-height: 1.33333;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #323f47;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.deleteButton {
+  background-color: #9be1a0;
+  color: #323f47;
+  border: none;
+  border-radius: 30px;
+  padding: 18px 67px;
+  width: 170px;
+  height: 60px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.deleteButton:hover {
+  background-color: #87d28d;
+  color: #fff;
+}
+
+.cancelButton {
+  background-color: rgba(224, 224, 224, 0.3);
+  color: rgba(50, 63, 71, 0.3);
+  border: none;
+  border-radius: 30px;
+  padding: 18px 59px;
+  width: 176px;
+  height: 60px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cancelButton:hover {
+  background-color: rgba(224, 224, 224, 0.5);
+  color: #323f47;
+}
+.icon-close {
+  stroke: black;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .modal {
+    width: 316px;
+    height: 267px;
+    padding: 40px 14px;
+    gap: 28px;
+  }
+  .title-txt {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .message-txt {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    line-height: 1.28571;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+  .buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .deleteButton {
+    border-radius: 30px;
+    padding: 14px 129px;
+    width: 304px;
+    height: 46px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    line-height: 1.28571;
+    letter-spacing: -0.01em;
+  }
+  .cancelButton {
+    border-radius: 30px;
+    padding: 14px 129px;
+    width: 304px;
+    height: 46px;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    line-height: 1.28571;
+    letter-spacing: -0.01em;
+  }
+}

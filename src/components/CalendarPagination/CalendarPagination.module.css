@@ -1,0 +1,10 @@
+.gendiv {
+	display: flex;
+}
+
+.btndiv {
+	display: flex;
+}
+.btn {
+	border: none;
+}
