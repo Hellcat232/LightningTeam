@@ -1,6 +1,4 @@
-// import React from 'react';
-// import './ModalUserSetting.css';
-// import UserSettingForm from '../Modal/UserSettingForm';
+import css from './UserSettingsModal.module.css';
 
 const UserSettingsModal = ({ showModal, handleClose, children }) => {
   if (!showModal) {
@@ -8,13 +6,14 @@ const UserSettingsModal = ({ showModal, handleClose, children }) => {
   }
 
   return (
-    <div className="main-modal" onClick={handleClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <button className="close" onClick={handleClose}>
+    <div className={css.mainModal} onClick={handleClose}>
+      <div className={css.modalContent} onClick={e => e.stopPropagation()}>
+        <button className={css.close} onClick={handleClose}>
           ×
         </button>
-        <h1 className="setting">Setting</h1>
-        {children}
+        <div className={css.customScrollbar} style={{ overflowY: 'scroll' }}>
+          {children}
+        </div>
       </div>
     </div>
   );
