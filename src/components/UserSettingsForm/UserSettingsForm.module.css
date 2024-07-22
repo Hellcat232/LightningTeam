@@ -1,4 +1,15 @@
-.form {
+.main {
+    display: flex;
+    width: 840px;
+    height: 100%;
+    gap: 40px;
+    font: Poppins;
+    /* overflow-y: auto; 
+    overflow-x: hidden; */
+}
+
+form {
+   
     color: #2F2F2F;
     width: 100%;
     box-sizing: border-box;
