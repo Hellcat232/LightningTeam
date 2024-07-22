@@ -1,10 +1,27 @@
-import './DeleteWaterModal.module.css'
+// import React from 'react';
+// import { useDispatch } from 'react-redux';
+
+import './DeleteWaterModal.module.css';
+// import { deleteWaterRecord } from "";
+
 
 export default function DeleteWaterModal(props) {
+    // const dispatch = useDispatch();
     
     if (!props.call) {
         return null;
     }
+
+    // const handleDelete = () => {
+    //     dispatch(deleteWaterRecord(props.recordId))
+    //         .unwrap()
+    //         .then(() => (
+    //             props.onClose()
+    //         ))
+    //         .catch((error) => {
+    //             alert('Could not delete record: ' + error.message);
+    //         });
+    // };
 
     
     return (
@@ -15,7 +32,7 @@ export default function DeleteWaterModal(props) {
                 <h2>Delete entry</h2>
                 <p>Are you sure you want to delete the entry?</p>
                 <div className='btn'>
-                    <button className="accept" type="button" >Delete</button>
+                    <button className="accept" type="button" /*onClick={handleDelete}*/>Delete</button>
                     <button className="reject" type="button" >Cancel</button> 
                 </div>    
             </div>

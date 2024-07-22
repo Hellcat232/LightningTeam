@@ -30,7 +30,7 @@ const UserSettingForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-       <h1 className='setting'>Setting</h1>
+      
       <div className="avatar-upload-container">
         
         <div className="avatar-preview">
@@ -57,7 +57,7 @@ const UserSettingForm = ({ onSubmit }) => {
             <label className="label gender">Your gender identity</label>
              <div className='radio-container'>
                 <label className="radio-gender">
-                  <input className="radio " type="radio" name="gender" value="woman" checked/>
+                  <input className="radio " type="radio" name="gender" value="woman" defaultChecked/>
                   <span className='radio-checkmark'></span>
                   Woman
                 </label> 
