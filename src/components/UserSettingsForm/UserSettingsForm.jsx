@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import './UserSettingsForm.module.css';
+// import './UserSettingsForm.module.css';
 import css from './UserSettingsForm.module.css';
 
 const UserSettingForm = ({ onSubmit }) => {
