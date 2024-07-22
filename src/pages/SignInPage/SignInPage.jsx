@@ -4,7 +4,7 @@ import { Logo } from "../../components/Logo/Logo.jsx";
 const SignInPage = () => {
   return (
     <>
-      {/* <Logo /> */}
+      <Logo />
       <SignInForm />
     </>
   );
