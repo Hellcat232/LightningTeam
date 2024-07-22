@@ -8,10 +8,13 @@ import HomePage from "../../pages/HomePage/HomePage";
 import SignUpPage from "../../pages/SignUpPage/SignUpPage";
 import SignInPage from "../../pages/SignInPage/SignInPage";
 import TrackerPage from "../../pages/TrackerPage/TrackerPage";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 import SharedLayout from "../SharedLayout/SharedLayout";
 import RestrictedRoute from "../RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+
+import Loader from "../Loader/Loader";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,7 +25,7 @@ const App = () => {
   }, [dispatch]);
 
   return isRefresh ? (
-    <p>Reload...</p>
+    <Loader />
   ) : (
     <SharedLayout>
       <Routes>
@@ -45,6 +48,7 @@ const App = () => {
             <PrivateRoute redirectTo="/signin" component={<TrackerPage />} />
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </SharedLayout>
   );
