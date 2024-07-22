@@ -12,16 +12,18 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import { authReducer } from "./auth/slice";
+import { waterReducer } from "./water/slice";
 
 const persistConfig = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["refreshToken"],
 };
 
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
+    water: waterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

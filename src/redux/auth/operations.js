@@ -8,7 +8,7 @@ const setAuthToken = (token) => {
 };
 
 const clearAuthToken = () => {
-  axios.defaults.headers.common.Authorization = "";
+  delete axios.defaults.headers.common.Authorization;
 };
 
 export const register = createAsyncThunk(
@@ -28,7 +28,7 @@ export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
   try {
     const response = await axios.post("user/login", text);
 
-    setAuthToken(response.data.refreshToken);
+    setAuthToken(response.data.accessToken);
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -48,15 +48,15 @@ export const refreshing = createAsyncThunk(
   "auth/refreshing",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
+    // console.log(state);
+    const refreshToken = state.auth?.refreshToken;
 
-    const persistedToken = { refreshToken: state.auth.token };
-
-    if (persistedToken === null)
+    if (!refreshToken) {
       return thunkAPI.rejectWithValue("User not authorized");
-
+    }
     try {
-      setAuthToken(persistedToken);
-      const response = await axios.post("/user/refresh", persistedToken);
+      const response = await axios.post("/user/refresh", { refreshToken });
+      setAuthToken(response.data.accessToken);
       // console.log(response);
       return response.data;
     } catch (error) {
