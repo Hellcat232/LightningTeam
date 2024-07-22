@@ -1,53 +1,58 @@
 .welcomeSection {
     border-radius: 30px;
-    background:rgb(230, 230, 230);
+    background: var(--background);
     padding: 118px 16px 67px 16px;
-    margin-bottom: 16px;
-    width: 672px;
-    height:736px;
+        margin-bottom: 16px;
+        width: 672px;
+        height: 736px;
+    box-sizing: border-box;
 }
 
 .text {
     color: var(--color-black);
     font-size: 14px;
-    line-height: 1.28;
-    letter-spacing: 0.84px;
+    line-height: 18px;
+    letter-spacing: 0.06em;
     margin-bottom: 16px;
 }
 
 .mainTitle {
-   
-        margin-bottom: 32px;
+    margin-bottom: 50px;
     font-family: "Poppins", sans-serif;
-        font-weight: 700;
-        font-size: 80px;
-        line-height:1.2;
-        letter-spacing:     -0.16px;
-        color: #323f47;
-        width: 547px;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 1.2;
+    letter-spacing: -0.16px;
+    color: #323f47;
+    width: 100%;
+    max-width: 547px;
+    box-sizing: border-box;
 }
-
 .linkThumb {
     display: flex;
-    gap: 10px;
-    max-height: 60px;
+        gap: 10px;
+        max-height: 90px;
+        width: 100%;
+        box-sizing: border-box;
 }
 
 .linkTracker {
-    width: 116px;
+    width: 150px;
     display: flex;
-    padding: 14px 19px;
+    padding: 24px 29px;
     justify-content: center;
     align-items: center;
     border-radius: 30px;
     background: #9be1a0;
     color:#323f47;
     text-align: center;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 1.28;
     letter-spacing: -0.14px;
     transition: background-color 150ms ease-in;
+    height: 66px;
+    margin-right: 15px;
 }
 
 .linkTracker:hover,
@@ -58,21 +63,30 @@
 
 .linkSignIn {
     width: 104px;
+        display: flex;
+        padding: 14px 27px;
+        justify-content: center;
+        align-items: center;
+        color: #323f47;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.28;
+        letter-spacing: -0.14px;
+        border-radius: 30px;
+        border: 1px solid;
+        transition:
+            border 150ms ease-in,
+            color 150ms ease-in;
+}
+
+.linkTracker,
+.linkSignIn {
     display: flex;
-    padding: 14px 27px;
     justify-content: center;
     align-items: center;
-    color: #323f47;;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.28;
-    letter-spacing: -0.14px;
-    border-radius: 30px;
-    border: 1px solid;
-    transition:
-        border 150ms ease-in,
-        color 150ms ease-in;
+    color: #323f47;
+    text-align: center
 }
 
 .linkSignIn:hover,
@@ -82,21 +96,27 @@
     color: #87d28d;
 }
 
-@media (min-width: 768px){
+@media screen and (min-width: 768px) and (max-width: 1439.98px){
     .welcomeSection {
-        padding: 106px 93px 50px 93px;
+    width: 704px;
+        height: 498px;
+        padding: 32px 32px 16px 32px;
     }
 
     .text {
-        font-size: 16px;
-        line-height: 1.5;
-        letter-spacing: 0.96px;
+    font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.06em;
+        text-align: left;
+        padding-left: 32px;
+        margin-top: 58px;
     }
 
     .mainTitle {
-        font-size: 64px;
+    font-size: 64px;
         line-height: 70px;
-        letter-spacing: -0.64px;
+        padding-left: 32px;
+        margin-top: 16px;
     }
 
     .linkTracker {
