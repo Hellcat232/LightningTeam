@@ -1,6 +1,5 @@
 import css from './UserBarPopover.module.css';
 import spriteHref from '../../images/icons_sprite_dev.svg';
-import Modal from 'react-modal';
 import { useState } from 'react';
 import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
 import LogOutModal from '../LogOutModal/LogOutModal.jsx';
