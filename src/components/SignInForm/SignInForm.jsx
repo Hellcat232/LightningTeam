@@ -6,8 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { FaRegEyeSlash } from "react-icons/fa6";
-import css from './SignInForm.module.css'
-
+import css from "./SignInForm.module.css";
 
 const SignInSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -31,7 +30,7 @@ const SignInForm = () => {
   };
 
   const onSubmit = (data) => {
-    dispatch(login(data))
+    dispatch(login(data));
   };
 
   return (

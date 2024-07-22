@@ -42,3 +42,22 @@ export const updateWater = createAsyncThunk(
     }
   }
 );
+
+export const fetchFullDay = createAsyncThunk(
+  "water/fullday",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+
+    const accessToken = state.auth.accessToken;
+
+    try {
+      const response = await axios.get("water/fullday", {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
