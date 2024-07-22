@@ -7,7 +7,7 @@ import './LogOutModal.module.css';
 
 export default function LogOutModal(props) {
   const dispatch = useDispatch();
-  const history = history();
+  const useHistory = history();
 
   const handleLogout = async () => {
     try {
@@ -16,12 +16,12 @@ export default function LogOutModal(props) {
       dispatch(logout());
       localStorage.clear();
 
-      history.push('/user');
+     useHistory.push('/user');
     } catch (error) {
       dispatch(logout());
       localStorage.clear();
 
-      history.push('/user');
+     useHistory.push('/user');
     }
   };
 
