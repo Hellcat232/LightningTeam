@@ -1,6 +1,6 @@
 // import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { history } from 'react-router-dom';
+import { history } from 'react-router-dom';
 
 
 import { logout } from '../../redux/auth/operations';
@@ -10,22 +10,21 @@ import './LogOutModal.module.css';
 
 export default function LogOutModal(props) {
   const dispatch = useDispatch();
-  // const history = history();
+  const historyWater = history();
 
 <<<<<<< Updated upstream
   const handleLogout = async () => {
     try {
-      await fetch('/user/logout', { method: 'POST', credentials: 'include' });
+      // await fetch('/user/logout', { method: 'POST', credentials: 'include' });
 
       dispatch(logout());
       localStorage.clear();
 
-      history.push('/user');
+      historyWater.push('/user');
     } catch (error) {
       dispatch(logout());
       localStorage.clear();
-
-      history.push('/user');
+      historyWater.push('/user');
     }
   };
 
