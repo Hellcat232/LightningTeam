@@ -3,37 +3,43 @@ import { useDispatch } from "react-redux";
 
 import { logout } from "../../redux/auth/operations";
 
-import "./LogOutModal.module.css";
+import css from "./LogOutModal.module.css";
 
-export default function LogOutModal(props) {
+const LogOutModal = (props) => {
   const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   if (!props.call) {
     return null;
   }
 
   return (
-    <div className="modal" onClick={props.onClose}>
+    <div className={css.modal} onClick={props.onClose}>
       <div
-        className="modal-content"
+        className={css["modal-content"]}
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <button className="close" onClick={props.onClose}>
+        <button className={css.close} onClick={props.onClose}>
           ×
         </button>
         <h2>Log out</h2>
         <p>Do you really want to leave??</p>
-        <div className="btn">
-          <button className="accept" type="button" onClick={handleLogout}>
+        <div className={css.btn}>
+          <button className={css.accept} type="button" onClick={handleLogout}>
             Log out
           </button>
-          <button className="reject" type="button" onClick={props.onClose}>
+          <button className={css.reject} type="button" onClick={props.onClose}>
             Cancel
           </button>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default LogOutModal;
