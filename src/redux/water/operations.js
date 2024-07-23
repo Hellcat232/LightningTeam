@@ -1,15 +1,15 @@
-import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const addWater = createAsyncThunk(
-  'water/addWater',
+  "water/addWater",
   async ({ waterValue, localTime }, thunkAPI) => {
     const state = thunkAPI.getState();
     const accessToken = state.auth.accessToken;
 
     try {
       const response = await axios.post(
-        'https://lightningbackend.onrender.com/water/day',
+        "https://lightningbackend.onrender.com/water/day",
         { waterValue, localTime },
         {
           headers: {
@@ -21,7 +21,7 @@ export const addWater = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.error(
-        'Error response from server:',
+        "Error response from server:",
         error.response ? error.response.data : error.message
       );
       return thunkAPI.rejectWithValue(
@@ -32,7 +32,7 @@ export const addWater = createAsyncThunk(
 );
 
 export const updateWater = createAsyncThunk(
-  'water/update',
+  "water/update",
   async ({ waterId, waterValue }, thunkAPI) => {
     const state = thunkAPI.getState();
     const accessToken = state.auth.accessToken;
@@ -66,13 +66,13 @@ export const deleteWater = createAsyncThunk(
 );
 
 export const fetchFullDay = createAsyncThunk(
-  'water/fullday',
+  "water/fullday",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const accessToken = state.auth.accessToken;
 
     try {
-      const response = await axios.get('water/fullday', {
+      const response = await axios.get("water/fullday", {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 
@@ -81,8 +81,8 @@ export const fetchFullDay = createAsyncThunk(
         status: response.status,
         statusText: response.statusText,
         headers: {
-          'content-length': response.headers['content-length'],
-          'content-type': response.headers['content-type'],
+          "content-length": response.headers["content-length"],
+          "content-type": response.headers["content-type"],
         },
       };
     } catch (error) {
@@ -91,16 +91,14 @@ export const fetchFullDay = createAsyncThunk(
   }
 );
 
-
-
-export const deleteWater = createAsyncThunk(
-  'water/deleteWaterRecord',
-  async (waterId, { rejectWithValue }) => {
-    try {
-      const responseDel = await axios.delete(`water/${waterId}`);
-      return waterId;
-    } catch (error) {
-      return rejectWithValue(error.responseDel.data);
-    }
-  }
-);
+// export const deleteWater = createAsyncThunk(
+//   'water/deleteWaterRecord',
+//   async (waterId, { rejectWithValue }) => {
+//     try {
+//       const responseDel = await axios.delete(`water/${waterId}`);
+//       return waterId;
+//     } catch (error) {
+//       return rejectWithValue(error.responseDel.data);
+//     }
+//   }
+// );
