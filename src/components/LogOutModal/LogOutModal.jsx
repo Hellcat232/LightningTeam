@@ -1,7 +1,10 @@
 // import React from 'react';
 import { useDispatch } from 'react-redux';
 // import { history } from 'react-router-dom';
+
+
 import { logout } from '../../redux/auth/operations';
+
 
 import './LogOutModal.module.css';
 
