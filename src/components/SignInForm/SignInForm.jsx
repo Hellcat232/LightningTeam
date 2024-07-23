@@ -1,4 +1,3 @@
-import React from 'react';
 import * as yup from "yup";
 import { login } from "../../redux/auth/operations";
 import { Link } from "react-router-dom";
