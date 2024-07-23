@@ -26,15 +26,19 @@ const waterSlice = createSlice({
           state.fullDay.waterRecord = [newRecord];
         }
       })
-      .addCase(addWater.rejected, (state, action) => {
-        state.addWaterValue = [];
-      })
+      .addCase(addWater.rejected, (state, action) => {})
       .addCase(fetchFullDay.pending, () => {})
-      .addCase(fetchFullDay.fulfilled, (state, action) => {
-        console.log(action.payload.data);
-        state.fullDay = action.payload.data;
+      .addCase(fetchFullDay.fulfilled, () => {})
+      .addCase(fetchFullDay.rejected, () => {})
+
+      .addCase(deleteWater.fulfilled, (state, action) => {
+        state.records = state.records.filter(
+          (record) => record._id !== action.payload
+        );
       })
-      .addCase(fetchFullDay.rejected, () => {});
+      .addCase(deleteWater.rejected, (state, action) => {
+        state.error = action.payload;
+      });
   },
 });
 

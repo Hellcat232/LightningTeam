@@ -8,7 +8,7 @@ import "./LogOutModal.module.css";
 
 export default function LogOutModal(props) {
   const dispatch = useDispatch();
-  // const history = history();
+  const historyWater = history();
 
   const handleLogout = async () => {
     try {
