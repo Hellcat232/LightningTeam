@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { login } from "../../redux/auth/operations";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -16,6 +16,7 @@ const SignInSchema = yup.object().shape({
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -30,12 +31,22 @@ const SignInForm = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const onSubmit = (data) => {
-    dispatch(login(data));
+  const onSubmit = async (data) => {
+    try {
+      const response = await dispatch(login(data)).unwrap();
+      const { accessToken, refreshToken } = response;
+      localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('refreshToken', refreshToken);
+      navigate('/tracker');
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
   };
 
   const handleLoginSuccess = (user) => {
-    console.log('Logged in user:', user);
+    localStorage.setItem('accessToken', user.accessToken);
+    localStorage.setItem('refreshToken', user.refreshToken);
+    navigate('/tracker');
   };
 
   return (

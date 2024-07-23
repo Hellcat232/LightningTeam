@@ -10,12 +10,10 @@ export const loginWithGoogle = async (credential) => {
     );
 
     const { accessToken, refreshToken, user } = response.data;
-
-    // Збережіть токени у localStorage
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("refreshToken", refreshToken);
 
-    return user;
+    return { accessToken, refreshToken, user };
   } catch (error) {
     console.error("Login failed:", error);
     throw error;
