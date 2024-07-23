@@ -4,6 +4,8 @@ import css from './TrackerPage.module.css';
 import useWaterItems from '../../hooks/useWaterItems.js';
 import DeleteWaterModal from "../../components/DeleteWaterModal/DeleteWaterModal.jsx";
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import '../../../node_modules/react-toastify/dist/ReactToastify.css';
 
 const TrackerPage = () => {
   const { waterItems, addWaterItem } = useWaterItems();
@@ -15,6 +17,7 @@ const TrackerPage = () => {
       <WaterMainInfo addWaterItem={addWaterItem} />
       <WaterDetailedInfo waterItems={waterItems} addWaterItem={addWaterItem} />
       <DeleteWaterModal call={deleteWatModal} onClose={() => setDeleteWatModal(false)}></DeleteWaterModal>
+       <ToastContainer />
     </section>
   );
 };

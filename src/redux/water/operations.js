@@ -61,3 +61,17 @@ export const fetchFullDay = createAsyncThunk(
     }
   }
 );
+
+
+
+export const deleteWater = createAsyncThunk(
+  'water/deleteWaterRecord',
+  async (waterId, { rejectWithValue }) => {
+    try {
+      const responseDel = await axios.delete(`water/${waterId}`);
+      return waterId;
+    } catch (error) {
+      return rejectWithValue(error.responseDel.data);
+    }
+  }
+);

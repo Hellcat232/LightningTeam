@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { addWater, fetchFullDay, updateWater } from "./operations";
+import { addWater, fetchFullDay, updateWater, deleteWater } from "./operations";
 
 const waterSlice = createSlice({
   name: "water",
@@ -17,10 +17,17 @@ const waterSlice = createSlice({
         state.addWaterValue = action.payload;
         console.log();
       })
-      .addCase(addWater.rejected, (state, action) => {})
-      .addCase(fetchFullDay.pending, () => {})
-      .addCase(fetchFullDay.fulfilled, () => {})
-      .addCase(fetchFullDay.rejected, () => {});
+      .addCase(addWater.rejected, (state, action) => { })
+      .addCase(fetchFullDay.pending, () => { })
+      .addCase(fetchFullDay.fulfilled, () => { })
+      .addCase(fetchFullDay.rejected, () => { })
+
+      .addCase(deleteWater.fulfilled, (state, action) => {
+        state.records = state.records.filter(record => record._id !== action.payload)
+        })  
+      .addCase(deleteWater.rejected, (state, action) => {
+        state.error = action.payload
+      })
   },
 });
 
