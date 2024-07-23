@@ -63,7 +63,6 @@ const WaterModal = ({ isOpen, closeModal, onAddWater }) => {
                 className={styles["icon-mod-math"]}
               />
             </button>
-            <span className={styles["amount-ml"]}>{amount} ml</span>
             <button
               onClick={increaseAmount}
               className={styles.iconButton}
