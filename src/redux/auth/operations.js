@@ -1,8 +1,8 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://lightningbackend.onrender.com/";
-// axios.defaults.baseURL = "http://localhost:3000/";
+axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
+
 const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -15,7 +15,7 @@ export const loginGoogle = createAsyncThunk(
   "auth/google",
   async ({ token }, thunkAPI) => {
     try {
-      const response = await axios.post("auth/google", { token });
+      const response = await axios.post("/auth/google", { token });
       setAuthToken(response.data.accessToken);
       return response.data;
     } catch (error) {
@@ -26,7 +26,7 @@ export const loginGoogle = createAsyncThunk(
 
 export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
   try {
-    const response = await axios.post("user/login", text);
+    const response = await axios.post("/user/login", text);
     setAuthToken(response.data.accessToken);
     return response.data;
   } catch (error) {
@@ -38,7 +38,7 @@ export const register = createAsyncThunk(
   "auth/register",
   async (text, thunkAPI) => {
     try {
-      const response = await axios.post("user/register", text);
+      const response = await axios.post("/user/register", text);
       setAuthToken(response.data.accessToken);
       return response.data;
     } catch (error) {
@@ -49,7 +49,7 @@ export const register = createAsyncThunk(
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.post("user/logout");
+    await axios.post("/user/logout");
     clearAuthToken();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -79,7 +79,7 @@ export const updateUser = createAsyncThunk(
   "user/update",
   async (someValue, thunkAPI) => {
     try {
-      const response = await axios.put("user/update", someValue);
+      const response = await axios.put("/user/update", someValue);
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
