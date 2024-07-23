@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { addWater } from "./operations";
+import { addWater, fetchFullDay, updateWater } from "./operations";
 
 const waterSlice = createSlice({
   name: "water",
   initialState: {
     addWaterValue: [],
+    fullDay: [],
   },
   extraReducers: (builder) => {
     builder
@@ -16,7 +17,10 @@ const waterSlice = createSlice({
         state.addWaterValue = action.payload;
         console.log();
       })
-      .addCase(addWater.rejected, (state, action) => {});
+      .addCase(addWater.rejected, (state, action) => {})
+      .addCase(fetchFullDay.pending, () => {})
+      .addCase(fetchFullDay.fulfilled, () => {})
+      .addCase(fetchFullDay.rejected, () => {});
   },
 });
 
