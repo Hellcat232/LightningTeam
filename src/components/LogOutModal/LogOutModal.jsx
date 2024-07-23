@@ -7,23 +7,6 @@ import "./LogOutModal.module.css";
 
 export default function LogOutModal(props) {
   const dispatch = useDispatch();
-  // const history = useHistory();
-
-  // const handleLogout = async () => {
-  //   try {
-  //     await fetch("/user/logout", { method: "POST", credentials: "include" });
-
-  //     dispatch(logout());
-  //     localStorage.clear();
-
-  //     history.push("/user");
-  //   } catch (error) {
-  //     dispatch(logout());
-  //     localStorage.clear();
-
-  //     history.push("/user");
-  //   }
-  // };
 
   if (!props.call) {
     return null;
