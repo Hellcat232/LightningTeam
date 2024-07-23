@@ -12,6 +12,7 @@ export default function LogOutModal(props) {
   const dispatch = useDispatch();
   // const history = history();
 
+<<<<<<< Updated upstream
   const handleLogout = async () => {
     try {
       await fetch('/user/logout', { method: 'POST', credentials: 'include' });
@@ -52,6 +53,20 @@ export default function LogOutModal(props) {
           <button className="reject" type="button" onClick={props.onClose}>
             Cancel
           </button>
+=======
+    return (
+        
+        <div className="modal" onClick={props.onClose}>
+            <div className="modal-content" onClick={(e) => {e.stopPropagation()}}>
+                <button className="close" onClick={props.onClose} >×</button>
+                <h2>Log out</h2>
+                <p>Do you really want to leave??</p>
+                <div className='btn'>
+                    <button className="accept" type="button" >Log out</button>
+                    <button className="reject" type="button" onClick={props.onClose} >Cancel</button> 
+                </div>    
+            </div>
+>>>>>>> Stashed changes
         </div>
       </div>
     </div>
