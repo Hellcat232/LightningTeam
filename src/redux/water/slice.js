@@ -1,25 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-import { addWater, fetchFullDay, updateWater } from "./operations";
+import { addWater, fetchFullDay, updateWater } from './operations';
 
 const waterSlice = createSlice({
-  name: "water",
+  name: 'water',
   initialState: {
     addWaterValue: [],
-    fullDay: [],
+    fullDay: {
+      msg: '',
+      waterRate: {},
+      waterRecord: [],
+    },
   },
-  extraReducers: (builder) => {
+  extraReducers: builder => {
     builder
       .addCase(addWater.pending, (state, action) => {
         state.addWaterValue = [];
       })
       .addCase(addWater.fulfilled, (state, action) => {
-        state.addWaterValue = action.payload;
-        console.log();
+        state.addWaterValue.push(action.payload);
+        const newRecord = action.payload.waterRecord;
+        if (state.fullDay.waterRecord) {
+          state.fullDay.waterRecord.push(newRecord);
+        } else {
+          state.fullDay.waterRecord = [newRecord];
+        }
       })
       .addCase(addWater.rejected, (state, action) => {})
       .addCase(fetchFullDay.pending, () => {})
-      .addCase(fetchFullDay.fulfilled, () => {})
+      .addCase(fetchFullDay.fulfilled, (state, action) => {
+        console.log(action.payload.data);
+        state.fullDay = action.payload.data;
+      })
       .addCase(fetchFullDay.rejected, () => {});
   },
 });
