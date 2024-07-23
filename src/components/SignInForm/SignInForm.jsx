@@ -10,6 +10,7 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import css from './SignInForm.module.css';
 import GoogleLoginButton from "../GoogleLoginButton/GoogleLoginButton";
 
+
 const SignInSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   password: yup.string().required("Password is required"),
