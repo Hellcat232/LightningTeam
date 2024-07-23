@@ -1,12 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { register, refreshing, login, logout, updateUser } from "./operations";
+import {
+  register,
+  refreshing,
+  login,
+  logout,
+  updateUser,
+  loginGoogle,
+} from "./operations";
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     accessToken: null,
     refreshToken: null,
-    // token: null,
     isLoggedIn: false,
     isRefreshing: false,
     isLoading: false,
@@ -25,7 +31,6 @@ const authSlice = createSlice({
       .addCase(register.pending, (state, action) => {
         state.accessToken = null;
         state.refreshToken = null;
-        // state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = true;
@@ -34,7 +39,6 @@ const authSlice = createSlice({
       .addCase(register.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
-        // state.token = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
@@ -43,7 +47,6 @@ const authSlice = createSlice({
       .addCase(register.rejected, (state, action) => {
         state.accessToken = null;
         state.refreshToken = null;
-        // state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = false;
@@ -52,7 +55,6 @@ const authSlice = createSlice({
       .addCase(login.pending, (state, action) => {
         state.accessToken = null;
         state.refreshToken = null;
-        // state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = true;
@@ -61,9 +63,6 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
-        // console.log(action);
-        // state.token = action.payload;
-        // console.log(state.token);
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
@@ -72,7 +71,6 @@ const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.accessToken = null;
         state.refreshToken = null;
-        // state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = false;
@@ -84,7 +82,6 @@ const authSlice = createSlice({
       .addCase(logout.fulfilled, (state, action) => {
         state.accessToken = null;
         state.refreshToken = null;
-        // state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = false;
@@ -95,15 +92,11 @@ const authSlice = createSlice({
       })
       .addCase(refreshing.pending, (state, action) => {
         state.isRefreshing = true;
-        // state.accessToken = action.payload.accessToken;
-        // state.refreshToken = action.payload.refreshToken;
       })
       .addCase(refreshing.fulfilled, (state, action) => {
         state.isRefreshing = false;
         state.user = action.payload.user;
-        // state.token = action.payload;
         state.accessToken = action.payload.accessToken;
-        // console.log(state.token);
         state.isLoggedIn = true;
       })
       .addCase(refreshing.rejected, (state, action) => {
@@ -114,7 +107,6 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
-
         state.user = {
           ...state.user,
           ...action.payload.user,
@@ -122,6 +114,17 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
+      })
+      .addCase(loginGoogle.fulfilled, (state, action) => {
+        state.accessToken = action.payload.accessToken;
+        state.refreshToken = action.payload.refreshToken;
+        state.isLoggedIn = true;
+        state.user = action.payload.user;
+      })
+      .addCase(loginGoogle.rejected, (state, action) => {
+        state.accessToken = null;
+        state.refreshToken = null;
+        state.isLoggedIn = false;
       });
   },
 });
