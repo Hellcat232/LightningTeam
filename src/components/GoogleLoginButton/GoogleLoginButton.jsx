@@ -1,40 +1,37 @@
-
-import React from 'react';
 import { GoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { loginGoogle } from '../../redux/auth/operations';
 
-const GoogleLoginButton = ({ onSuccess }) => {
-  const handleLoginSuccess = async (credentialResponse) => {
+const GoogleLoginButton = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSuccess = async (response) => {
+    const token = response.credential;
     try {
-      console.log(`Credential response: ${JSON.stringify(credentialResponse)}`);
-
-      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/google`, {
-        token: credentialResponse.credential,
-      });
-
-      const { accessToken, refreshToken, user } = response.data;
-      localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('refreshToken', refreshToken);
-
-      console.log('User:', user);
-      if (onSuccess) {
-        onSuccess(user);
-      }
+      const result = await dispatch(loginGoogle({ token })).unwrap();
+      localStorage.setItem('accessToken', result.accessToken);
+      localStorage.setItem('refreshToken', result.refreshToken);
+      navigate('/tracker'); 
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Google Login failed:', error);
     }
+  };
+
+  const handleFailure = (error) => {
+    console.error('Google Login failed:', error);
   };
 
   return (
     <GoogleLogin
       clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
-      onSuccess={handleLoginSuccess}
-      onError={() => {
-        console.log('Login Failed');
-      }}
+      buttonText="Login with Google"
+      onSuccess={handleSuccess}
+      onFailure={handleFailure}
+      cookiePolicy={'single_host_origin'}
     />
   );
 };
 
 export default GoogleLoginButton;
-
