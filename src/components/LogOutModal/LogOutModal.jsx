@@ -1,12 +1,10 @@
 // import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 // import { history } from 'react-router-dom';
 
+import { logout } from "../../redux/auth/operations";
 
-import { logout } from '../../redux/auth/operations';
-
-
-import './LogOutModal.module.css';
+import "./LogOutModal.module.css";
 
 export default function LogOutModal(props) {
   const dispatch = useDispatch();
@@ -14,17 +12,17 @@ export default function LogOutModal(props) {
 
   const handleLogout = async () => {
     try {
-      await fetch('/user/logout', { method: 'POST', credentials: 'include' });
+      await fetch("/user/logout", { method: "POST", credentials: "include" });
 
       dispatch(logout());
       localStorage.clear();
 
-      history.push('/user');
+      useHistory.push("/user");
     } catch (error) {
       dispatch(logout());
       localStorage.clear();
 
-      history.push('/user');
+      useHistory.push("/user");
     }
   };
 
@@ -36,7 +34,7 @@ export default function LogOutModal(props) {
     <div className="modal" onClick={props.onClose}>
       <div
         className="modal-content"
-        onClick={e => {
+        onClick={(e) => {
           e.stopPropagation();
         }}
       >
