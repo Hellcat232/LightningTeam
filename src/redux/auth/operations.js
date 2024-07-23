@@ -1,9 +1,9 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// =======================================================
+// ===================================================
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
-// =======================================================
+// ===================================================
 
 const setAuthToken = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
