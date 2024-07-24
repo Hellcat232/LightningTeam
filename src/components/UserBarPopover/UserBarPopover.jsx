@@ -1,16 +1,16 @@
-import css from "./UserBarPopover.module.css";
-import spriteHref from "../../images/icons_sprite_dev.svg";
-import { useState } from "react";
-import UserSettingsModal from "../UserSettingsModal/UserSettingsModal.jsx";
-import LogOutModal from "../LogOutModal/LogOutModal.jsx";
-import UserSettingForm from "../UserSettingsForm/UserSettingsForm.jsx";
+import css from './UserBarPopover.module.css';
+import spriteHref from '../../images/icons_sprite_dev.svg';
+import { useState } from 'react';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
+import LogOutModal from '../LogOutModal/LogOutModal.jsx';
+import UserSettingForm from '../UserSettingsForm/UserSettingsForm.jsx';
 
 const UserBarPopover = () => {
   const [modalType, setModalType] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleModal = (modalType) => {
-    setModalOpen((prevState) => !prevState);
+  const handleModal = modalType => {
+    setModalOpen(prevState => !prevState);
     setModalType(modalType);
   };
 
@@ -19,7 +19,7 @@ const UserBarPopover = () => {
       <button
         className={`${css.button} ${css.settingsBtn}`}
         onClick={() => {
-          handleModal("settingsModal");
+          handleModal('settingsModal');
         }}
       >
         <svg className={css.icon}>
@@ -30,7 +30,7 @@ const UserBarPopover = () => {
       <button
         className={`${css.button} ${css.logOutBtn}`}
         onClick={() => {
-          handleModal("logoutModal");
+          handleModal('logoutModal');
         }}
       >
         <svg className={css.iconLogOut}>
@@ -38,9 +38,13 @@ const UserBarPopover = () => {
         </svg>
         Log out
       </button>
-      <UserSettingsModal showModal={modalOpen} handleClose={handleModal}>
-        {modalType === "settingsModal" ? <UserSettingForm /> : <LogOutModal />}
-      </UserSettingsModal>
+      {modalType === 'settingsModal' ? (
+        <UserSettingsModal showModal={modalOpen} handleClose={handleModal}>
+          <UserSettingForm handleClose={handleModal} />
+        </UserSettingsModal>
+      ) : (
+        <LogOutModal showModal={modalOpen} handleClose={handleModal} />
+      )}
     </div>
   );
 };
