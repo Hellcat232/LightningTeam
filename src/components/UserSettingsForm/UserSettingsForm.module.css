@@ -1,12 +1,12 @@
-/*.main {*/
-/*    display: flex;*/
-/*    width: 840px;*/
-/*    height: 100%;*/
-/*    gap: 40px;*/
+.main {
+   display: flex;
+   width: 840px;
+   height: 100%;
+   gap: 40px;
 /*    font: Poppins;*/
 /*    !* overflow-y: auto; */
 /*    overflow-x: hidden; *!*/
-/*}*/
+}
 
 form {
 
