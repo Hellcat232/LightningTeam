@@ -14,7 +14,10 @@ const LogOutModal = (props) => {
     dispatch(logout())
       .unwrap()
       .then(() => {
-        navigate("/user/login", { replace: true });
+        navigate("/signin", { replace: true });
+      })
+      .catch((error) => {
+        console.error("Failed to logout:", error);
       });
   };
 

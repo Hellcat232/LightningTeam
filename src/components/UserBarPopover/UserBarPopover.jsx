@@ -7,11 +7,19 @@ import UserSettingForm from "../UserSettingsForm/UserSettingsForm.jsx";
 
 const UserBarPopover = () => {
   const [modalType, setModalType] = useState(null);
-  const [modalOpen, setModalOpen] = useState(false);
+  // const [modalOpen, setModalOpen] = useState(false);
 
-  const handleModal = (modalType) => {
-    setModalOpen((prevState) => !prevState);
-    setModalType(modalType);
+  // const handleModal = (modalType) => {
+  //   setModalOpen((prevState) => !prevState);
+  //   setModalType(modalType);
+  // };
+
+  const handleModalToggle = (type) => {
+    setModalType((prevType) => (prevType === type ? null : type));
+  };
+
+  const closeModal = () => {
+    setModalType(null);
   };
 
   return (
@@ -19,7 +27,7 @@ const UserBarPopover = () => {
       <button
         className={`${css.button} ${css.settingsBtn}`}
         onClick={() => {
-          handleModal("settingsModal");
+          handleModalToggle("settingsModal");
         }}
       >
         <svg className={css.icon}>
@@ -30,7 +38,7 @@ const UserBarPopover = () => {
       <button
         className={`${css.button} ${css.logOutBtn}`}
         onClick={() => {
-          handleModal("logoutModal");
+          handleModalToggle("logoutModal");
         }}
       >
         <svg className={css.iconLogOut}>
@@ -38,9 +46,15 @@ const UserBarPopover = () => {
         </svg>
         Log out
       </button>
-      <UserSettingsModal showModal={modalOpen} handleClose={handleModal}>
-        {modalType === "settingsModal" ? <UserSettingForm /> : <LogOutModal />}
-      </UserSettingsModal>
+      {modalType && (
+        <UserSettingsModal showModal={!!modalType} handleClose={closeModal}>
+          {modalType === "settingsModal" ? (
+            <UserSettingForm />
+          ) : (
+            <LogOutModal call={true} onClose={closeModal} />
+          )}
+        </UserSettingsModal>
+      )}
     </div>
   );
 };
