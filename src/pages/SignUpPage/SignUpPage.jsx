@@ -2,6 +2,8 @@ import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import { Logo } from "../../components/Logo/Logo.jsx";
 import { Link } from "react-router-dom";
 import styles from "./SignUpPage.module.css";
+import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection";
+
 
 const SignUpPage = () => {
   return (
