@@ -5,23 +5,7 @@ import girl1 from "../../images/girl1.png";
 import girl2 from "../../images/girl2.png";
 import boy from "../../images/boy.png";
 const AdvantagesSection = () => {
-  // const dispatch = useDispatch();
-  // const userCount = useSelector((state) => state.user.count);
-  // const todaySumamryWater = useSelector(
-  //   (state) => state.water.todaySumamryWater
-  // );
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     if (!userCount) {
-  //       await dispatch(functionAboutFatchUserCount());
-  //     }
-  //     await dispatch(functionAboutTodayWater());
-  //   };
-
-  //   fetchData();
-  // }, [dispatch, userCount]);
-
+ 
   return (
     <div className={css.section}>
           
