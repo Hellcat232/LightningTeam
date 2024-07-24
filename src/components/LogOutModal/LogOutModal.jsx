@@ -2,11 +2,20 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/auth/operations';
 import css from './LogOutModal.module.css';
 
+
 const LogOutModal = ({ showModal, handleClose }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout())
+      .unwrap()
+      .then(() => {
+        navigate("/signin", { replace: true });
+      })
+      .catch((error) => {
+        console.error("Failed to logout:", error);
+      });
   };
 
   if (!showModal) {

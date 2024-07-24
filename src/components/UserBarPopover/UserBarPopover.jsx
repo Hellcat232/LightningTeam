@@ -12,6 +12,7 @@ const UserBarPopover = () => {
   const handleModal = modalType => {
     setModalOpen(prevState => !prevState);
     setModalType(modalType);
+
   };
 
   return (
@@ -31,6 +32,7 @@ const UserBarPopover = () => {
         className={`${css.button} ${css.logOutBtn}`}
         onClick={() => {
           handleModal('logoutModal');
+
         }}
       >
         <svg className={css.iconLogOut}>
