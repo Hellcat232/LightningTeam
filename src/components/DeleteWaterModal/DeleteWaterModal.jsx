@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 export default function DeleteWaterModal(props) {
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
+    const handleDelete = (event) => {
+        event.preventDefault();
     dispatch(deleteWater({ waterId: props.recordId }))
       .unwrap()
       .then(() => {
@@ -39,14 +40,16 @@ export default function DeleteWaterModal(props) {
         </button>
         <h2>Delete entry</h2>
         <p>Are you sure you want to delete the entry?</p>
-        <div className={css.btn}>
-          <button className={css.accept} type="button" onClick={handleDelete}>
-            Delete
-          </button>
-          <button className={css.reject} type="button">
-            Cancel
-          </button>
-        </div>
+          <form onSubmit={handleDelete}>   
+            <div className={css.btn}>
+            <button className={css.accept} type="submit">
+                Delete
+            </button>
+            <button className={css.reject} type="button" onClick={props.onClose}>
+                Cancel
+            </button>
+            </div>
+          </form> 
       </div>
     </div>
   );
