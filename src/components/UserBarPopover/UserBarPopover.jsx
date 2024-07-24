@@ -8,12 +8,16 @@ import UserSettingForm from "../UserSettingsForm/UserSettingsForm.jsx";
 const UserBarPopover = () => {
   const [modalType, setModalType] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleModal = (modalType) => {
     setModalOpen((prevState) => !prevState);
     setModalType(modalType);
   };
 
+  const handleCloseLogoutModul = () => {
+    setShowLogoutModal(false);
+  }
   return (
     <div className={css.container}>
       <button
@@ -41,6 +45,7 @@ const UserBarPopover = () => {
       <UserSettingsModal showModal={modalOpen} handleClose={handleModal}>
         {modalType === "settingsModal" ? <UserSettingForm /> : <LogOutModal />}
       </UserSettingsModal>
+      <LogOutModal call={ showLogoutModal} onClose={ handleCloseLogoutModul} />
     </div>
   );
 };
