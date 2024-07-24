@@ -2,28 +2,27 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-// import './UserSettingsForm.module.css';
 import css from './UserSettingsForm.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '../../redux/auth/operations.js';
+import { selectIsLoading } from '../../redux/auth/selectors.js';
 
-const UserSettingForm = ({ onSubmit }) => {
+const UserSettingForm = ({ handleClose }) => {
   const [avatar, setAvatar] = useState(null);
+  const [gender, setGender] = useState('woman');
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const schema = Yup.object().shape({
-    avatar: Yup.mixed(),
+    avatar: Yup.string(),
     gender: Yup.string().required('Gender is required'),
     name: Yup.string().required('Name is required'),
     email: Yup.string()
       .email('Invalid email format')
       .required('Email is required'),
-    weight: Yup.number()
-      .positive('Weight must be a positive number')
-      .required('Weight is required'),
-    activeTime: Yup.number()
-      .positive('Active time must be a positive number')
-      .required('Active time is required'),
-    waterIntake: Yup.number()
-      .positive('Water intake must be a positive number')
-      .required('Water intake is required'),
+    weight: Yup.string().required('Weight is required'),
+    sportsActivity: Yup.string().required('Active time is required'),
+    waterRate: Yup.string().required('Water intake is required'),
   });
 
   const {
@@ -39,6 +38,19 @@ const UserSettingForm = ({ onSubmit }) => {
     if (file) {
       setAvatar(URL.createObjectURL(file));
     }
+  };
+
+  const onSubmit = data => {
+    const formData = {
+      ...data,
+      avatar,
+    };
+
+    dispatch(updateUser(formData)).then(response => {
+      if (response.meta.requestStatus === 'fulfilled') {
+        handleClose();
+      }
+    });
   };
 
   return (
@@ -87,7 +99,9 @@ const UserSettingForm = ({ onSubmit }) => {
                   type="radio"
                   name="gender"
                   value="woman"
-                  checked
+                  {...register('gender')}
+                  checked={gender === 'woman'}
+                  onChange={() => setGender('woman')}
                 />
                 <span className={css.radioCheckmark}></span>
                 Woman
@@ -99,11 +113,15 @@ const UserSettingForm = ({ onSubmit }) => {
                   type="radio"
                   name="gender"
                   value="man"
+                  {...register('gender')}
+                  checked={gender === 'man'}
+                  onChange={() => setGender('man')}
                 />
                 <span className={css.radioCheckmark}></span>
                 Man
               </label>
             </div>
+            {errors.gender && <p>{errors.gender.message}</p>}
           </div>
 
           <div>
@@ -125,12 +143,12 @@ const UserSettingForm = ({ onSubmit }) => {
             <div className={css.containerFormula}>
               <div>
                 <p>For woman</p>
-                <p className={css.formula}>V=(M*0,03) + (T*0,4)</p>
+                <p className={css.formula}>V=(M*0.03) + (T*0.4)</p>
               </div>
 
               <div>
                 <p>For man</p>
-                <p className={css.formula}>V=(M*0,04) + (T*0,6)</p>
+                <p className={css.formula}>V=(M*0.04) + (T*0.6)</p>
               </div>
             </div>
             <div className={css.textareaContainer}>
@@ -180,7 +198,7 @@ const UserSettingForm = ({ onSubmit }) => {
             <input
               className={css.input}
               type="number"
-              {...register('activeTime')}
+              {...register('sportsActivity')}
             />
             {errors.activeTime && <p>{errors.activeTime.message}</p>}
           </div>
@@ -195,7 +213,7 @@ const UserSettingForm = ({ onSubmit }) => {
             <input
               className={css.input}
               type="number"
-              {...register('waterIntake')}
+              {...register('waterRate')}
             />
             {errors.waterIntake && <p>{errors.waterIntake.message}</p>}
           </div>

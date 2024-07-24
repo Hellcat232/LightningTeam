@@ -1,25 +1,18 @@
-import css from "./UserBarPopover.module.css";
-import spriteHref from "../../images/icons_sprite_dev.svg";
-import { useState } from "react";
-import UserSettingsModal from "../UserSettingsModal/UserSettingsModal.jsx";
-import LogOutModal from "../LogOutModal/LogOutModal.jsx";
-import UserSettingForm from "../UserSettingsForm/UserSettingsForm.jsx";
+import css from './UserBarPopover.module.css';
+import spriteHref from '../../images/icons_sprite_dev.svg';
+import { useState } from 'react';
+import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
+import LogOutModal from '../LogOutModal/LogOutModal.jsx';
+import UserSettingForm from '../UserSettingsForm/UserSettingsForm.jsx';
 
 const UserBarPopover = () => {
   const [modalType, setModalType] = useState(null);
-  // const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  // const handleModal = (modalType) => {
-  //   setModalOpen((prevState) => !prevState);
-  //   setModalType(modalType);
-  // };
+  const handleModal = modalType => {
+    setModalOpen(prevState => !prevState);
+    setModalType(modalType);
 
-  const handleModalToggle = (type) => {
-    setModalType((prevType) => (prevType === type ? null : type));
-  };
-
-  const closeModal = () => {
-    setModalType(null);
   };
 
   return (
@@ -27,7 +20,7 @@ const UserBarPopover = () => {
       <button
         className={`${css.button} ${css.settingsBtn}`}
         onClick={() => {
-          handleModalToggle("settingsModal");
+          handleModal('settingsModal');
         }}
       >
         <svg className={css.icon}>
@@ -38,7 +31,8 @@ const UserBarPopover = () => {
       <button
         className={`${css.button} ${css.logOutBtn}`}
         onClick={() => {
-          handleModalToggle("logoutModal");
+          handleModal('logoutModal');
+
         }}
       >
         <svg className={css.iconLogOut}>
@@ -46,14 +40,12 @@ const UserBarPopover = () => {
         </svg>
         Log out
       </button>
-      {modalType && (
-        <UserSettingsModal showModal={!!modalType} handleClose={closeModal}>
-          {modalType === "settingsModal" ? (
-            <UserSettingForm />
-          ) : (
-            <LogOutModal call={true} onClose={closeModal} />
-          )}
+      {modalType === 'settingsModal' ? (
+        <UserSettingsModal showModal={modalOpen} handleClose={handleModal}>
+          <UserSettingForm handleClose={handleModal} />
         </UserSettingsModal>
+      ) : (
+        <LogOutModal showModal={modalOpen} handleClose={handleModal} />
       )}
     </div>
   );

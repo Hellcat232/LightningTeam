@@ -1,17 +1,17 @@
 .main {
-   display: flex;
-   width: 840px;
-   height: 100%;
-   gap: 40px;
-/*    font: Poppins;*/
-/*    !* overflow-y: auto; */
-/*    overflow-x: hidden; *!*/
+    display: flex;
+    flex-direction: column; /* Change direction to column for better control */
+    width: 100%;
+    max-width: 840px;
+    height: 100%;
+    gap: 40px;
+    overflow: hidden;
 }
 
-form {
-
+.form {
     color: #2F2F2F;
     width: 100%;
+    max-width: 840px;
     box-sizing: border-box;
     padding-right: 12px;
     overflow: hidden;
