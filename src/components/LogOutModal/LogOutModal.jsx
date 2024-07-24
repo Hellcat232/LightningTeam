@@ -4,19 +4,18 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../redux/auth/operations";
 
 import css from "./LogOutModal.module.css";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LogOutModal = (props) => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout())
       .unwrap()
       .then(() => {
-         history.push('/user/login')
-      })
-      
+        navigate("/user/login", { replace: true });
+      });
   };
 
   if (!props.call) {
