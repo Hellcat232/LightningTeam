@@ -33,18 +33,12 @@ export const addWater = createAsyncThunk(
 
 export const updateWater = createAsyncThunk(
   "water/update",
-  async ({ waterId, waterValue }, thunkAPI) => {
+  async (waterValue, thunkAPI) => {
     const state = thunkAPI.getState();
     const accessToken = state.auth.accessToken;
-
+    console.log(waterValue);
     try {
-      const response = await axios.patch(
-        `water/day/${waterId}`,
-        {
-          waterValue,
-        },
-        { headers: { Authorization: `Bearer ${accessToken}` } }
-      );
+      const response = await axios.patch(`water/day/${waterValue}`);
       console.log(response);
       return response;
     } catch (error) {
@@ -56,8 +50,10 @@ export const updateWater = createAsyncThunk(
 export const deleteWater = createAsyncThunk(
   "water/delete",
   async (waterId, thunkAPI) => {
+    // const state = thunkAPI.getState();
+    // const accessToken = state.auth.accessToken;
     try {
-      await axios.delete(`water/delete/${waterId}`);
+      await axios.delete(`water/day/${waterId}`);
       return waterId;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -11,6 +11,8 @@ const waterSlice = createSlice({
       waterRate: {},
       waterRecord: [],
     },
+
+    // record: [],
   },
   extraReducers: (builder) => {
     builder
@@ -26,19 +28,32 @@ const waterSlice = createSlice({
           state.fullDay.waterRecord = [newRecord];
         }
       })
-      .addCase(addWater.rejected, (state, action) => {})
-      .addCase(fetchFullDay.pending, () => {})
-      .addCase(fetchFullDay.fulfilled, () => {})
-      .addCase(fetchFullDay.rejected, () => {})
+      .addCase(addWater.rejected, (state, action) => {
+        state.addWaterValue = [];
+      })
+      .addCase(fetchFullDay.pending, (state, action) => {
+        state.fullDay = [];
+      })
+      .addCase(fetchFullDay.fulfilled, (state, action) => {
+        state.fullDay = action.payload.data;
+      })
+      .addCase(fetchFullDay.rejected, (state, action) => {})
 
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.records = state.records.filter(
           (record) => record._id !== action.payload
         );
+        // state.record = [];
+        console.log(state.records);
       })
       .addCase(deleteWater.rejected, (state, action) => {
         state.error = action.payload;
-      });
+      })
+      .addCase(updateWater.pending, (state, action) => {})
+      .addCase(updateWater.fulfilled, (state, action) => {
+        // state.fullDay = action.payload.data;
+      })
+      .addCase(updateWater.rejected, (state, action) => {});
   },
 });
 
