@@ -12,7 +12,7 @@ const waterSlice = createSlice({
       waterRecord: [],
     },
 
-    // record: [],
+    record: [],
   },
   extraReducers: (builder) => {
     builder
@@ -32,15 +32,20 @@ const waterSlice = createSlice({
         state.addWaterValue = [];
       })
       .addCase(fetchFullDay.pending, (state, action) => {
-        state.fullDay = [];
+        state.fullDay = {
+          msg: "",
+          waterRate: {},
+          waterRecord: [],
+        };
       })
       .addCase(fetchFullDay.fulfilled, (state, action) => {
         state.fullDay = action.payload.data;
       })
       .addCase(fetchFullDay.rejected, (state, action) => {})
+      .addCase(deleteWater.pending, (state, action) => {})
 
       .addCase(deleteWater.fulfilled, (state, action) => {
-        state.records = state.records.filter(
+        state.fullDay.waterRecord = state.fullDay.waterRecord.filter(
           (record) => record._id !== action.payload
         );
         // state.record = [];
@@ -51,9 +56,20 @@ const waterSlice = createSlice({
       })
       .addCase(updateWater.pending, (state, action) => {})
       .addCase(updateWater.fulfilled, (state, action) => {
-        // state.fullDay = action.payload.data;
+        const updatedRecord = action.payload;
+        const index = state.fullDay.waterRecord.findIndex(
+          (record) => record._id === updatedRecord._id
+        );
+        if (index !== -1) {
+          state.fullDay.waterRecord[index] = updatedRecord;
+          console.log("Record updated:", state.fullDay.waterRecord[index]);
+        } else {
+          console.log("Record not found:", updatedRecord._id);
+        }
       })
-      .addCase(updateWater.rejected, (state, action) => {});
+      .addCase(updateWater.rejected, (state, action) => {
+        state.error = action.error.message;
+      });
   },
 });
 

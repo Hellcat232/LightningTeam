@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import styles from "./WaterModalEdit.module.css";
 import Iconsvg from "../Icon/Icon";
 import { useDispatch } from "react-redux";
-import { updateWater } from "../../redux/water/operations";
+import { updateWater, fetchFullDay } from "../../redux/water/operations";
 Modal.setAppElement("#root");
 
 const WaterModalEdit = ({
@@ -27,10 +27,27 @@ const WaterModalEdit = ({
 
   const dispatch = useDispatch();
 
-  const handleSave = () => {
-    // onEdit(amount, time);
+  // const handleSave = () => {
+  //   onEdit(amount, time);
+  //   console.log({ id, amount });
+  //   dispatch(
+  //     updateWater({
+  //       _id: id,
+  //       waterValue: amount,
+  //     })
+  //   );
+  //   closeModal();
+  // };
 
-    dispatch(updateWater(id, amount, time));
+  const handleSave = () => {
+    dispatch(
+      updateWater({
+        _id: id,
+        waterValue: amount,
+      })
+    ).then(() => {
+      dispatch(fetchFullDay());
+    });
     closeModal();
   };
 

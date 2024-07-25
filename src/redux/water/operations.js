@@ -9,7 +9,7 @@ export const addWater = createAsyncThunk(
 
     try {
       const response = await axios.post(
-        "https://lightningbackend.onrender.com/water/day",
+        "/water/day",
         { waterValue, localTime },
         {
           headers: {
@@ -32,15 +32,14 @@ export const addWater = createAsyncThunk(
 );
 
 export const updateWater = createAsyncThunk(
-  "water/update",
-  async (waterValue, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const accessToken = state.auth.accessToken;
-    console.log(waterValue);
+  "water/change",
+  async ({ _id, waterValue }, thunkAPI) => {
     try {
-      const response = await axios.patch(`water/day/${waterValue}`);
-      console.log(response);
-      return response;
+      const response = await axios.patch(`/water/day/${_id}`, {
+        waterValue,
+      });
+
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -50,8 +49,6 @@ export const updateWater = createAsyncThunk(
 export const deleteWater = createAsyncThunk(
   "water/delete",
   async (waterId, thunkAPI) => {
-    // const state = thunkAPI.getState();
-    // const accessToken = state.auth.accessToken;
     try {
       await axios.delete(`water/day/${waterId}`);
       return waterId;
@@ -87,14 +84,15 @@ export const fetchFullDay = createAsyncThunk(
   }
 );
 
-// export const deleteWater = createAsyncThunk(
-//   'water/deleteWaterRecord',
-//   async (waterId, { rejectWithValue }) => {
-//     try {
-//       const responseDel = await axios.delete(`water/${waterId}`);
-//       return waterId;
-//     } catch (error) {
-//       return rejectWithValue(error.responseDel.data);
-//     }
-//   }
-// );
+export const getMonthWaterFrontConteroller = createAsyncThunk(
+  "water/fullMonth",
+  async (value, thunkAPI) => {
+    try {
+      const response = await axios.get("water/fullMonth", value);
+      console.log(response);
+      return response;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
