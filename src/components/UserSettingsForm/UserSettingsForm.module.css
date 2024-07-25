@@ -1,6 +1,6 @@
 .main {
     display: flex;
-    flex-direction: column; /* Change direction to column for better control */
+    flex-direction: row; /*  on desktop direction may be to row // Change direction to column for better control */
     width: 100%;
     max-width: 840px;
     height: 100%;
