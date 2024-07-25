@@ -89,7 +89,6 @@ body {
 
 @media screen and (min-width: 320px) and (max-width: 375px) {
   body {
-    zoom: 85%;
   }
 }
 
@@ -114,6 +113,5 @@ body {
   }
   body{
     justify-content: center;
-    zoom:110%;
   }
 }
