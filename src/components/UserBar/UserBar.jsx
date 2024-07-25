@@ -1,23 +1,19 @@
-import css from './UserBar.module.css';
-import spriteHref from '../../images/icons_sprite_dev.svg';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors.js';
-import avatarPlaceholder from '../../images/NoAvatar.png';
+import css from "./UserBar.module.css";
+import spriteHref from "../../images/icons_sprite_dev.svg";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors.js";
+import avatarPlaceholder from "../../images/NoAvatar.png";
 
 const UserBar = ({ togglePopover, isPopoverOpen }) => {
   const userName = useSelector(selectUser);
+
+  const displayName = userName?.name || userName?.email || "Guest";
+  const userPhoto = userName?.photo || avatarPlaceholder;
+
   return (
-    <button
-      className={css.button}
-      type="button"
-      onClick={() => togglePopover(event)}
-    >
-      {userName ? userName.name : userName.email}
-      {userName.photo ? (
-        <img src={userName.photo} className={css.userImg} alt="Photo of User" />
-      ) : (
-        <img src={avatarPlaceholder} className={css.userImg} />
-      )}
+    <button className={css.button} type="button" onClick={togglePopover}>
+      {displayName}
+      <img src={userPhoto} className={css.userImg} alt="User" />
       {isPopoverOpen ? (
         <svg className={css.icon}>
           <use href={`${spriteHref}#icon-hide_burger`}></use>

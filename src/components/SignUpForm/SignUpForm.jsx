@@ -41,8 +41,6 @@ const SignUpForm = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
-
     if (data.password !== data.repeatPassword) {
       alert("Passwords do not match!");
       return;
@@ -65,7 +63,9 @@ const SignUpForm = () => {
         <label className={styles.signUpFormHeader}>Email</label>
         <input
           className={`${styles.signUpFormInput} ${
-            errors.email ? `${styles.errorPlaceholder} ${styles.errorInput}` : ""
+            errors.email
+              ? `${styles.errorPlaceholder} ${styles.errorInput}`
+              : ""
           }`}
           name="email"
           type="email"
@@ -79,12 +79,16 @@ const SignUpForm = () => {
         <label className={styles.signUpFormLabel}>Password</label>
         <input
           className={`${styles.signUpFormInput} ${
-            errors.password ? `${styles.errorPlaceholder} ${styles.errorInput}` : ""
+            errors.password
+              ? `${styles.errorPlaceholder} ${styles.errorInput}`
+              : ""
           }`}
           onChange={handleChange}
           name="password"
           type={passwordShown ? "text" : "password"}
-          placeholder={errors.password ? "Invalid password" : "Enter your password"}
+          placeholder={
+            errors.password ? "Invalid password" : "Enter your password"
+          }
           {...formRegister("password")}
         />
         <FaRegEyeSlash onClick={togglePasswordVisibility} />

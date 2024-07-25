@@ -5,7 +5,7 @@ import { selectFullDayWater } from "../../redux/water/selectors.js";
 
 const WaterList = () => {
   const dailyWaterDataArray = useSelector(selectFullDayWater);
-  console.log(dailyWaterDataArray);
+  // console.log(dailyWaterDataArray);
 
   const handleDelete = (waterId) => {
     const id = waterId;

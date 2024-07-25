@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import UserBar from '../UserBar/UserBar.jsx';
-import UserBarPopover from '../UserBarPopover/UserBarPopover.jsx';
-import css from './UserPanel.module.css';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors.js';
+import { useEffect, useRef, useState } from "react";
+import UserBar from "../UserBar/UserBar.jsx";
+import UserBarPopover from "../UserBarPopover/UserBarPopover.jsx";
+import css from "./UserPanel.module.css";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors.js";
 
 const UserPanel = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
@@ -11,12 +11,12 @@ const UserPanel = () => {
   const buttonRef = useRef(null);
   const userName = useSelector(selectUser);
 
-  const togglePopover = event => {
+  const togglePopover = (event) => {
     event.stopPropagation();
-    setIsPopoverOpen(prev => !prev);
+    setIsPopoverOpen((prev) => !prev);
   };
 
-  const handleClickOutside = event => {
+  const handleClickOutside = (event) => {
     if (
       popoverRef.current &&
       !popoverRef.current.contains(event.target) &&
@@ -27,9 +27,9 @@ const UserPanel = () => {
     }
   };
   useEffect(() => {
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -38,7 +38,7 @@ const UserPanel = () => {
       <p className={css.greeting}>
         Hello
         <span className={css.userName}>
-          , {userName ? userName.name : userName.email}!
+          , {userName && (userName.name || userName.email)}!
         </span>
       </p>
       <div className={css.userBarContainer}>
