@@ -4,6 +4,7 @@ import * as yup from "yup";
 import { register } from "../../redux/auth/operations";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Link } from "react-router-dom";
 import styles from "./SignUpForm.module.css";
 import { FaRegEyeSlash } from "react-icons/fa6";
 
@@ -59,15 +60,13 @@ const SignUpForm = () => {
 
   return (
     <div className={styles.signUpForm}>
+      <h1>Sign Up</h1>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.registerForm}>
         <label className={styles.signUpFormHeader}>Email</label>
         <input
-          className={`${styles.signUpFormInput}
-            ${
-              errors.email
-                ? `${styles.errorPlaceholder} ${styles.errorInput}`
-                : ""
-            }`}
+          className={`${styles.signUpFormInput} ${
+            errors.email ? `${styles.errorPlaceholder} ${styles.errorInput}` : ""
+          }`}
           name="email"
           type="email"
           placeholder={errors.email ? "Invalid email" : "Enter your email"}
@@ -80,20 +79,16 @@ const SignUpForm = () => {
         <label className={styles.signUpFormLabel}>Password</label>
         <input
           className={`${styles.signUpFormInput} ${
-            errors.password
-              ? `${styles.errorPlaceholder} ${styles.errorInput}`
-              : ""
+            errors.password ? `${styles.errorPlaceholder} ${styles.errorInput}` : ""
           }`}
           onChange={handleChange}
           name="password"
           type={passwordShown ? "text" : "password"}
-          placeholder={
-            errors.password ? "Invalid password" : "Enter your password"
-          }
+          placeholder={errors.password ? "Invalid password" : "Enter your password"}
           {...formRegister("password")}
         />
-
         <FaRegEyeSlash onClick={togglePasswordVisibility} />
+
         <label className={styles.signUpFormLabel}>Repeat Password</label>
         <input
           className={`${styles.signUpFormInput} ${
@@ -120,6 +115,11 @@ const SignUpForm = () => {
           Sign Up
         </button>
       </form>
+      <div className={styles.signInLinkContainer}>
+        <p>
+          Already have an account? <Link to="/signin">Sign In</Link>
+        </p>
+      </div>
     </div>
   );
 };
