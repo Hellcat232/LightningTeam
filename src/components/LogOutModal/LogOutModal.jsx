@@ -25,7 +25,7 @@ const LogOutModal = ({ showModal, handleClose }) => {
   return (
     <div className={css.modal} onClick={handleClose}>
       <div
-        className={css.modalContent}
+        className={css["modal-content"]}
         onClick={e => {
           e.stopPropagation();
         }}
