@@ -1,13 +1,10 @@
-.signUpContainer {
+.SignUpPageSection {
     border-radius: 30px;
     background: var(--background);
     position: relative;
+    margin-right: 24px;
 }
 
-.page {
-    margin: 16px 0;
-    position: relative;
-}
 
 @media screen and (min-width: 320px) and (max-width: 767.98px) {
     .SignUpPageSection {
@@ -35,4 +32,5 @@
         height: 736px;
         padding: 32px 32px 64px;
     }
+    
 }
