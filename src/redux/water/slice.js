@@ -57,7 +57,7 @@ const waterSlice = createSlice({
       .addCase(updateWater.pending, (state, action) => {})
       .addCase(updateWater.fulfilled, (state, action) => {
         const updatedRecord = action.payload;
-        // console.log('Updated record ID:', updatedRecord);
+        console.log('Updated record ID:', updatedRecord);
         const index = state.fullDay.waterRecord.findIndex(record => {
           // console.log('Comparing with record:', record);
           return record._id === updatedRecord.waterRecord._id;
