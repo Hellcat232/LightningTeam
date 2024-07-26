@@ -3,27 +3,49 @@ import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedI
 import css from "./TrackerPage.module.css";
 import useWaterItems from "../../hooks/useWaterItems.js";
 import DeleteWaterModal from "../../components/DeleteWaterModal/DeleteWaterModal.jsx";
+import { fetchWaterRecords } from "../../redux/water/operations.js";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors.js";
+import { useDispatch/*, useSelector*/ } from "react-redux";
+// import { selectUser } from "../../redux/auth/selectors.js";
 
 const TrackerPage = () => {
+  const dispatch = useDispatch();
   const { waterItems, addWaterItem } = useWaterItems();
   // TODO: Create state that will be storing query results.
   // TODO: Write write query for water data when the page is being loaded.
-  const [deleteWatModal, setDeleteWatModal] = useState(false);
-  const user = useSelector(selectUser);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [recordId, setRecordId] = useState(null);
+  // const user = useSelector(selectUser);
   // console.log(user);
+
+  
+  // useEffect(() => {
+  //   dispatch(fetchWaterRecords());
+  // }, [dispatch]);
+
+  // const handleDeleteClick = (id) => {
+  //   setRecordId(id);
+  //   setIsModalOpen(true);
+  // };
+
+  // const handleCloseModal = () => {
+  //   setIsModalOpen(false);
+  //   setRecordId(null);
+  //   dispatch(fetchWaterRecords());
+  // };
   return (
     <section className={css.section}>
       <WaterMainInfo addWaterItem={addWaterItem} />
       <WaterDetailedInfo waterItems={waterItems} addWaterItem={addWaterItem} />
+      {isModalOpen && (
       <DeleteWaterModal
-        call={deleteWatModal}
-        onClose={() => setDeleteWatModal(false)}
+          call={isModalOpen}
+          recordId={recordId}
+        onClose={() => dispatch(fetchWaterRecords())}
       ></DeleteWaterModal>
+        )}
       <ToastContainer />
     </section>
   );

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { addWater, fetchFullDay, updateWater, deleteWater } from "./operations";
+import { addWater, fetchFullDay, updateWater, deleteWater,fetchWaterRecords } from "./operations";
 
 const waterSlice = createSlice({
   name: "water",
@@ -13,6 +13,8 @@ const waterSlice = createSlice({
     },
 
     record: [],
+    status: 'idle',
+    error: null,
   },
   extraReducers: (builder) => {
     builder
@@ -28,7 +30,7 @@ const waterSlice = createSlice({
           state.fullDay.waterRecord = [newRecord];
         }
       })
-      .addCase(addWater.rejected, (state, action) => {
+      .addCase(addWater.rejected, (state) => {
         state.addWaterValue = [];
       })
       .addCase(fetchFullDay.pending, (state, action) => {
@@ -42,16 +44,31 @@ const waterSlice = createSlice({
         state.fullDay = action.payload.data;
       })
       .addCase(fetchFullDay.rejected, (state, action) => {})
-      .addCase(deleteWater.pending, (state, action) => {})
-
+      // .addCase(deleteWater.pending, (state, action) => {})
+      .addCase(fetchWaterRecords.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchWaterRecords.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.fullDay.waterRecord = action.payload;
+      })
+      .addCase(fetchWaterRecords.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(deleteWater.pending, (state) => {
+        state.status = 'loading';
+      })
       .addCase(deleteWater.fulfilled, (state, action) => {
+        state.status = 'succeeded'
         state.fullDay.waterRecord = state.fullDay.waterRecord.filter(
           (record) => record._id !== action.payload
         );
         // state.record = [];
-        console.log(state.records);
+        // console.log(state.records);
       })
       .addCase(deleteWater.rejected, (state, action) => {
+        state.status = 'failed';
         state.error = action.payload;
       })
       .addCase(updateWater.pending, (state, action) => {})
