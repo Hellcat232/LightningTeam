@@ -157,6 +157,18 @@
     margin-top: 16px;
     text-align: center;
   }
+
+    .SignInPageLink {
+    text-decoration: underline;
+      color: var(--main-text);
+      font-weight: 700;
+    }
+    
+    .signInPageText{
+      text-align: center;
+        color: #2f2f2f80;
+    }
+    
   .signInLinkContainer p {
     margin: 0;
   }

@@ -13,7 +13,7 @@ const SignUpPage = () => {
         <Page/>
           <SignInForm />
         </div>
-      <AdvantagesSection /> 
+      <AdvantagesSection />
     </div>
   );
 };

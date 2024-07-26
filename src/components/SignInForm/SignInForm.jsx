@@ -95,7 +95,8 @@ const SignInForm = () => {
             Sign Up
           </Link>
       </p>
-      <GoogleLoginButton onSuccess={handleLoginSuccess} />
+      <GoogleLoginButton onSuccess={handleLoginSuccess}
+        />
       </div>
   );
 };
