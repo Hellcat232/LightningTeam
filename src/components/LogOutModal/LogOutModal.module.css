@@ -4,8 +4,10 @@
   position: fixed; 
   top: 0;
   left: 0;
-  width: 100%;
+  /* width: 100%; */
+  max-width: 516px;
   height: 100%;
+  max-height: 244px;
   background: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
@@ -53,6 +55,10 @@
     color: #323F47;
 }
 
+.btn {
+    /* margin: 0 auto; */
+    text-align: center;
+}
 
 .accept {
     width: 170px;
@@ -62,7 +68,7 @@
     
     margin-right: 5px;
    margin-bottom: 40px;
-    margin-left: 80px;
+    /* margin-left: 80px; */
     border: 1px solid #87D28D;
     background: #9BE1A0;
    
@@ -78,7 +84,7 @@
     border-radius: 30px;
     font-weight: 700;
     
-   margin-right: 80px; 
+   /* margin-right: 80px;  */
     margin-bottom: 40px;
    margin-left: 5px;
    border: 1px solid #F0EFF4;
