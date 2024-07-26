@@ -1,20 +1,26 @@
 .main {
     display: flex;
     flex-direction: row; /*  on desktop direction may be to row // Change direction to column for better control */
-    width: 100%;
+    /* width: 100%; */
     max-width: 840px;
     height: 100%;
-    gap: 40px;
-    overflow: hidden;
+  
+    /* overflow: hidden; */
 }
 
 .form {
     color: #2F2F2F;
-    width: 100%;
+    /* width: 100%; */
     max-width: 840px;
     box-sizing: border-box;
     padding-right: 12px;
-    overflow: hidden;
+    /* overflow: hidden; */
+}
+
+.second-main {
+    margin-top: 36px;
+    margin-left: 40px;
+
 }
 
 .setting {
@@ -94,6 +100,7 @@
     border: 1px solid #ccc;
     margin-bottom: 16px;
     box-sizing: border-box;
+    background-color: #ffffff;
 }
 
 .gender {
@@ -174,7 +181,7 @@
 
 .textareaContainer {
     width: 100%;
-    border: 1px solid #00000010;
+    border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
     box-sizing: border-box;
@@ -205,15 +212,17 @@
 .sign {
     display: flex;
     align-items: center;
+    margin-top: 24px;
+    margin-bottom: 40px;
 }
 
-.svg {
+/* .svg {
     margin-bottom: 24px;
-}
+} */
 
 .hours {
     margin-left: 10px;
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
 }
 
 .weight {
@@ -228,7 +237,7 @@
     font-size: 14px;
     font-weight: normal;
     line-height: 24px;
-    margin-top: 14px;
+    
     margin-bottom: 8px;
 }
 

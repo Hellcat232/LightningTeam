@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import Modal from "react-modal";
-import styles from "./WaterModalEdit.module.css";
-import Iconsvg from "../Icon/Icon";
-import { useDispatch } from "react-redux";
-import { updateWater, fetchFullDay } from "../../redux/water/operations";
-Modal.setAppElement("#root");
+import React, { useState, useEffect } from 'react';
+import Modal from 'react-modal';
+import styles from './WaterModalEdit.module.css';
+import Iconsvg from '../Icon/Icon';
+import { useDispatch } from 'react-redux';
+import { updateWater, fetchFullDay } from '../../redux/water/operations';
+
+Modal.setAppElement('#root');
 
 const WaterModalEdit = ({
   id,
@@ -12,11 +13,11 @@ const WaterModalEdit = ({
   closeModal,
   onEdit,
   initialAmount = 50,
-  initialTime = "",
+  initialTime = '',
 }) => {
   const [amount, setAmount] = useState(initialAmount);
   const [time, setTime] = useState(initialTime);
-  console.log(id);
+
   useEffect(() => {
     setAmount(initialAmount);
     setTime(initialTime);
@@ -27,27 +28,17 @@ const WaterModalEdit = ({
 
   const dispatch = useDispatch();
 
-  // const handleSave = () => {
-  //   onEdit(amount, time);
-  //   console.log({ id, amount });
-  //   dispatch(
-  //     updateWater({
-  //       _id: id,
-  //       waterValue: amount,
-  //     })
-  //   );
-  //   closeModal();
-  // };
-
   const handleSave = () => {
+    // Log the state just before dispatching
+    console.log('Saving:', { id, amount, localTime: time });
+
     dispatch(
       updateWater({
         _id: id,
         waterValue: amount,
+        localTime: time,
       })
-    ).then(() => {
-      dispatch(fetchFullDay());
-    });
+    );
     closeModal();
   };
 
@@ -68,61 +59,61 @@ const WaterModalEdit = ({
           width="28"
           height="28"
           iconName="close"
-          className={styles["icon-close"]}
+          className={styles['icon-close']}
         />
       </button>
-      <h2 className={styles["title-txt"]}>
+      <h2 className={styles['title-txt']}>
         Edit the entered amount <br /> of water
       </h2>
-      <div className={styles["cont-sec-two-modal-add"]}>
+      <div className={styles['cont-sec-two-modal-add']}>
         <div className={styles.formGroup}>
-          <div className={styles["sec-two-txt-choose"]}>
+          <div className={styles['sec-two-txt-choose']}>
             <label>Choose a value:</label>
           </div>
-          <p className={styles["amount-txt-txt"]}>Amount of water:</p>
+          <p className={styles['amount-txt-txt']}>Amount of water:</p>
           <div className={styles.amountControls}>
             <button onClick={decreaseAmount} className={styles.iconButton}>
               <Iconsvg
                 width="43"
                 height="43"
                 iconName="minus"
-                className={styles["icon-mod-math"]}
+                className={styles['icon-mod-math']}
               />
             </button>
-            <span className={styles["amount-ml"]}>{amount} ml</span>
+            <span className={styles['amount-ml']}>{amount} ml</span>
             <button onClick={increaseAmount} className={styles.iconButton}>
               <Iconsvg
                 width="43"
                 height="43"
                 iconName="plus"
-                className={styles["icon-mod-math"]}
+                className={styles['icon-mod-math']}
               />
             </button>
           </div>
         </div>
-        <div className={styles["input-time-choose"]}>
-          <label className={styles["amount-txt-txt"]}>Recording time:</label>
+        <div className={styles['input-time-choose']}>
+          <label className={styles['amount-txt-txt']}>Recording time:</label>
           <input
-            className={styles["inp-modal"]}
+            className={styles['inp-modal']}
             type="time"
             value={time}
-            onChange={(e) => setTime(e.target.value)}
+            onChange={e => setTime(e.target.value)}
           />
         </div>
       </div>
-      <div className={styles["input-time-choose"]}>
-        <label className={styles["amount-txt-ed"]}>
+      <div className={styles['input-time-choose']}>
+        <label className={styles['amount-txt-ed']}>
           Enter the value of the water used:
         </label>
         <input
-          className={styles["inp-modal"]}
+          className={styles['inp-modal']}
           type="number"
           value={amount}
-          onChange={(e) => setAmount(Number(e.target.value))}
+          onChange={e => setAmount(Number(e.target.value))}
         />
       </div>
       <button onClick={handleSave} className={styles.saveButton}>
-        <p className={styles["btn-save-txt"]}>Save</p>
+        <p className={styles['btn-save-txt']}>Save</p>
       </button>
     </Modal>
   );

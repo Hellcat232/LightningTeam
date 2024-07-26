@@ -6,8 +6,8 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: 1000;
-    overflow-y: auto;
-    overflow-x: hidden;
+     overflow-y: auto;
+    /*overflow-x: visible; */
 }
 
 .setting {
@@ -17,7 +17,7 @@
 
 .modalContent {
     background: white;
-    padding: 20px 7px 40px 20px;
+    padding: 20px 20px 40px 20px;
     border-radius: 15px;
     position: absolute;
     top: 50%;
@@ -44,7 +44,7 @@
 
 
 .customScrollbar {
-    margin-top: 40px;
+    /* margin-top: 40px; */
     scrollbar-width: 6px;
     scrollbar-color: #F0EFF4 transparent;
-}
+} 

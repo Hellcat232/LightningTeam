@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { addWater, fetchFullDay, updateWater, deleteWater,fetchWaterRecords } from "./operations";
+import {
+  addWater,
+  fetchFullDay,
+  updateWater,
+  deleteWater,
+  fetchWaterRecords,
+} from "./operations";
 
 const waterSlice = createSlice({
   name: "water",
@@ -13,7 +19,7 @@ const waterSlice = createSlice({
     },
 
     record: [],
-    status: 'idle',
+    status: "idle",
     error: null,
   },
   extraReducers: (builder) => {
@@ -46,21 +52,21 @@ const waterSlice = createSlice({
       .addCase(fetchFullDay.rejected, (state, action) => {})
       // .addCase(deleteWater.pending, (state, action) => {})
       .addCase(fetchWaterRecords.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
       })
       .addCase(fetchWaterRecords.fulfilled, (state, action) => {
-        state.status = 'succeeded';
+        state.status = "succeeded";
         state.fullDay.waterRecord = action.payload;
       })
       .addCase(fetchWaterRecords.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.error = action.error.message;
       })
       .addCase(deleteWater.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
       })
       .addCase(deleteWater.fulfilled, (state, action) => {
-        state.status = 'succeeded'
+        state.status = "succeeded";
         state.fullDay.waterRecord = state.fullDay.waterRecord.filter(
           (record) => record._id !== action.payload
         );
@@ -68,22 +74,26 @@ const waterSlice = createSlice({
         // console.log(state.records);
       })
       .addCase(deleteWater.rejected, (state, action) => {
-        state.status = 'failed';
+        state.status = "failed";
         state.error = action.payload;
       })
       .addCase(updateWater.pending, (state, action) => {})
       .addCase(updateWater.fulfilled, (state, action) => {
         const updatedRecord = action.payload;
-        const index = state.fullDay.waterRecord.findIndex(
-          (record) => record._id === updatedRecord._id
-        );
+        console.log("Updated record ID:", updatedRecord);
+        const index = state.fullDay.waterRecord.findIndex((record) => {
+          // console.log('Comparing with record:', record);
+          return record._id === updatedRecord.waterRecord._id;
+        });
+        // console.log('Found index:', index);
         if (index !== -1) {
-          state.fullDay.waterRecord[index] = updatedRecord;
-          console.log("Record updated:", state.fullDay.waterRecord[index]);
+          state.fullDay.waterRecord[index] = { ...updatedRecord.waterRecord };
+          // console.log('Record updated:', state.fullDay.waterRecord[index]);
         } else {
-          console.log("Record not found:", updatedRecord._id);
+          // console.log('Record not found:', updatedRecord.waterRecord._id);
         }
       })
+
       .addCase(updateWater.rejected, (state, action) => {
         state.error = action.error.message;
       });

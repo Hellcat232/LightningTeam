@@ -29,8 +29,14 @@ const WelcomeSection = () => {
         <span>Water</span> consumption tracker
       </h1>
       <div className={css.linkThumb}>
-        <NavLink to="/signup" className={css.linkTracker}>
-          Try tracker
+        <NavLink
+          to="/signup"
+          className={css.linkTracker}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <span className={css.signup_button_circle} style={circlePosition} />
+          <span className={css.signup_button_text}> Try tracker</span>
         </NavLink>
         <NavLink
           to="/signin"

@@ -52,7 +52,6 @@ const SignInForm = () => {
   };
 
   return (
-    <>
       <div className={css.signInForm}>
         <h2 className={css.signInFormHeader}>Sign In</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -95,10 +94,9 @@ const SignInForm = () => {
           <Link to="/signup" className={css.SignInPageLink}>
             Sign Up
           </Link>
-        </p>
-      </div>
+      </p>
       <GoogleLoginButton onSuccess={handleLoginSuccess} />
-    </>
+      </div>
   );
 };
 
