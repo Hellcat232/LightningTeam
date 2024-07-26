@@ -5,6 +5,7 @@ import {
   login,
   logout,
   updateUser,
+  currentUser,
   loginGoogle,
 } from "./operations";
 
@@ -64,7 +65,7 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
+        // state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
@@ -120,7 +121,7 @@ const authSlice = createSlice({
       })
       .addCase(loginGoogle.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
-        state.refreshToken = action.payload.refreshToken;
+        // state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
         state.user = action.payload.user;
       })
@@ -128,7 +129,13 @@ const authSlice = createSlice({
         state.accessToken = null;
         state.refreshToken = null;
         state.isLoggedIn = false;
-      });
+      })
+      .addCase(currentUser.pending, (state, action) => {})
+      .addCase(currentUser.fulfilled, (state, action) => {
+        console.log(action);
+        state.user = action.payload.user;
+      })
+      .addCase(currentUser.rejected, (state, action) => {});
   },
 });
 

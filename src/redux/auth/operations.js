@@ -54,6 +54,7 @@ export const loginGoogle = createAsyncThunk(
   async ({ token }, thunkAPI) => {
     try {
       const response = await axios.post("/auth/google", { token });
+      Cookies.set("refreshToken", response.data.refreshToken);
       setAuthToken(response.data.accessToken);
       return response.data;
     } catch (error) {
@@ -87,6 +88,19 @@ export const refreshing = createAsyncThunk(
       });
 
       setAuthToken(response.data.accessToken);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const currentUser = createAsyncThunk(
+  "user/current",
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get("/user/current");
+      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

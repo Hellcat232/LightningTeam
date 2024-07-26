@@ -1,28 +1,40 @@
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
-import css from './UserSettingsForm.module.css';
-import { useDispatch/*, useSelector*/ } from 'react-redux';
-import { updateUser } from '../../redux/auth/operations.js';
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+import css from "./UserSettingsForm.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { updateUser, currentUser } from "../../redux/auth/operations.js";
 // import { selectIsLoading } from '../../redux/auth/selectors.js';
+import { selectUser } from "../../redux/auth/operations.js";
 
 const UserSettingForm = ({ handleClose }) => {
-  const [avatar, setAvatar] = useState(null);
-  const [gender, setGender] = useState('woman');
+  const isUser = useSelector(selectUser);
+  const [avatar, setAvatar] = useState(isUser.avatar || null);
+  // const [gender, setGender] = useState("woman");
+  const [defaultState, setDefaultState] = useState({
+    avatar: isUser.avatar || null,
+    gender: isUser.gender || "woman",
+    email: isUser.email || "",
+    name: isUser.name || "",
+    weight: isUser.weight || 0,
+    sportsActivity: isUser.sportsActivity || "",
+    waterRate: isUser.waterRate || "",
+  });
   const dispatch = useDispatch();
   // const isLoading = useSelector(selectIsLoading);
 
   const schema = Yup.object().shape({
     avatar: Yup.string(),
-    gender: Yup.string().required('Gender is required'),
-    name: Yup.string().required('Name is required'),
+    gender: Yup.string().required("Gender is required"),
+    name: Yup.string().required("Name is required"),
     email: Yup.string()
-      .email('Invalid email format')
-      .required('Email is required'),
-    weight: Yup.string().required('Weight is required'),
-    sportsActivity: Yup.string().required('Active time is required'),
-    waterRate: Yup.string().required('Water intake is required'),
+      .email("Invalid email format")
+      .required("Email is required"),
+    weight: Yup.string().required("Weight is required"),
+    sportsActivity: Yup.string().required("Active time is required"),
+    waterRate: Yup.string().required("Water intake is required"),
   });
 
   const {
@@ -31,23 +43,42 @@ const UserSettingForm = ({ handleClose }) => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: defaultState,
   });
 
-  const handleAvatarChange = e => {
+  const handleAvatarChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setAvatar(URL.createObjectURL(file));
     }
   };
 
-  const onSubmit = data => {
+  useEffect(() => {
+    dispatch(currentUser());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isUser) {
+      setDefaultState({
+        gender: isUser.gender || "woman",
+        email: isUser.email || "",
+        name: isUser.name || "",
+        weight: isUser.weight || 0,
+        sportsActivity: isUser.sportsActivity || "",
+        waterRate: isUser.waterRate || "",
+      });
+      setAvatar(isUser.avatar || null);
+    }
+  }, [isUser]);
+
+  const onSubmit = (data) => {
     const formData = {
       ...data,
       avatar,
     };
 
-    dispatch(updateUser(formData)).then(response => {
-      if (response.meta.requestStatus === 'fulfilled') {
+    dispatch(updateUser(formData)).then((response) => {
+      if (response.meta.requestStatus === "fulfilled") {
         handleClose();
       }
     });
@@ -99,9 +130,14 @@ const UserSettingForm = ({ handleClose }) => {
                   type="radio"
                   name="gender"
                   value="woman"
-                  {...register('gender')}
-                  checked={gender === 'woman'}
-                  onChange={() => setGender('woman')}
+                  {...register("gender")}
+                  checked={defaultState.gender === "woman"}
+                  onChange={() =>
+                    setDefaultState((prevState) => ({
+                      ...prevState,
+                      gender: "woman",
+                    }))
+                  }
                 />
                 <span className={css.radioCheckmark}></span>
                 Woman
@@ -113,9 +149,14 @@ const UserSettingForm = ({ handleClose }) => {
                   type="radio"
                   name="gender"
                   value="man"
-                  {...register('gender')}
-                  checked={gender === 'man'}
-                  onChange={() => setGender('man')}
+                  {...register("gender")}
+                  checked={defaultState.gender === "man"}
+                  onChange={() =>
+                    setDefaultState((prevState) => ({
+                      ...prevState,
+                      gender: "man",
+                    }))
+                  }
                 />
                 <span className={css.radioCheckmark}></span>
                 Man
@@ -126,13 +167,23 @@ const UserSettingForm = ({ handleClose }) => {
 
           <div>
             <label className={`${css.label} ${css.name}`}>Your name:</label>
-            <input className={css.input} type="text" {...register('name')} />
+            <input
+              className={css.input}
+              type="text"
+              {...register("name")}
+              defaultValue={defaultState.name}
+            />
             {errors.name && <p>{errors.name.message}</p>}
           </div>
 
           <div>
             <label className={`${css.label} ${css.email}`}>Email:</label>
-            <input className={css.input} type="email" {...register('email')} />
+            <input
+              className={css.input}
+              type="email"
+              {...register("email")}
+              defaultValue={defaultState.email}
+            />
             {errors.email && <p>{errors.email.message}</p>}
           </div>
 
@@ -186,7 +237,7 @@ const UserSettingForm = ({ handleClose }) => {
             <input
               className={css.input}
               type="number"
-              {...register('weight')}
+              {...register("weight")}
             />
             {errors.weight && <p>{errors.weight.message}</p>}
           </div>
@@ -198,7 +249,7 @@ const UserSettingForm = ({ handleClose }) => {
             <input
               className={css.input}
               type="number"
-              {...register('sportsActivity')}
+              {...register("sportsActivity")}
             />
             {errors.activeTime && <p>{errors.activeTime.message}</p>}
           </div>
@@ -213,7 +264,7 @@ const UserSettingForm = ({ handleClose }) => {
             <input
               className={css.input}
               type="number"
-              {...register('waterRate')}
+              {...register("waterRate")}
             />
             {errors.waterIntake && <p>{errors.waterIntake.message}</p>}
           </div>
