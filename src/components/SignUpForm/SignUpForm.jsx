@@ -126,8 +126,8 @@ const SignUpForm = () => {
         </button>
       </form>
       <div className={styles.signInLinkContainer}>
-        <p>
-          Already have an account? <Link to="/signin">Sign In</Link>
+        <p className={styles.signInPageText}>
+          Already have an account? <Link to="/signin" className={styles.SignInPageLink}>Sign In</Link>
         </p>
       </div>
     </div>
