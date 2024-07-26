@@ -1,17 +1,21 @@
-import SignInForm from "../../components/SignInForm/SignInForm";
-import { Logo } from "../../components/Logo/Logo.jsx";
 import React from "react";
+import SignInForm from "../../components/SignInForm/SignInForm";
+import { Link } from "react-router-dom";
 import AdvantagesSection from "../../components/AdvantagesSection/AdvantagesSection"; 
+import styles from "./SignInPage.module.css";
+import { Page } from "../../components/Page/Page";
 
 
-const SignInPage = () => {
+const SignUpPage = () => {
   return (
-    <>
-      <Logo />
-      <SignInForm />
-        <AdvantagesSection />
-    </>
+    <div className={styles.SignInPageWrapper}>
+      <div className={styles.SignInPageSection}>
+        <Page/>
+          <SignInForm />
+        </div>
+      <AdvantagesSection /> 
+    </div>
   );
 };
 
-export default SignInPage;
+export default SignUpPage;

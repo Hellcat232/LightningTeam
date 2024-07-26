@@ -58,9 +58,9 @@ const SignUpForm = () => {
 
   return (
     <div className={styles.signUpForm}>
-      <h1>Sign Up</h1>
+      <h1 className={styles.signUpFormHeader}>Sign Up</h1>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.registerForm}>
-        <label className={styles.signUpFormHeader}>Email</label>
+        <label className={styles.signUpFormLabel}>Email</label>
         <input
           className={`${styles.signUpFormInput} ${
             errors.email
@@ -76,13 +76,14 @@ const SignUpForm = () => {
           <p className={styles.errorMessage}>{errors.email.message}</p>
         )}
 
+        <div>
         <label className={styles.signUpFormLabel}>Password</label>
         <input
           className={`${styles.signUpFormInput} ${
             errors.password
               ? `${styles.errorPlaceholder} ${styles.errorInput}`
               : ""
-          }`}
+            }`}
           onChange={handleChange}
           name="password"
           type={passwordShown ? "text" : "password"}
@@ -91,8 +92,12 @@ const SignUpForm = () => {
           }
           {...formRegister("password")}
         />
-        <FaRegEyeSlash onClick={togglePasswordVisibility} />
+          <FaRegEyeSlash onClick={togglePasswordVisibility}
+          className={styles.passwordToggleIcon}
+          />
+        </div>
 
+        <div>
         <label className={styles.signUpFormLabel}>Repeat Password</label>
         <input
           className={`${styles.signUpFormInput} ${
@@ -109,8 +114,9 @@ const SignUpForm = () => {
           required
           {...formRegister("repeatPassword")}
         />
-        <FaRegEyeSlash onClick={toggleRepeatPasswordVisibility} />
-
+        <FaRegEyeSlash onClick={toggleRepeatPasswordVisibility}/>
+        </div>
+    
         {errors.password && (
           <p className={styles.errorMessage}>{errors.password.message}</p>
         )}

@@ -45,6 +45,18 @@ export const updateWater = createAsyncThunk(
   }
 );
 
+export const fetchWaterRecords = createAsyncThunk(
+  'water/fetchWaterRecords',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get('water/waterRecords');
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const deleteWater = createAsyncThunk(
   'water/delete',
   async (waterId, thunkAPI) => {

@@ -1,18 +1,29 @@
-.page {
-    margin: 16px 0;
-    position: relative;
+
+.HomePageSection {
+    border-radius: 30px;
+    background: var(--background);
+    margin-right: 24px;
 }
 
-@media screen and (min-width: 1440px) {
-    .page {
-        display: flex;
-        gap: 32px;
-        position: relative;
+
+@media screen and (min-widh: 320px) and (max-width: 767.99px) {
+    .HomePageSection {
+        height: 780px;
     }
 }
 
+
 @media screen and (min-width: 768px) {
-    .page {
-        margin: 32px 0
+    .HomePageSection {
+        margin: o auto;
+    }
+}
+
+
+@media screen and (min-width: 1440px) {
+    .HomePageSection {
+        display: flex;
+        gap: 32px;
+        max-width: 1376px;
     }
 }

@@ -11,7 +11,7 @@ const SignUpPage = () => {
     <div className={styles.signUpContainer}>
       <div className={styles.SignUpPageSection}>
         <Page/>
-        <SignUpForm />
+          <SignUpForm />
         </div>
       <AdvantagesSection /> 
     </div>
