@@ -3,15 +3,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import css from './UserSettingsForm.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch/*, useSelector*/ } from 'react-redux';
 import { updateUser } from '../../redux/auth/operations.js';
-import { selectIsLoading } from '../../redux/auth/selectors.js';
+// import { selectIsLoading } from '../../redux/auth/selectors.js';
 
 const UserSettingForm = ({ handleClose }) => {
   const [avatar, setAvatar] = useState(null);
   const [gender, setGender] = useState('woman');
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
+  // const isLoading = useSelector(selectIsLoading);
 
   const schema = Yup.object().shape({
     avatar: Yup.string(),
@@ -178,7 +178,7 @@ const UserSettingForm = ({ handleClose }) => {
           </div>
         </div>
 
-        <div>
+        <div className={css["second-main"]}>
           <div>
             <label className={`${css.label} ${css.weight}`}>
               Your weight in kilograms:
