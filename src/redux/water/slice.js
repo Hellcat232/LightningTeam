@@ -6,6 +6,7 @@ import {
   updateWater,
   deleteWater,
   getMonthWaterFrontConteroller,
+  fetchWaterRecords,
 } from "./operations";
 
 const waterSlice = createSlice({
