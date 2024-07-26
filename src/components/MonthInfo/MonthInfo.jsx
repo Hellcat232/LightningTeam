@@ -2,8 +2,17 @@ import { useEffect, useState } from "react";
 import css from "./MonthInfo.module.css";
 import Calendar from "../Calendar/Calendar";
 import CalendarPagination from "../CalendarPagination/CalendarPagination";
+import { useDispatch, useSelector } from "react-redux";
+import { getMonthWaterFrontConteroller } from "../../redux/water/operations";
+import { selectFullMonthWater } from "../../redux/water/selectors";
 
 const MonthInfo = () => {
+
+
+  const array = useSelector(selectFullMonthWater);
+  console.log(array);
+  const dispatch = useDispatch();
+
   const mounthsArray = [
     "January",
     "February",
@@ -25,7 +34,7 @@ const MonthInfo = () => {
 
   useEffect(() => {
     // запрос на бекенд и получение mounthWaterArray за нужный месяц по датам и по воде
-
+    dispatch(getMonthWaterFrontConteroller());
     setMounthWaterArray([
       { date: 15, waterPart: "70%", id: 1 },
       { date: 16, waterPart: "50%", id: 2 },

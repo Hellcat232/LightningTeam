@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { addWater, fetchFullDay, updateWater, deleteWater } from './operations';
+import { addWater, fetchFullDay, updateWater, deleteWater, getMonthWaterFrontConteroller } from './operations';
 
 const waterSlice = createSlice({
   name: 'water',
@@ -12,6 +12,10 @@ const waterSlice = createSlice({
       waterRecord: [],
     },
 
+    fullMonth: {
+     
+      waterRecord: [],
+    },
     record: [],
   },
   extraReducers: builder => {
@@ -73,7 +77,13 @@ const waterSlice = createSlice({
 
       .addCase(updateWater.rejected, (state, action) => {
         state.error = action.error.message;
-      });
+      })
+
+      
+      .addCase(getMonthWaterFrontConteroller.fulfilled, (state, action) => {
+        state.fullMonth.waterRecord = action.payload;
+      })
+      
   },
 });
 
