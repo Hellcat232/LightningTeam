@@ -5,7 +5,7 @@ import {
   fetchFullDay,
   updateWater,
   deleteWater,
-  fetchWaterRecords,
+  getMonthWaterFrontConteroller,
 } from "./operations";
 
 const waterSlice = createSlice({
@@ -18,6 +18,9 @@ const waterSlice = createSlice({
       waterRecord: [],
     },
 
+    fullMonth: {
+      waterRecord: [],
+    },
     record: [],
     status: "idle",
     error: null,
@@ -96,6 +99,10 @@ const waterSlice = createSlice({
 
       .addCase(updateWater.rejected, (state, action) => {
         state.error = action.error.message;
+      })
+
+      .addCase(getMonthWaterFrontConteroller.fulfilled, (state, action) => {
+        state.fullMonth.waterRecord = action.payload;
       });
   },
 });
