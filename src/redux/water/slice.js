@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import { addWater, fetchFullDay, updateWater, deleteWater } from './operations';
 
 const waterSlice = createSlice({
@@ -8,15 +7,16 @@ const waterSlice = createSlice({
     addWaterValue: [],
     fullDay: {
       msg: '',
-      waterRate: {},
+      waterRate: {
+        feasibility: 0,
+      },
       waterRecord: [],
     },
-
     record: [],
   },
   extraReducers: builder => {
     builder
-      .addCase(addWater.pending, (state, action) => {
+      .addCase(addWater.pending, state => {
         state.addWaterValue = [];
       })
       .addCase(addWater.fulfilled, (state, action) => {
@@ -28,10 +28,10 @@ const waterSlice = createSlice({
           state.fullDay.waterRecord = [newRecord];
         }
       })
-      .addCase(addWater.rejected, (state, action) => {
+      .addCase(addWater.rejected, state => {
         state.addWaterValue = [];
       })
-      .addCase(fetchFullDay.pending, (state, action) => {
+      .addCase(fetchFullDay.pending, state => {
         state.fullDay = {
           msg: '',
           waterRate: {},
@@ -41,36 +41,27 @@ const waterSlice = createSlice({
       .addCase(fetchFullDay.fulfilled, (state, action) => {
         state.fullDay = action.payload.data;
       })
-      .addCase(fetchFullDay.rejected, (state, action) => {})
-      .addCase(deleteWater.pending, (state, action) => {})
-
+      .addCase(fetchFullDay.rejected, state => {})
+      .addCase(deleteWater.pending, state => {})
       .addCase(deleteWater.fulfilled, (state, action) => {
         state.fullDay.waterRecord = state.fullDay.waterRecord.filter(
           record => record._id !== action.payload
         );
-        // state.record = [];
-        console.log(state.records);
       })
       .addCase(deleteWater.rejected, (state, action) => {
         state.error = action.payload;
       })
-      .addCase(updateWater.pending, (state, action) => {})
+      .addCase(updateWater.pending, state => {})
       .addCase(updateWater.fulfilled, (state, action) => {
         const updatedRecord = action.payload;
-        // console.log('Updated record ID:', updatedRecord);
-        const index = state.fullDay.waterRecord.findIndex(record => {
-          // console.log('Comparing with record:', record);
-          return record._id === updatedRecord.waterRecord._id;
-        });
-        // console.log('Found index:', index);
+        const index = state.fullDay.waterRecord.findIndex(
+          record => record._id === updatedRecord.waterRecord._id
+        );
+        console.log(updatedRecord);
         if (index !== -1) {
           state.fullDay.waterRecord[index] = { ...updatedRecord.waterRecord };
-          // console.log('Record updated:', state.fullDay.waterRecord[index]);
-        } else {
-          // console.log('Record not found:', updatedRecord.waterRecord._id);
         }
       })
-
       .addCase(updateWater.rejected, (state, action) => {
         state.error = action.error.message;
       });

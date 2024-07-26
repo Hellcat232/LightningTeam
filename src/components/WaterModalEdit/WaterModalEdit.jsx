@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import styles from './WaterModalEdit.module.css';
 import Iconsvg from '../Icon/Icon';
 import { useDispatch } from 'react-redux';
-import { updateWater, fetchFullDay } from '../../redux/water/operations';
+import { updateWater } from '../../redux/water/operations';
 
 Modal.setAppElement('#root');
 
@@ -11,7 +11,6 @@ const WaterModalEdit = ({
   id,
   isOpen,
   closeModal,
-  onEdit,
   initialAmount = 50,
   initialTime = '',
 }) => {
@@ -29,7 +28,6 @@ const WaterModalEdit = ({
   const dispatch = useDispatch();
 
   const handleSave = () => {
-    // Log the state just before dispatching
     console.log('Saving:', { id, amount, localTime: time });
 
     dispatch(
