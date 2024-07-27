@@ -65,7 +65,7 @@ const UserSettingForm = ({ handleClose }) => {
         name: isUser.name || "",
         weight: isUser.weight || 0,
         sportsActivity: isUser.sportsActivity || "",
-        waterRate: isUser.waterRate || "",
+        waterRate: isUser.waterRate || "1.5",
       });
       setAvatar(isUser.avatar || null);
     }
@@ -111,7 +111,6 @@ const UserSettingForm = ({ handleClose }) => {
               // height="20"
             >
               <path d="M28.8 20v5.333A2.668 2.668 0 0 1 26.133 28H7.466a2.668 2.668 0 0 1-2.667-2.667V20M23.467 10.667 16.8 4l-6.667 6.667M16.8 4v16" />
-
             </svg>
             <span className={css.uploadText}>upload a photo</span>
           </div>

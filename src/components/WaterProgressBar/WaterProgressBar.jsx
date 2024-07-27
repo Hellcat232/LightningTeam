@@ -1,14 +1,15 @@
-import ProgressBar from '../ProgressBar/ProgressBar.jsx';
-import css from './WaterProgressBar.module.css';
-import { calculateWaterProgress } from '../../js/calculateWaterProgress.js';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors.js';
-import { selectFullDayWater } from '../../redux/water/selectors.js';
+import ProgressBar from "../ProgressBar/ProgressBar.jsx";
+import css from "./WaterProgressBar.module.css";
+import { calculateWaterProgress } from "../../js/calculateWaterProgress.js";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors.js";
+import { selectFullDayWater } from "../../redux/water/selectors.js";
 
 const WaterProgressBar = () => {
   // TODO: get the variable value from back-end;
-  const waterPercentage = '70';
+  const waterPercentage = "70";
   const userSelector = useSelector(selectUser);
+  console.log("USERSELECTOR", userSelector);
   const selectWaterData = useSelector(selectFullDayWater);
   console.log(selectWaterData, userSelector);
   const waterProgress = calculateWaterProgress(

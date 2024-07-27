@@ -45,7 +45,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
-        state.user = action.payload.user;
+        state.user = action.payload;
       })
       .addCase(register.rejected, (state, action) => {
         state.accessToken = null;
