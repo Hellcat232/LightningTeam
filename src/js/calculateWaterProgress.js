@@ -4,5 +4,5 @@ export const calculateWaterProgress = (waterRecords, targetWater) => {
     0
   );
   targetWater *= 1000;
-  return (totalWater / targetWater) * 100;
+  return Math.floor((totalWater / targetWater) * 100);
 };

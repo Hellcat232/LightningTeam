@@ -6,7 +6,7 @@ import css from './WaterDetailedInfo.module.css';
 import { useState } from 'react';
 
 const WaterDetailedInfo = ({ waterItems, addWaterItem }) => {
-  const [selectedDate, setSelectedDate] = useState(null); // Sent date here
+  const [selectedDate, setSelectedDate] = useState(null);
 
   return (
     <section className={css.section}>
@@ -16,6 +16,7 @@ const WaterDetailedInfo = ({ waterItems, addWaterItem }) => {
         waterItems={waterItems}
         selectedDate={selectedDate}
       />
+      {/*<MonthInfoX />*/}
       <MonthInfo />
     </section>
   );
