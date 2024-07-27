@@ -1,7 +1,8 @@
-import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/auth/operations';
-import css from './LogOutModal.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/auth/operations";
+import css from "./LogOutModal.module.css";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const LogOutModal = ({ showModal, handleClose }) => {
   const dispatch = useDispatch();
@@ -11,10 +12,12 @@ const LogOutModal = ({ showModal, handleClose }) => {
     dispatch(logout())
       .unwrap()
       .then(() => {
-        navigate('/signin', { replace: true });
+        toast.success("Successfully logout");
+        navigate("/signin", { replace: true });
       })
-      .catch(error => {
-        console.error('Failed to logout:', error);
+      .catch((error) => {
+        console.error("Failed to logout:", error);
+        toast.error(`ailed to logout: ${error}`);
       });
   };
 
@@ -26,7 +29,7 @@ const LogOutModal = ({ showModal, handleClose }) => {
     <div className={css.modal} onClick={handleClose}>
       <div
         className={css["modal-content"]}
-        onClick={e => {
+        onClick={(e) => {
           e.stopPropagation();
         }}
       >

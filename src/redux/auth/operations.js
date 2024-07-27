@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Cookies from "js-cookie";
+import toast from "react-hot-toast";
 
 // ===================================================
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
@@ -23,6 +24,7 @@ export const register = createAsyncThunk(
       const response = await axios.post("/user/register", getDataUser);
 
       const getToken = await axios.post("/user/login", getDataUser);
+      toast.success("Success");
 
       setAuthToken(getToken.data.accessToken);
       return {
@@ -30,6 +32,7 @@ export const register = createAsyncThunk(
         accessToken: getToken.data.accessToken,
       };
     } catch (error) {
+      toast.error("Somesing went wrong");
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -42,9 +45,11 @@ export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
     setAuthToken(response.data.accessToken);
 
     Cookies.set("refreshToken", response.data.refreshToken);
+    toast.success("Success");
 
     return response.data;
   } catch (error) {
+    toast.error("Somesing went wrong");
     return thunkAPI.rejectWithValue(error.message);
   }
 });
