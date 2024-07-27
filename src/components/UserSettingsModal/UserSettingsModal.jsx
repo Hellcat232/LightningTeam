@@ -11,7 +11,7 @@ const UserSettingsModal = ({ showModal, handleClose, children }) => {
         <button className={css.close} onClick={handleClose}>
           ×
         </button>
-        <div className={css.customScrollbar} style={{ overflowY: 'scroll' }}>
+        <div className={css.customScrollbar} /*style={{ overflowY: 'scroll' }}*/>
           {children}
         </div>
       </div>

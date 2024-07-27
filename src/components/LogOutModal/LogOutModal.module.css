@@ -1,13 +1,13 @@
-.modal {
+@media screen and (min-width: 320px) {
+    .modal {
   font-family: Inter, system-ui,Poppins, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   position: fixed; 
   top: 0;
   left: 0;
-  /* width: 100%; */
-  max-width: 516px;
+  max-width: 344px;
   height: 100%;
-  max-height: 244px;
+  max-height: 267px;
   background: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
@@ -17,25 +17,24 @@
 .close {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 16px;
     background: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
-   
     color:black;
 }
 
 .modal-content {
-  max-width: 516px;
+  max-width: 344px;
   width: 100%;
-  height: 244px;
+  height: 267px;
   position: fixed;
   top: 50%;
   left: 50%;
   background-color: #FFFFFF;
   transform: translate(-50%, -50%);
-  padding: 1rem;
+
   border-radius: 15px;
    
 }
@@ -43,6 +42,8 @@
 .modal-content h2 {
     text-align: center;
     font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
     margin-top: 40px;
     color: #323F47;
 }
@@ -50,25 +51,24 @@
 .modal-content p {
     text-align: center;
     font-weight: 400;
-    margin-top: 24px;
-    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    margin-top: 16px;
+    margin-bottom: 28px;
     color: #323F47;
 }
 
 .btn {
-    /* margin: 0 auto; */
     text-align: center;
+
 }
 
 .accept {
-    width: 170px;
-    height: 60px;
+    width: 304px;
+    height: 46px;
     border-radius: 30px;
     font-weight: 700;
-    
-    margin-right: 5px;
-   margin-bottom: 40px;
-    /* margin-left: 80px; */
+    margin-bottom: 9px;
     border: 1px solid #87D28D;
     background: #9BE1A0;
    
@@ -79,14 +79,12 @@
 }
 
 .reject {
-    width: 170px;
-    height: 60px;
+     width: 304px;
+    height: 46px;
     border-radius: 30px;
     font-weight: 700;
-    
-   /* margin-right: 80px;  */
     margin-bottom: 40px;
-   margin-left: 5px;
+  
    border: 1px solid #F0EFF4;
    background-color: #F0EFF4;
    color: #323F4733
@@ -96,3 +94,49 @@
 .reject:hover {
     color: #323F47;
 }
+}
+@media screen and (min-width: 768px) {
+.modal {
+max-width: 516px;
+max-height: 244px;
+    }
+
+.modal-content {
+max-width: 516px;
+max-height: 244px; 
+}
+
+.close {
+right: 20px;
+}
+
+.modal-content h2 {
+    font-size: 28px;
+    line-height: 32px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.accept {
+    justify-content: start;
+    width: 170px;
+    height: 60px;
+    margin-right: 5px;
+    margin-bottom: 40px;
+    
+}
+
+.reject {
+    width: 170px;
+    height: 60px;
+    margin-left: 5px;
+   
+}
+}
+@media screen and (min-width: 1440px) 
+ 

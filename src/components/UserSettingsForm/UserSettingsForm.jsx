@@ -75,11 +75,12 @@ const UserSettingForm = ({ handleClose }) => {
             <svg
               className={css.uploadIcon}
               xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="20"
-              height="20"
+              viewBox="0 0 34 32"
+              // width="20"
+              // height="20"
             >
-              <path d="" />
+              <path d="M28.8 20v5.333A2.668 2.668 0 0 1 26.133 28H7.466a2.668 2.668 0 0 1-2.667-2.667V20M23.467 10.667 16.8 4l-6.667 6.667M16.8 4v16" />
+
             </svg>
             <span className={css.uploadText}>upload a photo</span>
           </div>

@@ -1,26 +1,23 @@
-.main {
+@media screen and (min-width: 320px) {
+    .main {
     display: flex;
-    flex-direction: row; /*  on desktop direction may be to row // Change direction to column for better control */
-    /* width: 100%; */
-    max-width: 840px;
+    flex-direction: column; 
+    width: 100%; 
     height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    padding: 1px;
   
-    /* overflow: hidden; */
 }
 
 .form {
     color: #2F2F2F;
-    /* width: 100%; */
-    max-width: 840px;
+    width: 100%; 
+    min-width: 303px;
     box-sizing: border-box;
-    padding-right: 12px;
-    /* overflow: hidden; */
-}
-
-.second-main {
-    margin-top: 36px;
-    margin-left: 40px;
-
+    padding-right: 7px;
+    
 }
 
 .setting {
@@ -34,12 +31,13 @@
     align-items: center;
     gap: 10px;
     width: 100%;
+    min-width: 303px;
     margin-bottom: 20px;
 }
 
 .avatarPreview {
-    width: 150px;
-    height: 150px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     overflow: hidden;
     background-color: #f0f0f0;
@@ -74,6 +72,8 @@
 
 .uploadIcon {
     fill: #2F2F2F;
+    width: 18px;
+    height: 18px;
 }
 
 .uploadIconText {
@@ -81,26 +81,29 @@
     align-items: center;
     gap: 5px;
     font-size: 14px;
+    line-height: 18px;
     color: #2F2F2F;
 }
 
 .label {
     display: block;
     font-size: 16px;
+    line-height: 20px;
     font-weight: 700;
     margin-bottom: 8px;
     color: #323F47;
 }
 
 .input {
-    width: 400px;
-    height: 56px;
+    width: 100%;
+    height: 46px;
     padding: 8px;
     border-radius: 8px;
     border: 1px solid #ccc;
     margin-bottom: 16px;
     box-sizing: border-box;
     background-color: #ffffff;
+      color: #000000;
 }
 
 .gender {
@@ -159,6 +162,7 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
+    margin-bottom: 14px;
 }
 
 .formula {
@@ -169,18 +173,20 @@
 
 .textFormula {
     width: 100%;
+    border: 1px solid #00000010;
+    border-radius: 8px;
     color: #2F2F2F;
     font-size: 14px;
     line-height: 1.5;
     padding: 10px;
-    border: 1px solid #00000010;
-    border-radius: 8px;
+   
     resize: none;
     box-sizing: border-box;
 }
 
 .textareaContainer {
     width: 100%;
+   
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
@@ -207,22 +213,18 @@
 .signContainer {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .sign {
     display: flex;
     align-items: center;
     margin-top: 24px;
-    margin-bottom: 40px;
+   
 }
 
-/* .svg {
-    margin-bottom: 24px;
-} */
-
 .hours {
-    margin-left: 10px;
-    /* margin-bottom: 40px; */
+    margin-left: 4px;
 }
 
 .weight {
@@ -245,7 +247,6 @@
     font-size: 14px;
     font-weight: normal;
     line-height: 24px;
-    margin-top: 24px;
     margin-bottom: 14px;
 }
 
@@ -255,10 +256,10 @@
 
 .button {
     width: 100%;
-    max-width: 200px;
-    height: 40px;
+    max-width: 116px;
+    height: 46px;
     background-color: #9BE1A0;
-    border-radius: 20px;
+    border-radius: 30px;
     border: none;
     cursor: pointer;
     font-size: 16px;
@@ -268,4 +269,60 @@
 
 .button:hover {
     background-color: #87D28D;
+}
+ }
+@media screen and (min-width: 768px) {
+.avatarPreview {
+    width: 100px;
+    height: 100px;
+}
+
+.uploadIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.containerFormula {
+    flex-direction: row;
+}
+
+.button {
+    max-width: 141px;
+    height: 56px;
+}
+ }
+@media screen and (min-width: 1440px) { 
+ .main {
+    flex-direction: row; 
+    max-width: 840px;
+    height: 100%;
+   
+}
+
+.form {
+    max-width: 840px;
+    padding-right: 12px;  
+}
+
+.second-main {
+    margin-top: 28px;
+    margin-left: 36px;
+}
+
+.input {
+    width: 364px;
+    height: 56px;
+}
+
+.sign {
+    margin-bottom: 40px;
+}
+
+.hours {
+    margin-left: 10px; 
+}
+
+.amount {
+    margin-top: 24px;
+}
 }
