@@ -24,7 +24,7 @@ const UserSettingForm = ({ handleClose }) => {
   });
   const dispatch = useDispatch();
   // const isLoading = useSelector(selectIsLoading);
-
+  // const style = [];
   const schema = Yup.object().shape({
     avatar: Yup.string(),
     gender: Yup.string().required("Gender is required"),
