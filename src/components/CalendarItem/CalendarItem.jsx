@@ -1,20 +1,22 @@
 import { useDispatch } from "react-redux";
 import css from "./CalendarItem.module.css";
-import { getMonthWaterFrontConteroller } from "../../redux/water/operations";
+import { fetchFullDay } from "../../redux/water/operations";
 
-const CalendarItem = ({ date, waterPart }) => {
+const CalendarItem = ({ item }) => {
   const dispatch = useDispatch();
   const handleClick = () => {
     // запрос на бекенд
 
-    dispatch(getMonthWaterFrontConteroller(date));
+    dispatch(fetchFullDay());
+
   };
   return (
     <>
       <button onClick={handleClick} className={css.btn}>
-        {date}
+        {/* пока пишу всю дату, - когда решится какой будет формат даты, то сделаю просто дату */}
+        {item.localDate}
       </button>
-      <p className={css.p}>{waterPart}</p>
+      <p className={css.p}>{item.feasibility}%</p>
     </>
   );
 };

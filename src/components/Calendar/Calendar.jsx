@@ -1,13 +1,13 @@
 import CalendarItem from "../CalendarItem/CalendarItem";
 import css from "./Calendar.module.css";
 
-const Calendar = ({ mounthWaterArray }) => {
+const Calendar = ({ monthWaterArray }) => {
   return (
     <ul className={css.ul}>
-      {mounthWaterArray.map((item) => {
+      {monthWaterArray.map((item) => {
         return (
           <li className={css.li} key={item.id}>
-            <CalendarItem date={item.date} waterPart={item.waterPart} />
+            <CalendarItem item={item} />
           </li>
         );
       })}

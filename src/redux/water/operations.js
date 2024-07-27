@@ -99,10 +99,10 @@ export const getMonthWaterFrontConteroller = createAsyncThunk(
   'water/fullMonth',
   async (value, thunkAPI) => {
     try {
-      console.log(value);
+      // console.log(value);
       const response = await axios.get('water/fullMonth', value);
-      console.log(response);
-      console.log(response.data.waterRecord);
+      // console.log(response);
+      // console.log(response.data.waterRecord);
       return response.data.waterRecord;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
