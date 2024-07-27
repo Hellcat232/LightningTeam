@@ -1,21 +1,24 @@
 
 .HomePageSection {
     border-radius: 30px;
-    background: var(--background);
     margin-right: 24px;
 }
 
 
 @media screen and (min-widh: 320px) and (max-width: 767.99px) {
     .HomePageSection {
-        height: 780px;
+    width: 343px;
+    height: 812px;
+    padding: 24px 18px;
     }
 }
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1439.98px) {
     .HomePageSection {
         margin: o auto;
+        width: 704px;
+        height: 498px;
     }
 }
 
@@ -23,7 +26,6 @@
 @media screen and (min-width: 1440px) {
     .HomePageSection {
         display: flex;
-        gap: 32px;
         max-width: 1376px;
     }
 }
