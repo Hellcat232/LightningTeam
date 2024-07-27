@@ -1,4 +1,3 @@
-// src/hooks/useCalendar.js
 import { useState } from 'react';
 
 const useCalendar = waterData => {
