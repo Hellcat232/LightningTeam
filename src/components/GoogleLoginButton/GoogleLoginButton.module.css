@@ -13,5 +13,5 @@
 }
 
 .googleLoginButton:hover {
-    background-color: #357ae8;
+    background-color: var(--accent-hover);
 }
