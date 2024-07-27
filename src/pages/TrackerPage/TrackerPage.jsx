@@ -3,11 +3,11 @@ import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedI
 import css from "./TrackerPage.module.css";
 import useWaterItems from "../../hooks/useWaterItems.js";
 import DeleteWaterModal from "../../components/DeleteWaterModal/DeleteWaterModal.jsx";
-import { fetchWaterRecords } from "../../redux/water/operations.js";
+
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "../../../node_modules/react-toastify/dist/ReactToastify.css";
-import { useDispatch/*, useSelector*/ } from "react-redux";
+import { useDispatch /*, useSelector*/ } from "react-redux";
 // import { selectUser } from "../../redux/auth/selectors.js";
 
 const TrackerPage = () => {
@@ -20,7 +20,6 @@ const TrackerPage = () => {
   // const user = useSelector(selectUser);
   // console.log(user);
 
-  
   // useEffect(() => {
   //   dispatch(fetchWaterRecords());
   // }, [dispatch]);
@@ -30,22 +29,21 @@ const TrackerPage = () => {
   //   setIsModalOpen(true);
   // };
 
-  // const handleCloseModal = () => {
-  //   setIsModalOpen(false);
-  //   setRecordId(null);
-  //   dispatch(fetchWaterRecords());
-  // };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setRecordId(null);
+  };
   return (
     <section className={css.section}>
       <WaterMainInfo addWaterItem={addWaterItem} />
       <WaterDetailedInfo waterItems={waterItems} addWaterItem={addWaterItem} />
       {isModalOpen && (
-      <DeleteWaterModal
+        <DeleteWaterModal
           call={isModalOpen}
           recordId={recordId}
-        onClose={() => dispatch(fetchWaterRecords())}
-      ></DeleteWaterModal>
-        )}
+          onClose={() => dispatch(handleCloseModal())}
+        ></DeleteWaterModal>
+      )}
       <ToastContainer />
     </section>
   );
