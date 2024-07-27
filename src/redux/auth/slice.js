@@ -113,7 +113,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.user = {
           ...state.user,
-          ...action.payload.data.user,
+          ...action.payload.user,
         };
       })
       .addCase(updateUser.rejected, (state, action) => {
@@ -132,7 +132,6 @@ const authSlice = createSlice({
       })
       .addCase(currentUser.pending, (state, action) => {})
       .addCase(currentUser.fulfilled, (state, action) => {
-        console.log(action);
         state.user = action.payload.user;
       })
       .addCase(currentUser.rejected, (state, action) => {});

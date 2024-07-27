@@ -9,7 +9,7 @@ const WaterProgressBar = () => {
   // TODO: get the variable value from back-end;
   const waterPercentage = "70";
   const userSelector = useSelector(selectUser);
-  console.log("USERSELECTOR", userSelector);
+
   const selectWaterData = useSelector(selectFullDayWater);
   console.log(selectWaterData, userSelector);
   const waterProgress = calculateWaterProgress(
