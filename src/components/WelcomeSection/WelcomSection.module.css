@@ -6,14 +6,6 @@
     margin-bottom: 16px;
 }
 
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 150px;
-  margin-top: -160px;
-  margin-left: -25px;
-  color: #323f47;
-}
 
 .text {
   color: var(--color-black);
@@ -117,6 +109,14 @@
     height: 736px;
     margin-right: 24px;
   }
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 150px;
+  margin-top: -160px;
+  margin-left: -25px;
+  color: #323f47;
+}
 
   .mainTitle {
     font-size: 80px;
