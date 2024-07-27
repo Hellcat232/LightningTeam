@@ -5,9 +5,13 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
-     overflow-y: auto;
-    /*overflow-x: visible; */
+    padding-right: 20px;
+    z-index: 1000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
 }
 
 .setting {
@@ -16,19 +20,24 @@
 }
 
 .modalContent {
+    position: relative;
     background: white;
-    padding: 20px 20px 40px 20px;
+    padding: 20px;
     border-radius: 15px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
+    box-sizing: border-box;
+    width: 100%;
     max-width: 840px;
     max-height: 80vh;
-    overflow: hidden;
-    display: flex;
+    overflow-x: hidden;
+      display: flex;
     flex-direction: column;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    
+    /* overflow-y: auto; */
+    
+  
 }
 
 .close {
@@ -44,7 +53,22 @@
 
 
 .customScrollbar {
-    /* margin-top: 40px; */
+     margin-top: 40px; 
+    padding-right: 20px; 
+    overflow : auto;
     scrollbar-width: 6px;
-    scrollbar-color: #F0EFF4 transparent;
+    scrollbar-color: #F0EFF4 transparent; 
 } 
+
+.customScrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.customScrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.customScrollbar::-webkit-scrollbar-thumb {
+    background-color: #F0EFF4;
+    border-radius: 10px;
+}
