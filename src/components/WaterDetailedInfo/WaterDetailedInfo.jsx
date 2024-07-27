@@ -4,6 +4,7 @@ import MonthInfo from '../MonthInfo/MonthInfo.jsx';
 
 import css from './WaterDetailedInfo.module.css';
 import { useState } from 'react';
+import MonthInfoX from '../MonthInfoX/MonthInfoX.jsx';
 
 const WaterDetailedInfo = ({ waterItems, addWaterItem }) => {
   const [selectedDate, setSelectedDate] = useState(null); // Sent date here
@@ -16,6 +17,7 @@ const WaterDetailedInfo = ({ waterItems, addWaterItem }) => {
         waterItems={waterItems}
         selectedDate={selectedDate}
       />
+      {/*<MonthInfoX />*/}
       <MonthInfo />
     </section>
   );

@@ -1,0 +1,54 @@
+.calendar {
+
+}
+
+.calendarHeader {
+    display: flex;
+}
+
+.calendarHeaderControl {
+    display: flex;
+    margin-left: auto;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendarBody {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 20px 18px;
+}
+
+.dayButton {
+    width: 28px;
+    height: 28px;
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: inline-flex;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btnWithData {
+    background-color: rgba(50, 63, 71, 0.30);
+}
+
+.day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    background-color: transparent;
+    border: none;
+}
+
+.dayButton:hover {
+    background-color: #e0e0e0;
+}
