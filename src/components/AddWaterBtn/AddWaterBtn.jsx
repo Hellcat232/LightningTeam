@@ -4,6 +4,7 @@ import css from './AddWaterBtn.module.css';
 import spriteHref from '../../images/icons_sprite_dev.svg';
 import WaterModal from '../WaterModalX/WaterModal.jsx';
 import { addWater } from '../../redux/water/operations.js';
+import toast from 'react-hot-toast';
 
 const AddWaterBtn = ({ className }) => {
   const [isModalOpen, setIsModalsOpen] = useState(false);
@@ -19,10 +20,12 @@ const AddWaterBtn = ({ className }) => {
 
     try {
       const response = await dispatch(addWater(waterData)).unwrap();
-      console.log('Water added successfully:', response);
+      // console.log('Water added successfully:', response);
+      toast.success(`Water added successfully:${response} `);
       setIsModalsOpen(false); // Close the modal on success
     } catch (error) {
-      console.error('Error adding water:', error);
+      // console.error('Error adding water:', error);
+      toast.error(`Error adding water: ${error}`);
     }
   };
 
