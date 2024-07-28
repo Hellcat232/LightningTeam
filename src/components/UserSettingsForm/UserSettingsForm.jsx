@@ -94,24 +94,24 @@ const UserSettingForm = ({ handleClose }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <h1 className={styles.setting}>Setting</h1>
-      <div className={styles.avatarUploadContainer}>
-        <div className={styles.avatarPreview}>
+      <div className={styles["avatar-upload-container"]}>
+        <div className={styles["avatar-preview"]}>
           {avatar ? (
-            <img src={avatar} alt="Avatar" className={styles.avatarImage} />
+            <img src={avatar} alt="Avatar" className={styles["avatar-image"]} />
           ) : (
-            <div className={styles.avatarPlaceholder}>Avatar</div>
+            <div className={styles["avatar-placeholder"]}>Avatar</div>
           )}
         </div>
-        <label className={styles.avatarUploadLabel}>
+        <label className={styles["avatar-upload-label"]}>
           <input
             type="file"
             accept="image/*"
             onChange={handleAvatarChange}
-            className={styles.avatarUploadInput}
+            className={styles["avatar-upload-input"]}
           />
-          <div className={styles.uploadIconText}>
+          <div className={styles["upload-icon-text"]}>
             <svg
-              className={styles.uploadIcon}
+              className={styles["upload-icon"]}
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 34 32"
               // width="20"
@@ -119,7 +119,7 @@ const UserSettingForm = ({ handleClose }) => {
             >
               <path d="M28.8 20v5.333A2.668 2.668 0 0 1 26.133 28H7.466a2.668 2.668 0 0 1-2.667-2.667V20M23.467 10.667 16.8 4l-6.667 6.667M16.8 4v16" />
             </svg>
-            <span className={styles.uploadText}>upload a photo</span>
+            <span className={styles["upload-text"]}>upload a photo</span>
           </div>
         </label>
       </div>
@@ -130,8 +130,8 @@ const UserSettingForm = ({ handleClose }) => {
             <label className={`${styles.label} ${styles.gender}`}>
               Your gender identity
             </label>
-            <div className={styles.radioContainer}>
-              <label className={styles.radioGender}>
+            <div className={styles["radio-container"]}>
+              <label className={styles["radio-gender"]}>
                 <input
                   className={styles.radio}
                   type="radio"
@@ -139,11 +139,11 @@ const UserSettingForm = ({ handleClose }) => {
                   value="woman"
                   {...register("gender")}
                 />
-                <span className={styles.radioCheckmark}></span>
+                <span className={styles["radio-checkmark"]}></span>
                 Woman
               </label>
 
-              <label className={styles.radioGender}>
+              <label className={styles["radio-gender"]}>
                 <input
                   className={styles.radio}
                   type="radio"
@@ -151,7 +151,7 @@ const UserSettingForm = ({ handleClose }) => {
                   value="man"
                   {...register("gender")}
                 />
-                <span className={styles.radioCheckmark}></span>
+                <span className={styles["radio-checkmark"]}></span>
                 Man
               </label>
             </div>
@@ -180,7 +180,7 @@ const UserSettingForm = ({ handleClose }) => {
             <label className={`${styles.label} ${styles.norma}`}>
               My daily norma
             </label>
-            <div className={styles.containerFormula}>
+            <div className={styles["container-formula"]}>
               <div>
                 <p>For woman</p>
                 <p className={styles.formula}>V=(M*0.03) + (T*0.4)</p>
@@ -191,8 +191,8 @@ const UserSettingForm = ({ handleClose }) => {
                 <p className={styles.formula}>V=(M*0.04) + (T*0.6)</p>
               </div>
             </div>
-            <div className={styles.textareaContainer}>
-              <div className={styles.styledText}>
+            <div className={styles["textarea-container"]}>
+              <div className={styles["styled-text"]}>
                 <span className={styles.highlight}>*</span> V is the volume of
                 the water norm in liters per day, M is your body weight, T is
                 the time of active sports, or another type of activity
@@ -249,7 +249,7 @@ const UserSettingForm = ({ handleClose }) => {
               The required amount of water in liters per day: {requiredPerDay()}{" "}
               L
             </label>
-            <p className={`${styles.label} ${styles.waterDrink}`}>
+            <p className={`${styles.label} ${styles["water-drink"]}`}>
               Write down how much water you will drink:
             </p>
             <input
