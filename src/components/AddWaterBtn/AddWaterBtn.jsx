@@ -6,7 +6,7 @@ import WaterModal from '../WaterModalX/WaterModal.jsx';
 import { addWater } from '../../redux/water/operations.js';
 import toast from 'react-hot-toast';
 
-const AddWaterBtn = ({ className }) => {
+const AddWaterBtn = ({ className, selectedDate }) => {
   const [isModalOpen, setIsModalsOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -15,7 +15,11 @@ const AddWaterBtn = ({ className }) => {
   };
 
   const handleAddWater = async (amount, time) => {
-    const waterData = { waterValue: amount, localTime: time };
+    const waterData = {
+      waterValue: amount,
+      localTime: time,
+      localDate: selectedDate,
+    };
     console.log('Sending water data:', waterData); // Log the data being sent
 
     try {

@@ -1,14 +1,15 @@
-import css from "./UserBar.module.css";
-import spriteHref from "../../images/icons_sprite_dev.svg";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors.js";
-import avatarPlaceholder from "../../images/NoAvatar.png";
+import css from './UserBar.module.css';
+import spriteHref from '../../images/icons_sprite_dev.svg';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors.js';
+import avatarPlaceholder from '../../images/NoAvatar.png';
 
 const UserBar = ({ togglePopover, isPopoverOpen }) => {
   const userName = useSelector(selectUser);
+  console.log(userName);
 
-  const displayName = userName?.name || userName?.email || "Guest";
-  const userPhoto = userName?.photo || avatarPlaceholder;
+  const displayName = userName?.name || userName?.email || 'Guest';
+  const userPhoto = userName?.avatar || avatarPlaceholder;
 
   return (
     <button className={css.button} type="button" onClick={togglePopover}>

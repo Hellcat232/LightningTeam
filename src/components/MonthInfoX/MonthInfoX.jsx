@@ -8,13 +8,13 @@ import { calculateWaterProgress } from '../../js/calculateWaterProgress.js';
 import { selectUser } from '../../redux/auth/selectors.js';
 import icons from "../../images/symbol-icons.svg";
 
-const MonthInfoX = () => {
+const MonthInfoX = ({ setSelectedDate }) => {
   const dispatch = useDispatch();
   const monthWaterRecord = useSelector(selectFullMonthWaterX);
   const userSelector = useSelector(selectUser);
 
   useEffect(() => {
-    const dateParam = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`;
+    const dateParam = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate() - 1}`;
     dispatch(getMonthWaterFrontConteroller(dateParam));
   }, [dispatch]);
 
@@ -26,6 +26,7 @@ const MonthInfoX = () => {
     const dayData = monthWaterRecord.find(
       record => record.localDate === dateKey
     );
+    setSelectedDate(dateKey);
     alert(
       dayData ? `Water drunk: ${dayData.dailyTotal}` : `No data for day ${day}`
     );

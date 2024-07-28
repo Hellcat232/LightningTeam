@@ -17,7 +17,11 @@ const DailyInfo = ({ waterItems, addWaterItem, selectedDate }) => {
     <section className={css.section}>
       <div className={css.container}>
         <ChooseDate selectedDate={selectedDate} />
-        <AddWaterBtn className="waterDailyBtn" onAddWater={addWaterItem} />
+        <AddWaterBtn
+          className="waterDailyBtn"
+          onAddWater={addWaterItem}
+          selectedDate={selectedDate}
+        />
       </div>
       <WaterList waterItems={waterItems} />
     </section>
