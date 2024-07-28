@@ -19,7 +19,7 @@ const initialState = {
     name: null,
     email: null,
     avatarUrl: null,
-    gender: "woman",
+    gender: null,
     weight: null,
     sportsActivity: null,
     waterRate: "1.5",
