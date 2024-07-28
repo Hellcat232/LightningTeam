@@ -14,13 +14,9 @@
 .form {
   color: #2f2f2f;
   width: 100%;
-  .form {
-    color: #2f2f2f;
-    width: 100%;
-    min-width: 303px;
-    box-sizing: border-box;
-    padding-right: 7px;
-  }
+  min-width: 303px;
+  box-sizing: border-box;
+  padding-right: 7px;
 }
 
 .setting {
@@ -299,34 +295,34 @@
     max-width: 840px;
     height: 100%;
   }
-}
 
-.form {
-  max-width: 840px;
-  padding-right: 12px;
-}
+  .form {
+    max-width: 840px;
+    padding-right: 12px;
+  }
 
-.second-main {
-  margin-top: 28px;
-  margin-left: 36px;
-}
+  .second-main {
+    margin-top: 28px;
+    margin-left: 36px;
+  }
 
-.input {
-  width: 364px;
-  height: 56px;
-}
+  .input {
+    width: 364px;
+    height: 56px;
+  }
 
-.sign {
-  margin-bottom: 40px;
-}
+  .sign {
+    margin-bottom: 40px;
+  }
 
-.hours {
-  margin-left: 10px;
-}
-.hours {
-  margin-left: 10px;
-}
+  .hours {
+    margin-left: 10px;
+  }
+  .hours {
+    margin-left: 10px;
+  }
 
-.amount {
-  margin-top: 24px;
+  .amount {
+    margin-top: 24px;
+  }
 }

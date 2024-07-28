@@ -22,7 +22,7 @@ const initialState = {
     gender: null,
     weight: null,
     sportsActivity: null,
-    waterRate: "1.5",
+    waterRate: 1.5,
   },
 };
 
