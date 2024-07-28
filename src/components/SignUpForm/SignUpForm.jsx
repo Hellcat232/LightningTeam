@@ -77,46 +77,56 @@ const SignUpForm = () => {
         )}
 
         <div>
-        <label className={styles.signUpFormLabel}>Password</label>
-        <input
-          className={`${styles.signUpFormInput} ${
-            errors.password
-              ? `${styles.errorPlaceholder} ${styles.errorInput}`
-              : ""
-            }`}
-          onChange={handleChange}
-          name="password"
-          type={passwordShown ? "text" : "password"}
-          placeholder={
-            errors.password ? "Invalid password" : "Enter your password"
-          }
-          {...formRegister("password")}
-        />
-          <FaRegEyeSlash onClick={togglePasswordVisibility}
-          className={styles.passwordToggleIcon}
-          />
+          <label className={styles.signUpFormLabel}>Password</label>
+          <div className={styles.inputContainer}>
+            <input
+              className={`${styles.signUpFormInput} ${
+                errors.password
+                  ? `${styles.errorPlaceholder} ${styles.errorInput}`
+                  : ""
+              }`}
+              onChange={handleChange}
+              name="password"
+              type={passwordShown ? "text" : "password"}
+              placeholder={
+                errors.password ? "Invalid password" : "Enter your password"
+              }
+              {...formRegister("password")}
+            />
+            <FaRegEyeSlash
+              onClick={togglePasswordVisibility}
+              className={styles.passwordToggleIcon}
+            />
+          </div>
         </div>
 
         <div>
-        <label className={styles.signUpFormLabel}>Repeat Password</label>
-        <input
-          className={`${styles.signUpFormInput} ${
-            errors.repeatPassword
-              ? `${styles.errorPlaceholder} ${styles.errorInput}`
-              : ""
-          }`}
-          onChange={handleChange}
-          name="repeatPassword"
-          type={repeatPasswordShown ? "text" : "password"}
-          placeholder={
-            errors.repeatPassword ? "Passwords do not match" : "Repeat password"
-          }
-          required
-          {...formRegister("repeatPassword")}
-        />
-        <FaRegEyeSlash onClick={toggleRepeatPasswordVisibility}/>
+          <label className={styles.signUpFormLabel}>Repeat Password</label>
+          <div className={styles.inputContainer}>
+            <input
+              className={`${styles.signUpFormInput} ${
+                errors.repeatPassword
+                  ? `${styles.errorPlaceholder} ${styles.errorInput}`
+                  : ""
+              }`}
+              onChange={handleChange}
+              name="repeatPassword"
+              type={repeatPasswordShown ? "text" : "password"}
+              placeholder={
+                errors.repeatPassword
+                  ? "Passwords do not match"
+                  : "Repeat password"
+              }
+              required
+              {...formRegister("repeatPassword")}
+            />
+            <FaRegEyeSlash
+              className={styles.passwordToggleIcon}
+              onClick={toggleRepeatPasswordVisibility}
+            />
+          </div>
         </div>
-    
+
         {errors.password && (
           <p className={styles.errorMessage}>{errors.password.message}</p>
         )}
@@ -127,7 +137,10 @@ const SignUpForm = () => {
       </form>
       <div className={styles.signInLinkContainer}>
         <p className={styles.signInPageText}>
-          Already have an account? <Link to="/signin" className={styles.SignInPageLink}>Sign In</Link>
+          Already have an account?{" "}
+          <Link to="/signin" className={styles.SignInPageLink}>
+            Sign In
+          </Link>
         </p>
       </div>
     </div>
