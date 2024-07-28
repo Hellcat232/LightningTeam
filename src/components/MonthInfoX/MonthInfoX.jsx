@@ -6,6 +6,7 @@ import useCalendar from '../../hooks/getCalendar.js';
 import { selectFullMonthWaterX } from '../../redux/water/selectors.js';
 import { calculateWaterProgress } from '../../js/calculateWaterProgress.js';
 import { selectUser } from '../../redux/auth/selectors.js';
+import icons from "../../images/symbol-icons.svg";
 
 const MonthInfoX = () => {
   const dispatch = useDispatch();
@@ -35,12 +36,20 @@ const MonthInfoX = () => {
       <div className={css.calendarHeader}>
         <h2>Month</h2>
         <div className={css.calendarHeaderControl}>
-          <button onClick={handlePrevMonth}>Prev</button>
+          {/* <button onClick={handlePrevMonth}>pref</button> */}
+          <svg >
+            <use href={`${icons}#icon-left`} >
+            </use>
+          </svg>
           <h2>
             {currentDate.toLocaleString('default', { month: 'long' })}{' '}
             {currentDate.getFullYear()}
           </h2>
-          <button onClick={handleNextMonth}>Next</button>
+          {/* <button onClick={handleNextMonth}>Next</button> */}
+          <svg >
+            <use href={`${icons}#icon-right`} >
+            </use>
+          </svg>
         </div>
       </div>
       <div className={css.calendarBody}>
