@@ -1,31 +1,38 @@
-import WaterItem from "../WaterItem/WaterItem";
-import styles from "./WaterList.module.css";
-import { useSelector } from "react-redux";
-import { selectFullDayWater } from "../../redux/water/selectors.js";
+import WaterItem from '../WaterItem/WaterItem';
+import styles from './WaterList.module.css';
+import { useSelector } from 'react-redux';
+import { selectFullMonthWaterX } from '../../redux/water/selectors.js';
 
-const WaterList = () => {
-  const dailyWaterDataArray = useSelector(selectFullDayWater);
-  // console.log(dailyWaterDataArray);
+const WaterList = ({ selectedDate }) => {
+  const dailyWaterDataArray = useSelector(selectFullMonthWaterX);
+  console.log(dailyWaterDataArray);
 
-  const handleDelete = (waterId) => {
+  const filteredArray = dailyWaterDataArray.filter(
+    date => date.localDate === selectedDate
+  );
+
+  const recordsArray = filteredArray.flatMap(item => item.records);
+  console.log(recordsArray);
+
+  const handleDelete = waterId => {
     const id = waterId;
-
     return id;
   };
 
-  const handleEdit = (waterId) => {
+  const handleEdit = waterId => {
     const id = waterId;
-
     return id;
   };
 
   return (
-    <div className={styles.waterItemsContainer}>
+    <div
+      className={`${styles.waterItemsContainer} ${recordsArray.length < 3 && styles.waterItemsContainerInvis}`}
+    >
       <ul className={styles.waterItems}>
-        {dailyWaterDataArray.waterRecord?.length === 0 ? (
+        {recordsArray.length === 0 ? (
           <li className={styles.emptyItem}>No water added</li>
         ) : (
-          dailyWaterDataArray.waterRecord?.map((item) => (
+          recordsArray.map(item => (
             <li className={styles.item} key={item._id}>
               <WaterItem
                 onDelete={handleDelete}
@@ -43,6 +50,3 @@ const WaterList = () => {
 };
 
 export default WaterList;
-{
-  /*<AddWaterBtn onAddWater={addWaterItem} />*/
-}

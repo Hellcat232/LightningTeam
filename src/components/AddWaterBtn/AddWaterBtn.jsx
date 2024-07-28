@@ -14,6 +14,8 @@ const AddWaterBtn = ({ className, selectedDate }) => {
     setIsModalsOpen(prev => !prev);
   };
 
+  console.log(selectedDate);
+
   const handleAddWater = async (amount, time) => {
     const waterData = {
       waterValue: amount,

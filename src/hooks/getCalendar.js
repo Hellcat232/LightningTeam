@@ -13,7 +13,7 @@ const useCalendar = waterData => {
     const daysInMonth = getDaysInMonth(year, month);
     const daysArray = Array.from({ length: daysInMonth }, (_, index) => {
       const day = index + 1;
-      const dateKey = `${month + 1}/${day}/${year}`;
+      const dateKey = `${day.toString().padStart(2, '0')}.${(month + 1).toString().padStart(2, '0')}.${year}`;
       const dayData = waterData.find(record => record.localDate === dateKey);
       return { day, data: dayData };
     });
@@ -22,17 +22,11 @@ const useCalendar = waterData => {
   };
 
   const handlePrevMonth = () => {
-    const prevMonthDate = new Date(
-      currentDate.setMonth(currentDate.getMonth() - 1)
-    );
-    setCurrentDate(new Date(prevMonthDate));
+    setCurrentDate(new Date(currentDate.setMonth(currentDate.getMonth() - 1)));
   };
 
   const handleNextMonth = () => {
-    const nextMonthDate = new Date(
-      currentDate.setMonth(currentDate.getMonth() + 1)
-    );
-    setCurrentDate(new Date(nextMonthDate));
+    setCurrentDate(new Date(currentDate.setMonth(currentDate.getMonth() + 1)));
   };
 
   return {
