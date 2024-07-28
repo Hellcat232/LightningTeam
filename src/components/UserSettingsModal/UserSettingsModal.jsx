@@ -1,4 +1,4 @@
-import css from './UserSettingsModal.module.css';
+import css from "./UserSettingsModal.module.css";
 
 const UserSettingsModal = ({ showModal, handleClose, children }) => {
   if (!showModal) {
@@ -6,12 +6,19 @@ const UserSettingsModal = ({ showModal, handleClose, children }) => {
   }
 
   return (
-    <div className={css.mainModal} onClick={handleClose}>
-      <div className={css.modalContent} onClick={e => e.stopPropagation()}>
+    <div className={css["main-modal"]} onClick={handleClose}>
+      <div
+        className={css["modal-content"]}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className={css.close} onClick={handleClose}>
-          ×
+          x
         </button>
-        <div className={css.customScrollbar} /*style={{ overflowY: 'scroll' }}*/>
+        <div
+          className={
+            css["custom-scrollbar"]
+          } /*style={{ overflowY: 'scroll' }}*/
+        >
           {children}
         </div>
       </div>
