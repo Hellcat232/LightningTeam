@@ -70,17 +70,19 @@ const SignInForm = () => {
         )}
 
         <label className={css.signInFormLabel}>Password</label>
-        <input
-          className={`${css.signInFormInput} ${
-            errors.password ? `${css.errorPlaceholder} ${css.errorInput}` : ""
-          }`}
-          type={passwordShown ? "text" : "password"}
-          placeholder={
-            errors.password ? "Invalid password" : "Enter your password"
-          }
-          {...register("password")}
-        />
-        <FaRegEyeSlash onClick={togglePasswordVisibility} />
+        <div className={css.inputContainer}>
+          <input
+            className={`${css.signInFormInput} ${
+              errors.password ? `${css.errorPlaceholder} ${css.errorInput}` : ""
+            }`}
+            type={passwordShown ? "text" : "password"}
+            placeholder={
+              errors.password ? "Invalid password" : "Enter your password"
+            }
+            {...register("password")}
+          />
+          <FaRegEyeSlash className={css.togle} onClick={togglePasswordVisibility} />
+        </div>
 
         {errors.password && (
           <p className={css.errorMessage}>{errors.password.message}</p>
