@@ -26,25 +26,27 @@ const LogOutModal = ({ showModal, handleClose }) => {
   }
 
   return (
-    <div className={css.modal} onClick={handleClose}>
-      <div
-        className={css["modal-content"]}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <button className={css.close} onClick={handleClose}>
-          ×
-        </button>
-        <h2>Log out</h2>
-        <p>Do you really want to leave??</p>
-        <div className={css.btn}>
-          <button className={css.accept} type="button" onClick={handleLogout}>
-            Log out
+    <div className={css.overlay}>
+      <div className={css.modal} onClick={handleClose}>
+        <div
+          className={css["modal-content"]}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <button className={css.close} onClick={handleClose}>
+            ×
           </button>
-          <button className={css.reject} type="button" onClick={handleClose}>
-            Cancel
-          </button>
+          <h2>Log out</h2>
+          <p>Do you really want to leave??</p>
+          <div className={css.btn}>
+            <button className={css.accept} type="button" onClick={handleLogout}>
+              Log out
+            </button>
+            <button className={css.reject} type="button" onClick={handleClose}>
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
     </div>
