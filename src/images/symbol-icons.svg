@@ -1,3 +1,10 @@
+<symbol id="icon-right" viewBox="0 0 21 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="5.3333" d="M4.667 28l12-12-12-12"></path>
+</symbol>
+
+<symbol id="icon-left" viewBox="0 0 21 32">
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="5.3333" d="M16.667 28l-12-12 12-12"></path>
+</symbol>
 
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 

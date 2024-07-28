@@ -1,10 +1,6 @@
 import css from "./ProgressBar.module.css";
 
 const ProgressBar = ({ percentage }) => {
-  if (percentage > 100) {
-    percentage = 100;
-  }
-
   return (
     <div className={css.progressBar}>
       <div className={css.progress} style={{ width: `${percentage}%` }}>

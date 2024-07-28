@@ -19,7 +19,7 @@ const initialState = {
     name: null,
     email: null,
     avatarUrl: null,
-    gender: "woman",
+    gender: null,
     weight: null,
     sportsActivity: null,
     waterRate: "1.5",
@@ -45,7 +45,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
-        state.user = action.payload.user;
+        state.user = action.payload;
       })
       .addCase(register.rejected, (state, action) => {
         state.accessToken = null;
@@ -113,7 +113,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.user = {
           ...state.user,
-          ...action.payload.data.user,
+          ...action.payload.user,
         };
       })
       .addCase(updateUser.rejected, (state, action) => {
@@ -132,7 +132,6 @@ const authSlice = createSlice({
       })
       .addCase(currentUser.pending, (state, action) => {})
       .addCase(currentUser.fulfilled, (state, action) => {
-        console.log(action);
         state.user = action.payload.user;
       })
       .addCase(currentUser.rejected, (state, action) => {});
