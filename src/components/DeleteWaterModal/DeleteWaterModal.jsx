@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { useDispatch } from "react-redux";
 
 import css from "./DeleteWaterModal.module.css";
@@ -28,29 +28,31 @@ export default function DeleteWaterModal(props) {
   }
 
   return (
-    <div className={css.modal} onClick={props.onClose}>
-      <div
-        className={css["modal-content"]}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <button className={css.close} onClick={props.onClose}>
-          ×
-        </button>
-        <h2>Delete entry</h2>
-        <p>Are you sure you want to delete the entry?</p>
-          <form onSubmit={handleDelete}>   
-            <div className={css.btn}>
-            <button className={css.accept} type="submit">
-                Delete
-            </button>
-            <button className={css.reject} type="button" onClick={props.onClose}>
-                Cancel
-            </button>
-            </div>
-          </form> 
+    
+      <div className={css.modal} onClick={props.onClose}>
+        <div
+          className={css["modal-content"]}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <button className={css.close} onClick={props.onClose}>
+            ×
+          </button>
+          <h2>Delete entry</h2>
+          <p>Are you sure you want to delete the entry?</p>
+            <form onSubmit={handleDelete}>   
+              <div className={css.btn}>
+              <button className={css.accept} type="submit">
+                  Delete
+              </button>
+              <button className={css.reject} type="button" onClick={props.onClose}>
+                  Cancel
+              </button>
+              </div>
+            </form> 
+        </div>
       </div>
-    </div>
+   
   );
 }
