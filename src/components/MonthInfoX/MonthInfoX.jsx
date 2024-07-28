@@ -10,25 +10,23 @@ import { selectUser } from '../../redux/auth/selectors.js';
 const MonthInfoX = ({ setSelectedDate }) => {
   const dispatch = useDispatch();
   const monthWaterRecord = useSelector(selectFullMonthWaterX);
+  console.log(monthWaterRecord);
   const userSelector = useSelector(selectUser);
-
-  useEffect(() => {
-    const dateParam = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate() - 1}`;
-    dispatch(getMonthWaterFrontConteroller(dateParam));
-  }, [dispatch]);
 
   const { currentDate, renderDays, handlePrevMonth, handleNextMonth } =
     useCalendar(monthWaterRecord);
 
+  useEffect(() => {
+    const dateParam = `${new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate().toString().padStart(2, '0')}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getFullYear()}`;
+    console.log('Formatted dateParam:', dateParam);
+    dispatch(getMonthWaterFrontConteroller(dateParam));
+  }, [dispatch, currentDate]);
+
   const handleDayClick = day => {
-    const dateKey = `${currentDate.getMonth() + 1}/${day}/${currentDate.getFullYear()}`;
-    const dayData = monthWaterRecord.find(
-      record => record.localDate === dateKey
-    );
+    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+    const dayString = day.toString().padStart(2, '0');
+    const dateKey = `${dayString}.${month}.${currentDate.getFullYear()}`;
     setSelectedDate(dateKey);
-    alert(
-      dayData ? `Water drunk: ${dayData.dailyTotal}` : `No data for day ${day}`
-    );
   };
 
   return (
@@ -45,28 +43,33 @@ const MonthInfoX = ({ setSelectedDate }) => {
         </div>
       </div>
       <div className={css.calendarBody}>
-        {renderDays().map(({ day, data }, index) => (
-          <div key={index} className={css.day}>
-            {day && (
-              <button
-                className={
-                  data ? `${css.btnWithData} ${css.dayButton}` : css.dayButton
-                }
-                onClick={() => handleDayClick(day)}
-              >
-                {day}
-              </button>
-            )}
-            <div className={css.dayInfo}>
-              <p>
-                {data
-                  ? calculateWaterProgress(data.records, userSelector.waterRate)
-                  : 0}
-                %
-              </p>
+        {renderDays().map(({ day, data }, index) => {
+          return (
+            <div key={index} className={css.day}>
+              {day && (
+                <button
+                  className={
+                    data ? `${css.btnWithData} ${css.dayButton}` : css.dayButton
+                  }
+                  onClick={() => handleDayClick(day)}
+                >
+                  {day}
+                </button>
+              )}
+              <div className={css.dayInfo}>
+                <p>
+                  {data
+                    ? calculateWaterProgress(
+                        data.records,
+                        userSelector.waterRate
+                      )
+                    : 0}
+                  %
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

@@ -3,14 +3,14 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const addWater = createAsyncThunk(
   'water/addWater',
-  async ({ waterValue, localTime }, thunkAPI) => {
+  async ({ waterValue, localTime, localDate }, thunkAPI) => {
     const state = thunkAPI.getState();
     const accessToken = state.auth.accessToken;
 
     try {
       const response = await axios.post(
         '/water/day',
-        { waterValue, localTime },
+        { waterValue, localTime, localDate },
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -88,7 +88,7 @@ export const getMonthWaterFrontConteroller = createAsyncThunk(
   async (value, thunkAPI) => {
     try {
       console.log(value);
-      const response = await axios.get(`water/fullMonth`);
+      const response = await axios.get(`/water/fullMonth?localDate=${value}`);
       console.log(response);
       console.log(response.data.waterRecord);
       return response.data.waterRecord;

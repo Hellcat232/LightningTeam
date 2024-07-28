@@ -23,7 +23,7 @@ const DailyInfo = ({ waterItems, addWaterItem, selectedDate }) => {
           selectedDate={selectedDate}
         />
       </div>
-      <WaterList waterItems={waterItems} />
+      <WaterList waterItems={waterItems} selectedDate={selectedDate} />
     </section>
   );
 };
