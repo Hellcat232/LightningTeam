@@ -52,7 +52,7 @@ const MonthInfoX = ({ setSelectedDate }) => {
                 <div key={index} className={css.day}>
                   {day && (
                       <button
-                          className={`${css.dayButton} ${isToday ? css.todayButton : ''} ${data?.feasibility >= 100 || data?.localDate ? css.btnWithData : ''}`}
+                          className={`${css.dayButton} ${isToday ? css.todayButton : ''} ${data?.feasibility >= 100 && css.btnWithData}`}
                           onClick={() => handleDayClick(day)}
                           data-feasibility={data ? data.feasibility : undefined}
                       >
