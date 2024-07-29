@@ -2,18 +2,13 @@ import ProgressBar from "../ProgressBar/ProgressBar.jsx";
 import css from "./WaterProgressBar.module.css";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors.js";
-import { selectFullMonthWaterX } from "../../redux/water/selectors.js";
+import {selectFullDayWater} from "../../redux/water/selectors.js";
 import { calculateWaterProgress } from "../../js/calculateWaterProgress.js";
 
-const WaterProgressBar = ({ selectedDate }) => {
-  const dailyWaterDataArray = useSelector(selectFullMonthWaterX);
-  // console.log(dailyWaterDataArray);
-  const filteredArray = dailyWaterDataArray.filter(
-    (date) => date.localDate === selectedDate
-  );
-  const recordsArray = filteredArray.flatMap((item) => item.records);
+const WaterProgressBar = ( ) => {
+  const fullDayWater = useSelector(selectFullDayWater);
   const user = useSelector(selectUser);
-  const waterProgress = calculateWaterProgress(recordsArray, user.waterRate);
+  const waterProgress = calculateWaterProgress(fullDayWater.allWaterRecord, user.waterRate);
 
   return (
     <div className={css.container}>

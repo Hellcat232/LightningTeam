@@ -4,9 +4,11 @@ import { useDispatch } from "react-redux";
 import css from "./DeleteWaterModal.module.css";
 import { deleteWater } from "../../redux/water/operations";
 import { toast } from "react-toastify";
+import {useMonthQuery} from "../../hooks/useMonthQuery.js";
 
 export default function DeleteWaterModal(props) {
   const dispatch = useDispatch();
+    const { dispatchDate } = useMonthQuery();
 
     const handleDelete = (event) => {
         event.preventDefault();
@@ -21,6 +23,7 @@ export default function DeleteWaterModal(props) {
       .catch((error) => {
         toast.error("Could not delete record: " + error.message);
       });
+        dispatchDate()
   };
 
   if (!props.call) {

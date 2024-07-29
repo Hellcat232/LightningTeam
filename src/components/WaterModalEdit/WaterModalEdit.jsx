@@ -4,6 +4,7 @@ import styles from "./WaterModalEdit.module.css";
 import Iconsvg from "../Icon/Icon";
 import { useDispatch } from "react-redux";
 import { updateWater, fetchFullDay } from "../../redux/water/operations";
+import {useMonthQuery} from "../../hooks/useMonthQuery.js";
 
 Modal.setAppElement("#root");
 
@@ -11,12 +12,12 @@ const WaterModalEdit = ({
   id,
   isOpen,
   closeModal,
-  onEdit,
   initialAmount = 50,
   initialTime = "",
 }) => {
   const [amount, setAmount] = useState(initialAmount);
   const [time, setTime] = useState(initialTime);
+  const { dispatchDate } = useMonthQuery();
 
   useEffect(() => {
     setAmount(initialAmount);
@@ -28,17 +29,18 @@ const WaterModalEdit = ({
 
   const dispatch = useDispatch();
 
-  const handleSave = () => {
+  const handleSave = async () => {
     // Log the state just before dispatching
     // console.log('Saving:', { id, amount, localTime: time });
 
-    dispatch(
+    await dispatch(
       updateWater({
         _id: id,
         waterValue: amount,
         localTime: time,
       })
     );
+    dispatchDate()
     closeModal();
   };
 
