@@ -1,17 +1,16 @@
+ 
 .logo {
   z-index: 999;
-  top: 24px;
-  left: 16px;
   color: #323f47;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.16px;
   text-transform: uppercase;
 }
+
 @media screen and (min-width: 768px) {
   .logo {
-    top: 32px;
-    left: 32px;
+    font-size: 28px;
   }
 }

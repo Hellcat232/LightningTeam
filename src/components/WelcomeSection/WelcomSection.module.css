@@ -8,7 +8,8 @@
  
 
 .text {
-  color: var(--color-black);
+  margin-top: 70px;
+  color: black;
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0.06em;
@@ -16,15 +17,14 @@
 }
 
 .mainTitle {
-  margin-bottom: 50px;
+  margin-bottom: 32px;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
-  font-size: 80px;
+  font-size: 35px;
   line-height: 1.2;
   letter-spacing: -0.16px;
   color: #323f47;
-  width: 100%;
-  max-width: 547px;
+width: 311px;
   box-sizing: border-box;
 }
 .linkThumb {
@@ -105,7 +105,7 @@
   .welcomeSection {
     padding: 188px 64px 188px 61px;
     margin: 0;
-    width: 672px;
+    min-width: 672px;
     height: 736px;
     margin-right: 24px;
   }
@@ -122,6 +122,9 @@
     font-size: 80px;
     line-height: 76px;
     letter-spacing: -0.8px;
+  }
+  .text{
+    margin-top: 0;
   }
 }
 

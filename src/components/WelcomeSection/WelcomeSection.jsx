@@ -24,8 +24,7 @@ const WelcomeSection = () => {
 
   return (
     <div className={css.welcomeSection}>
-      <h1 className={css.title}>AQUATRACK</h1>
-      <p className={css.text}>Record daily water intake and track</p>
+          <p className={css.text}>Record daily water intake and track</p>
       <h1 className={css.mainTitle}>
         <span>Water</span> consumption tracker
       </h1>
