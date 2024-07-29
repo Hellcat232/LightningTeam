@@ -2,15 +2,25 @@
 .HomePageSection {
     border-radius: 30px;
     margin-right: 24px;
+    position: relative;
 }
 
-
+.PageLogo{
+    margin-bottom: 16px;
+        position: absolute;
+        top:10px;
+            left:10px;
+}
 @media screen and (min-widh: 320px) and (max-width: 767.99px) {
     .HomePageSection {
     width: 343px;
     height: 812px;
     padding: 24px 18px;
     }
+  .PageLogo {
+        margin-bottom: 16px;
+            position: relative;
+        }
 }
 
 
@@ -18,7 +28,14 @@
     .HomePageSection {
         margin: o auto;
         width: 704px;
-        height: 498px;
+        height: 960px;
+    }
+
+
+    .PageLogo{
+        top: 32px;
+            left: 40px;
+        margin-bottom: 32px 0;
     }
 }
 
@@ -28,4 +45,14 @@
         display: flex;
         max-width: 1376px;
     }
+        .PageLogo {
+            top: 32px;
+                left: 230px;
+            width: 1440px;
+            display: flex;
+            gap: 32px;
+            position: relative;
+        }
 }
+
+

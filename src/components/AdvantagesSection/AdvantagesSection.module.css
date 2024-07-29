@@ -1,22 +1,22 @@
+/* Общие стили */
 .section {
     background-image: url(../../images/women.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 736px;
+    height: 353px;
+    /* Начальная высота */
     border-radius: 30px;
     padding: 0px 32px 32px 64px;
     position: relative;
-    width: 672px;
+    min-width: 343px;
 }
-
-
 
 .customersBox {
     display: flex;
     position: absolute;
-    top: 568px;
-    right: 420px;
+    top: 210px;
+    right: 165px;
     width: 160px;
     padding: 10px 14px;
     align-items: center;
@@ -27,7 +27,7 @@
 }
 
 .item {
-    height:28px;
+    height: 28px;
     width: 26px;
     border-radius: 50%;
     border: 2px solid white;
@@ -43,7 +43,6 @@
 
 .customerImg {
     display: inline-flex;
-  
 }
 
 .item:nth-child(1) {
@@ -77,7 +76,6 @@
     font-weight: 700;
     line-height: 1.16;
     margin-left: -10px;
-
 }
 
 .span {
@@ -108,18 +106,18 @@
 }
 
 .textAdvantage:nth-child(1) {
-    background:#323f47;
+    background: #323f47;
     width: 81px;
     gap: 4px;
 }
 
 .textAdvantage:nth-child(3) {
-    background:white;
+    background: white;
     width: 108px;
 }
 
 .text {
-    color:white;
+    color: white;
     text-align: center;
     font-size: 8px;
     font-weight: 700;
@@ -151,30 +149,23 @@
     justify-content: flex-end;
 }
 
-@media (min-width: 768px) {
-    .customersBox {
-            display: flex;
-            position: absolute;
-            top: 568px;
-            right: 420px;
-            width: 237px;
-            padding: 10px 20px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 30px;
-            background: #ffffff;
-            box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
-        };
+/* Медиа-запросы для устройств шириной от 768px до 1439.98px */
+@media (min-width: 768px) and (max-width: 1439.98px) {
     .section {
-       
         padding-left: 32px;
         padding-right: 32px;
         padding-bottom: 32px;
+        height: 446px;
+        /* Увеличенная высота для планшетов */
+        min-width: 704px;
     }
 
-    
-
-   
+    .customersBox {
+        top: 250px;
+        right: 420px;
+        width: 237px;
+        padding: 10px 20px;
+    }
 
     .item {
         height: 47px;
@@ -207,7 +198,6 @@
     }
 
     .group {
-        position: absolute;
         right: 32px;
         height: 78px;
     }
@@ -250,6 +240,7 @@
     }
 }
 
+/* Медиа-запросы для устройств шириной 1440px и более */
 @media (min-width: 1440px) {
     .section {
         padding-bottom: 64px;
@@ -257,21 +248,58 @@
         height: 736px;
     }
 
-   .customersBox {
-       display: flex;
-       position: absolute;
-       top: 568px;
-       right: 420px;
-       width: 237px;
-       padding: 10px 20px;
-       align-items: center;
-       justify-content: center;
-       border-radius: 30px;
-       background: #ffffff;
-       box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
-   }
+    .customersBox {
+        top: 568px;
+        right: 420px;
+        width: 237px;
+        padding: 10px 20px;
+    }
 
     .group {
         bottom: 64px;
     }
+.item {
+    height: 47px;
+    width: 47px;
+}
+.group {
+    right: 32px;
+    height: 78px;
+    width: 242px;
+}
+.advantagesGroup {
+    gap: 10px;
+    max-width: 242px;
+    height: 78px;
+}
+.textAdvantage {
+    font-size: 12px;
+    height: 34px;
+    padding: 11px 16px;
+    
+}
+.textAdvantage:nth-child(2) {
+    width: 121px;
+}
+
+.textAdvantage:nth-child(1) {
+    width: 111px;
+    gap: 4px;
+}
+
+.textAdvantage:nth-child(3) {
+    width: 158px;
+}
+
+.text {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: -0.12px;
+}
+
+.textBlack {
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: -0.12px;
+}
 }
