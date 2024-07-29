@@ -6,12 +6,15 @@ import {useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import { fetchFullDay } from '../../redux/water/operations.js';
 
+
+
 const DailyInfo = ({ waterItems, addWaterItem, selectedDate }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchFullDay(selectedDate));
   }, [dispatch]);
+
 
   return (
     <section className={css.section}>
