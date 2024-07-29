@@ -1,13 +1,13 @@
-import WaterMainInfo from "../../components/WaterMainInfo/WaterMainInfo.jsx";
-import WaterDetailedInfo from "../../components/WaterDetailedInfo/WaterDetailedInfo.jsx";
-import css from "./TrackerPage.module.css";
-import useWaterItems from "../../hooks/useWaterItems.js";
-import DeleteWaterModal from "../../components/DeleteWaterModal/DeleteWaterModal.jsx";
+import WaterMainInfo from '../../components/WaterMainInfo/WaterMainInfo.jsx';
+import WaterDetailedInfo from '../../components/WaterDetailedInfo/WaterDetailedInfo.jsx';
+import css from './TrackerPage.module.css';
+import useWaterItems from '../../hooks/useWaterItems.js';
+import DeleteWaterModal from '../../components/DeleteWaterModal/DeleteWaterModal.jsx';
 
-import { useState } from "react";
-import { ToastContainer } from "react-toastify";
-import "../../../node_modules/react-toastify/dist/ReactToastify.css";
-import { useDispatch /*, useSelector*/ } from "react-redux";
+import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import '../../../node_modules/react-toastify/dist/ReactToastify.css';
+import { useDispatch /*, useSelector*/ } from 'react-redux';
 // import { selectUser } from "../../redux/auth/selectors.js";
 
 const TrackerPage = () => {
@@ -17,17 +17,8 @@ const TrackerPage = () => {
   // TODO: Write write query for water data when the page is being loaded.
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [recordId, setRecordId] = useState(null);
-  // const user = useSelector(selectUser);
-  // console.log(user);
-
-  // useEffect(() => {
-  //   dispatch(fetchWaterRecords());
-  // }, [dispatch]);
-
-  // const handleDeleteClick = (id) => {
-  //   setRecordId(id);
-  //   setIsModalOpen(true);
-  // };
+  const dateParam = `${new Date().getDate().toString().padStart(2, '0')}.${(new Date().getMonth() + 1).toString().padStart(2, '0')}.${new Date().getFullYear()}`;
+  const [selectedDate, setSelectedDate] = useState(dateParam);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -35,8 +26,13 @@ const TrackerPage = () => {
   };
   return (
     <section className={css.section}>
-      <WaterMainInfo addWaterItem={addWaterItem} />
-      <WaterDetailedInfo waterItems={waterItems} addWaterItem={addWaterItem} />
+      <WaterMainInfo addWaterItem={addWaterItem} selectedDate={selectedDate} />
+      <WaterDetailedInfo
+        waterItems={waterItems}
+        addWaterItem={addWaterItem}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
       {isModalOpen && (
         <DeleteWaterModal
           call={isModalOpen}

@@ -1,21 +1,19 @@
-import ProgressBar from "../ProgressBar/ProgressBar.jsx";
-import css from "./WaterProgressBar.module.css";
-import { calculateWaterProgress } from "../../js/calculateWaterProgress.js";
-import { useSelector } from "react-redux";
-import { selectUser } from "../../redux/auth/selectors.js";
-import { selectFullDayWater } from "../../redux/water/selectors.js";
+import ProgressBar from '../ProgressBar/ProgressBar.jsx';
+import css from './WaterProgressBar.module.css';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../redux/auth/selectors.js';
+import { selectFullMonthWaterX } from '../../redux/water/selectors.js';
+import { calculateWaterProgress } from '../../js/calculateWaterProgress.js';
 
-const WaterProgressBar = () => {
-  // TODO: get the variable value from back-end;
-  const waterPercentage = "70";
-  const userSelector = useSelector(selectUser);
-
-  const selectWaterData = useSelector(selectFullDayWater);
-  console.log(selectWaterData, userSelector);
-  const waterProgress = calculateWaterProgress(
-    selectWaterData.waterRecord,
-    userSelector.waterRate
+const WaterProgressBar = ({ selectedDate }) => {
+  const dailyWaterDataArray = useSelector(selectFullMonthWaterX);
+  console.log(dailyWaterDataArray);
+  const filteredArray = dailyWaterDataArray.filter(
+    date => date.localDate === selectedDate
   );
+  const recordsArray = filteredArray.flatMap(item => item.records);
+  const user = useSelector(selectUser);
+  const waterProgress = calculateWaterProgress(recordsArray, user.waterRate);
 
   return (
     <div className={css.container}>
