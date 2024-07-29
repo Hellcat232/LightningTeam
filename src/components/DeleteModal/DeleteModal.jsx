@@ -11,7 +11,7 @@ const DeleteModal = ({ id, isOpen, closeModal, onDelete }) => {
   const dispatch = useDispatch();
   const isFull = useSelector(selectFullDayWater);
 
-  console.log(isFull);
+  // console.log(isFull);
 
   // const waterId = id;
 

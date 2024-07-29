@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import css from './AddWaterBtn.module.css';
-import spriteHref from '../../images/icons_sprite_dev.svg';
-import WaterModal from '../WaterModalX/WaterModal.jsx';
-import { addWater } from '../../redux/water/operations.js';
-import toast from 'react-hot-toast';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import css from "./AddWaterBtn.module.css";
+import spriteHref from "../../images/icons_sprite_dev.svg";
+import WaterModal from "../WaterModalX/WaterModal.jsx";
+import { addWater } from "../../redux/water/operations.js";
+import toast from "react-hot-toast";
 
 const AddWaterBtn = ({ className, selectedDate }) => {
   const [isModalOpen, setIsModalsOpen] = useState(false);
   const dispatch = useDispatch();
 
   const toggleModal = () => {
-    setIsModalsOpen(prev => !prev);
+    setIsModalsOpen((prev) => !prev);
   };
 
-  console.log(selectedDate);
+  // console.log(selectedDate);
 
   const handleAddWater = async (amount, time) => {
     const waterData = {
@@ -22,7 +22,7 @@ const AddWaterBtn = ({ className, selectedDate }) => {
       localTime: time,
       localDate: selectedDate,
     };
-    console.log('Sending water data:', waterData); // Log the data being sent
+    // console.log('Sending water data:', waterData); // Log the data being sent
 
     try {
       const response = await dispatch(addWater(waterData)).unwrap();
@@ -40,7 +40,9 @@ const AddWaterBtn = ({ className, selectedDate }) => {
       <button
         type="button"
         onClick={toggleModal}
-        className={`${css.button} ${className === 'waterDailyBtn' ? css.waterDailyBtn : css.waterMainBtn}`}
+        className={`${css.button} ${
+          className === "waterDailyBtn" ? css.waterDailyBtn : css.waterMainBtn
+        }`}
       >
         <svg className={css.icon}>
           <use href={`${spriteHref}#icon-plus_water`}></use>

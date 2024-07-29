@@ -1,15 +1,15 @@
-import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const addWater = createAsyncThunk(
-  'water/addWater',
+  "water/addWater",
   async ({ waterValue, localTime, localDate }, thunkAPI) => {
     const state = thunkAPI.getState();
     const accessToken = state.auth.accessToken;
 
     try {
       const response = await axios.post(
-        '/water/day',
+        "/water/day",
         { waterValue, localTime, localDate },
         {
           headers: {
@@ -17,11 +17,11 @@ export const addWater = createAsyncThunk(
           },
         }
       );
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(
-        'Error response from server:',
+        "Error response from server:",
         error.response ? error.response.data : error.message
       );
       return thunkAPI.rejectWithValue(
@@ -32,7 +32,7 @@ export const addWater = createAsyncThunk(
 );
 
 export const updateWater = createAsyncThunk(
-  'water/change',
+  "water/change",
   async ({ _id, waterValue }, thunkAPI) => {
     try {
       const response = await axios.patch(`/water/day/${_id}`, {
@@ -46,7 +46,7 @@ export const updateWater = createAsyncThunk(
 );
 
 export const deleteWater = createAsyncThunk(
-  'water/delete',
+  "water/delete",
   async (waterId, thunkAPI) => {
     try {
       await axios.delete(`water/day/${waterId}`);
@@ -58,13 +58,13 @@ export const deleteWater = createAsyncThunk(
 );
 
 export const fetchFullDay = createAsyncThunk(
-  'water/fullday',
+  "water/fullday",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const accessToken = state.auth.accessToken;
 
     try {
-      const response = await axios.get('water/fullday', {
+      const response = await axios.get("water/fullday", {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 
@@ -73,8 +73,8 @@ export const fetchFullDay = createAsyncThunk(
         status: response.status,
         statusText: response.statusText,
         headers: {
-          'content-length': response.headers['content-length'],
-          'content-type': response.headers['content-type'],
+          "content-length": response.headers["content-length"],
+          "content-type": response.headers["content-type"],
         },
       };
     } catch (error) {
@@ -84,13 +84,13 @@ export const fetchFullDay = createAsyncThunk(
 );
 
 export const getMonthWaterFrontConteroller = createAsyncThunk(
-  'water/fullMonth',
+  "water/fullMonth",
   async (value, thunkAPI) => {
     try {
-      console.log(value);
+      // console.log(value);
       const response = await axios.get(`/water/fullMonth?localDate=${value}`);
-      console.log(response);
-      console.log(response.data.waterRecord);
+      // console.log(response);
+      // console.log(response.data.waterRecord);
       return response.data.waterRecord;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -28,7 +28,7 @@ const WaterItem = ({ id, amount, time, onEdit, onDelete }) => {
     onDelete(id);
 
     closeDeleteModal();
-    console.log(id);
+    // console.log(id);
   };
 
   return (

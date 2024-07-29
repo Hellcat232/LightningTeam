@@ -7,10 +7,8 @@ import { getMonthWaterFrontConteroller } from "../../redux/water/operations";
 import { selectFullMonthWater } from "../../redux/water/selectors";
 
 const MonthInfo = () => {
-
-
   const array = useSelector(selectFullMonthWater);
-  console.log(array);
+  // console.log(array);
   const dispatch = useDispatch();
 
   const mounthsArray = [
