@@ -59,12 +59,12 @@ export const deleteWater = createAsyncThunk(
 
 export const fetchFullDay = createAsyncThunk(
   "water/fullday",
-  async (_, thunkAPI) => {
+  async (date, thunkAPI) => {
     const state = thunkAPI.getState();
     const accessToken = state.auth.accessToken;
 
     try {
-      const response = await axios.get("water/fullday", {
+      const response = await axios.get(`water/fullday?localeDate=${date}`, {
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 
