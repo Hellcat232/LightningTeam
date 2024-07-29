@@ -47,11 +47,11 @@
     }
         .PageLogo {
             top: 32px;
-                left: 230px;
+                left: 32px;
             width: 1440px;
             display: flex;
             gap: 32px;
-            position: relative;
+            /* position: relative; */
         }
 }
 
