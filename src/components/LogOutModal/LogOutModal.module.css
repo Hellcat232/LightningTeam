@@ -1,3 +1,13 @@
+
+.close use{
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+
+}
 @media screen and (min-width: 320px) {
     .overlay {
     position: fixed;
@@ -39,7 +49,6 @@
     cursor: pointer;
     color:black;
 }
-
 .modal-content {
   max-width: 344px;
   width: 100%;

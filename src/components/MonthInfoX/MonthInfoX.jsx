@@ -35,20 +35,23 @@ const MonthInfoX = ({ setSelectedDate }) => {
       <div className={css.calendarHeader}>
         <h2>Month</h2>
         <div className={css.calendarHeaderControl}>
-          {/* <button onClick={handlePrevMonth}>pref</button> */}
-          <svg >
+          <button onClick={handlePrevMonth} className={css.dateButton}>
+            <svg  width="18" height="18">
             <use href={`${icons}#icon-left`} >
             </use>
-          </svg>
+            </svg>
+          </button>
           <h2>
             {currentDate.toLocaleString('default', { month: 'long' })}{' '}
             {currentDate.getFullYear()}
           </h2>
-          {/* <button onClick={handleNextMonth}>Next</button> */}
-          <svg >
+          <button onClick={handleNextMonth} className={css.dateButton}>
+            <svg  width="18" height="18">
             <use href={`${icons}#icon-right`} >
             </use>
           </svg>
+          </button>
+          
         </div>
       </div>
       <div className={css.calendarBody}>

@@ -43,6 +43,10 @@ margin-top: 20px;
     color: #323F47;
 }
 
+.dateButton{
+    background-color: transparent;
+}
+
 .btnWithData {
     background-color: rgba(50, 63, 71, 0.30);
 }
