@@ -7,18 +7,13 @@ import DeleteWaterModal from '../../components/DeleteWaterModal/DeleteWaterModal
 import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import '../../../node_modules/react-toastify/dist/ReactToastify.css';
-import { useDispatch /*, useSelector*/ } from 'react-redux';
-// import { selectUser } from "../../redux/auth/selectors.js";
+import {useDispatch} from "react-redux";
 
 const TrackerPage = () => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch()
   const { waterItems, addWaterItem } = useWaterItems();
-  // TODO: Create state that will be storing query results.
-  // TODO: Write write query for water data when the page is being loaded.
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [recordId, setRecordId] = useState(null);
-  const dateParam = `${new Date().getDate().toString().padStart(2, '0')}.${(new Date().getMonth() + 1).toString().padStart(2, '0')}.${new Date().getFullYear()}`;
-  const [selectedDate, setSelectedDate] = useState(dateParam);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -26,12 +21,10 @@ const TrackerPage = () => {
   };
   return (
     <section className={css.section}>
-      <WaterMainInfo addWaterItem={addWaterItem} selectedDate={selectedDate} />
+      <WaterMainInfo addWaterItem={addWaterItem} />
       <WaterDetailedInfo
         waterItems={waterItems}
         addWaterItem={addWaterItem}
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
       />
       {isModalOpen && (
         <DeleteWaterModal

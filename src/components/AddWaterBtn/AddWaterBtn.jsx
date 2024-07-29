@@ -1,20 +1,20 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import css from "./AddWaterBtn.module.css";
 import spriteHref from "../../images/icons_sprite_dev.svg";
 import WaterModal from "../WaterModalX/WaterModal.jsx";
-import { addWater } from "../../redux/water/operations.js";
+import {addWater} from "../../redux/water/operations.js";
 import toast from "react-hot-toast";
+import {useMonthQuery} from "../../hooks/useMonthQuery.js";
 
 const AddWaterBtn = ({ className, selectedDate }) => {
   const [isModalOpen, setIsModalsOpen] = useState(false);
   const dispatch = useDispatch();
+  const {dispatchDate} = useMonthQuery()
 
   const toggleModal = () => {
     setIsModalsOpen((prev) => !prev);
   };
-
-  // console.log(selectedDate);
 
   const handleAddWater = async (amount, time) => {
     const waterData = {
@@ -26,6 +26,7 @@ const AddWaterBtn = ({ className, selectedDate }) => {
 
     try {
       const response = await dispatch(addWater(waterData)).unwrap();
+      dispatchDate()
       // console.log('Water added successfully:', response);
       toast.success(`Water added successfully:${response} `);
       setIsModalsOpen(false); // Close the modal on success

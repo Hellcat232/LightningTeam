@@ -4,12 +4,14 @@ import Iconsvg from "../Icon/Icon";
 import { deleteWater } from "../../redux/water/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFullDayWater } from "../../redux/water/selectors";
+import {useMonthQuery} from "../../hooks/useMonthQuery.js";
 
 Modal.setAppElement("#root");
 
 const DeleteModal = ({ id, isOpen, closeModal, onDelete }) => {
   const dispatch = useDispatch();
   const isFull = useSelector(selectFullDayWater);
+  const { dispatchDate } = useMonthQuery();
 
   // console.log(isFull);
 
@@ -17,7 +19,8 @@ const DeleteModal = ({ id, isOpen, closeModal, onDelete }) => {
 
   const handleDelete = async () => {
     // onDelete(id);
-    dispatch(deleteWater(id));
+    await dispatch(deleteWater(id));
+    dispatchDate()
     closeModal();
   };
 

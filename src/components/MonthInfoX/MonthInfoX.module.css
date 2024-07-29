@@ -47,6 +47,11 @@ margin-top: 20px;
     background-color: rgba(50, 63, 71, 0.30);
 }
 
+.todayButton {
+    color: #9BE1A0;
+    background-color: #323F47;
+}
+
 .day {
     display: flex;
     align-items: center;
