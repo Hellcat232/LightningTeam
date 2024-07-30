@@ -6,6 +6,13 @@ import useCalendar from "../../hooks/getCalendar.js";
 import { selectFullMonthWaterX } from "../../redux/water/selectors.js";
 import icons from "../../images/symbol-icons.svg";
 
+const isFutureDay = (day, month, year) => {
+  const currentDate = new Date();
+  const providedDate = new Date(year, month - 1, day);
+
+  return providedDate > currentDate;
+};
+
 const MonthInfoX = ({ setSelectedDate }) => {
   const dispatch = useDispatch();
   const monthWaterRecord = useSelector(selectFullMonthWaterX);
@@ -27,7 +34,8 @@ const MonthInfoX = ({ setSelectedDate }) => {
 
   const today = new Date();
   const currentDay = today.getDate();
-  const currentMonth = today.getMonth() + 1; // getMonth() returns 0-indexed month
+  const currentMonth = today.getMonth() + 1;
+  const currentYear = today.getFullYear();
 
   return (
       <div className={css.calendar}>
@@ -48,11 +56,13 @@ const MonthInfoX = ({ setSelectedDate }) => {
         <div className={css.calendarBody}>
           {renderDays().map(({ day, data }, index) => {
             const isToday = day === currentDay && (currentDate.getMonth() + 1) === currentMonth;
+            const isDisabled = isFutureDay(day, currentDate.getMonth() + 1, currentDate.getFullYear());
             return (
                 <div key={index} className={css.day}>
                   {day && (
                       <button
-                          className={`${css.dayButton} ${isToday ? css.todayButton : ''} ${data?.feasibility >= 100 && css.btnWithData}`}
+                          disabled={isDisabled}
+                          className={`${css.dayButton} ${isToday ? css.todayButton : ''} ${data?.feasibility >= 100 && css.btnWithData} ${isDisabled && css.disabledBtn}`}
                           onClick={() => handleDayClick(day)}
                           data-feasibility={data ? data.feasibility : undefined}
                       >
