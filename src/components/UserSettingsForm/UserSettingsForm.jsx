@@ -97,7 +97,12 @@ const UserSettingForm = ({ handleClose }) => {
       <div className={styles["avatar-upload-container"]}>
         <div className={styles["avatar-preview"]}>
           {avatar ? (
-            <img src={avatar} alt="Avatar" className={styles["avatar-image"]} />
+            <img
+              src={avatar}
+              loading="lazy"
+              alt="Avatar"
+              className={styles["avatar-image"]}
+            />
           ) : (
             <div className={styles["avatar-placeholder"]}>Avatar</div>
           )}

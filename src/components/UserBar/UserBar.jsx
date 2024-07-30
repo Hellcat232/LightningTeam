@@ -14,7 +14,7 @@ const UserBar = ({ togglePopover, isPopoverOpen }) => {
   return (
     <button className={css.button} type="button" onClick={togglePopover}>
       {displayName}
-      <img src={userPhoto} className={css.userImg} alt="User" />
+      <img src={userPhoto} loading="lazy" className={css.userImg} alt="User" />
       {isPopoverOpen ? (
         <svg className={css.icon}>
           <use href={`${spriteHref}#icon-hide_burger`}></use>
