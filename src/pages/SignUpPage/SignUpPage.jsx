@@ -12,8 +12,10 @@ const SignUpPage = () => {
       <div className={styles.SignUpPageSection}>
         <Page/>
           <SignUpForm />
-        </div>
-      <AdvantagesSection /> 
+      </div>
+      <div className={styles.SignUpPageMedia}>
+        <AdvantagesSection />
+      </div> 
     </div>
   );
 };

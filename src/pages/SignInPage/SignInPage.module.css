@@ -11,8 +11,10 @@
         height: 812px;
         padding: 24px 18px;
     }
+    .SignInPageMedia{
+        display: none;
+    }
 }
-
 
 
 @media screen and (min-width: 768px) and (max-width: 1439.98px) {
@@ -20,6 +22,9 @@
         width: 704px;
         height: 960px;
         padding: 32px 32px 64px;
+    }
+    .SignInPageMedia {
+        display: none;
     }
 }
 

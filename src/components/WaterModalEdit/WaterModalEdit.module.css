@@ -62,6 +62,7 @@
   font-size: 15px;
   line-height: 22px;
   color: #fff;
+  white-space: nowrap;
 }
 .cont-sec-two-modal-add {
   display: flex;
