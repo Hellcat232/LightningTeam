@@ -14,6 +14,8 @@ const TrackerPage = () => {
   const { waterItems, addWaterItem } = useWaterItems();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [recordId, setRecordId] = useState(null);
+    const dateParam = `${new Date().getDate().toString().padStart(2, '0')}.${(new Date().getMonth() + 1).toString().padStart(2, '0')}.${new Date().getFullYear()}`;
+    const [selectedDate, setSelectedDate] = useState(dateParam);
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
@@ -21,10 +23,12 @@ const TrackerPage = () => {
   };
   return (
     <section className={css.section}>
-      <WaterMainInfo addWaterItem={addWaterItem} />
+      <WaterMainInfo addWaterItem={addWaterItem} selectedDate={selectedDate}/>
       <WaterDetailedInfo
         waterItems={waterItems}
         addWaterItem={addWaterItem}
+        setSelectedDate={setSelectedDate}
+        selectedDate={selectedDate}
       />
       {isModalOpen && (
         <DeleteWaterModal

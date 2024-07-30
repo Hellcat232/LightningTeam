@@ -9,7 +9,7 @@ const WaterMainInfo = ({ addWaterItem, selectedDate }) => {
       <h2 className={css.sectionHeader}>AquaTrack</h2>
       <WaterDailyNorma />
       <WaterProgressBar selectedDate={selectedDate} />
-      <AddWaterBtn onAddWater={addWaterItem} className="waterMainBtn" />
+      <AddWaterBtn onAddWater={addWaterItem} className="waterMainBtn" selectedDate={selectedDate} />
     </section>
   );
 };
