@@ -48,25 +48,33 @@
         background-color: rgba(50, 63, 71, 0.30);
     }
 
-    .day {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 6px;
-        background-color: transparent;
-        border: none;
-    }
-
-    .dayInfo p {
-        color: #2f2f2f;
-        opacity: 0.6;
-    }
-
-    .dayButton:hover {
-        background-color: #e0e0e0;
-    }
-
+        .todayButton {
+            color: #9BE1A0;
+            background-color: #323F47;
+        }
+    
+        .disabledBtn {
+            cursor: not-allowed;
+        }
+    
+        .day {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 6px;
+            background-color: transparent;
+            border: none;
+        }
+    
+        .dayInfo p {
+            color: #2f2f2f;
+            opacity: 0.6;
+        }
+    
+        .dayButton:hover {
+            background-color: #e0e0e0;
+        }
 }
 
 @media screen and (min-width: 767.99px) and (max-width: 1439.99px) {
@@ -117,6 +125,15 @@
 
     .btnWithData {
         background-color: rgba(50, 63, 71, 0.30);
+    }
+
+    .todayButton {
+        color: #9BE1A0;
+        background-color: #323F47;
+    }
+    
+    .disabledBtn {
+        cursor: not-allowed;
     }
 
     .day {
@@ -190,6 +207,15 @@
 
     .btnWithData {
         background-color: rgba(50, 63, 71, 0.30);
+    }
+
+    .todayButton {
+        color: #9BE1A0;
+        background-color: #323F47;
+    }
+    
+    .disabledBtn {
+        cursor: not-allowed;
     }
 
     .day {

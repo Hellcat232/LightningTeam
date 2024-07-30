@@ -40,7 +40,9 @@ export default function DeleteWaterModal(props) {
           }}
         >
           <button className={css.close} onClick={props.onClose}>
-            ×
+          <svg className={css.icon} width="28" height="28">
+            <use href={`${icons}#icon-x`}></use>
+          </svg>
           </button>
           <h2>Delete entry</h2>
           <p>Are you sure you want to delete the entry?</p>

@@ -57,7 +57,7 @@
 .amount-ml {
   border-radius: 30px;
   padding: 11px 20px;
-  width: 87px;
+  width: 92px;
   height: 43px;
   background: #323f47;
   font-family: "Poppins", sans-serif;
@@ -66,6 +66,7 @@
   line-height: 22px;
   line-height: 1.49333;
   color: #fff;
+  white-space: nowrap;
 }
 .cont-sec-two-modal-add {
   display: flex;
