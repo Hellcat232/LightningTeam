@@ -1,42 +1,42 @@
 .SignUpPageSection {
-    border-radius: 30px;
-    background: var(--background);
-    position: relative;
-    margin-right: 24px;
-    margin-top: 20px;
+  border-radius: 30px;
+  background: var(--background);
+  position: relative;
+  margin-right: 24px;
+  margin-top: 20px;
 }
 
-
 @media screen and (min-width: 320px) and (max-width: 767.98px) {
-    .SignUpPageSection {
-        width: 343px;
-        height: 812px;
-        padding: 24px 18px;
-    }
-    .SignUpPageMedia {
-        display: none;
-    }
+  .SignUpPageSection {
+    width: 343px;
+    height: 812px;
+    padding: 24px 18px;
+  }
+  .SignUpPageMedia {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1439.98px) {
-    .SignUpPageSection {
-        width: 704px;
-        height: 960px;
-        padding: 32px;
-    }
-    .SignUpPageMedia {
-        display: none;
-    }
+  .SignUpPageSection {
+    width: 704px;
+    height: 960px;
+    padding: 32px;
+  }
+  .SignUpPageMedia {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-    .signUpContainer {
-        display: flex;
-    }
+  .signUpContainer {
+    display: flex;
+  }
 
-    .SignUpPageSection {
-        width: 672px;
-        height: 736px;
-        padding: 32px 32px 64px;
-    }
+  .SignUpPageSection {
+    width: 672px;
+    height: 736px;
+    padding: 32px 32px 64px;
+    margin-top: 0;
+  }
 }
