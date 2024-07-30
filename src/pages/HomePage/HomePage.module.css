@@ -3,6 +3,7 @@
     border-radius: 30px;
     margin-right: 24px;
     position: relative;
+    margin-top: 20px;
 }
 
 .PageLogo{
@@ -17,7 +18,7 @@
     height: 812px;
     padding: 24px 18px;
     }
-  .PageLogo {
+    .PageLogo {
         margin-bottom: 16px;
             position: relative;
         }
@@ -45,13 +46,12 @@
         display: flex;
         max-width: 1376px;
     }
-        .PageLogo {
-            top: 32px;
-                left: 32px;
-            width: 1440px;
-            display: flex;
-            gap: 32px;
-            /* position: relative; */
+    .PageLogo {
+        top: 32px;
+        left: 32px;
+        width: 1440px;
+        display: flex;
+        gap: 32px;
         }
 }
 
