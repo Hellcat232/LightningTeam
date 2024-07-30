@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import css from "./AdvantagesSection.module.css";
-import girl1 from "../../images/girl1.png";
-import girl2 from "../../images/girl2.png";
-import boy from "../../images/boy.png";
+import girl1 from "../../images/girl1.jpg";
+import girl2 from "../../images/girl2.jpg";
+import boy from "../../images/boy.jpg";
 const AdvantagesSection = () => {
   return (
     <div className={css.section}>

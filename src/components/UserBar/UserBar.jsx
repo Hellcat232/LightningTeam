@@ -2,7 +2,7 @@ import css from "./UserBar.module.css";
 import spriteHref from "../../images/icons_sprite_dev.svg";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../redux/auth/selectors.js";
-import avatarPlaceholder from "../../images/NoAvatar.png";
+import avatarPlaceholder from "../../images/NoAvatar.jpg";
 
 const UserBar = ({ togglePopover, isPopoverOpen }) => {
   const userName = useSelector(selectUser);
