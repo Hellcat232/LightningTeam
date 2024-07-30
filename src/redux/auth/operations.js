@@ -21,9 +21,9 @@ export const register = createAsyncThunk(
     try {
       const getDataUser = { email: text.email, password: text.password };
 
-      const response = await axios.post("/user/register", getDataUser);
+      const response = await axios.post("/users/register", getDataUser);
 
-      const getToken = await axios.post("/user/login", getDataUser);
+      const getToken = await axios.post("/users/login", getDataUser);
       toast.success("Success");
 
       setAuthToken(getToken.data.accessToken);
@@ -40,7 +40,7 @@ export const register = createAsyncThunk(
 
 export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
   try {
-    const response = await axios.post("/user/login", text);
+    const response = await axios.post("/users/login", text);
 
     setAuthToken(response.data.accessToken);
 
@@ -70,7 +70,7 @@ export const loginGoogle = createAsyncThunk(
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.post("/user/logout");
+    await axios.post("/users/logout");
     Cookies.remove("refreshToken");
     clearAuthToken();
   } catch (error) {
@@ -88,7 +88,7 @@ export const refreshing = createAsyncThunk(
     }
 
     try {
-      const response = await axios.post("/user/refresh", {
+      const response = await axios.post("/users/refresh", {
         refreshToken,
       });
 
@@ -104,7 +104,7 @@ export const currentUser = createAsyncThunk(
   "user/current",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/user/current");
+      const response = await axios.get("/users/current");
       // console.log(response);
       return response.data;
     } catch (error) {
@@ -117,7 +117,7 @@ export const updateUser = createAsyncThunk(
   "user/update",
   async (someValue, thunkAPI) => {
     try {
-      const response = await axios.patch("/user/update", someValue);
+      const response = await axios.patch("/users/update", someValue);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
