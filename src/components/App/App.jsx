@@ -4,12 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { refreshing } from "../../redux/auth/operations";
 
-// import HomePage from "../../pages/HomePage/HomePage";
-// import SignUpPage from "../../pages/SignUpPage/SignUpPage";
-// import SignInPage from "../../pages/SignInPage/SignInPage";
-// import TrackerPage from "../../pages/TrackerPage/TrackerPage";
-// import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
-
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("../../pages/SignInPage/SignInPage"));
 const SignUpPage = lazy(() => import("../../pages/SignUpPage/SignUpPage"));
