@@ -6,7 +6,6 @@ import avatarPlaceholder from "../../images/NoAvatar.jpg";
 
 const UserBar = ({ togglePopover, isPopoverOpen }) => {
   const userName = useSelector(selectUser);
-  // console.log(userName);
 
   const displayName = userName?.name || userName?.email || "Guest";
   const userPhoto = userName?.avatar || avatarPlaceholder;
