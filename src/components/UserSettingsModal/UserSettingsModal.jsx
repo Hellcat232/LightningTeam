@@ -1,4 +1,5 @@
 import css from "./UserSettingsModal.module.css";
+import icons from "../../images/symbol-icons.svg";
 
 const UserSettingsModal = ({ showModal, handleClose, children }) => {
   if (!showModal) {
@@ -12,7 +13,9 @@ const UserSettingsModal = ({ showModal, handleClose, children }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <button className={css.close} onClick={handleClose}>
-          x
+        <svg className={css.icon} width="28" height="28">
+          <use href={`${icons}#icon-x`}></use>
+        </svg>
         </button>
         <div
           className={
