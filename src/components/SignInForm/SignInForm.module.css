@@ -54,12 +54,6 @@
   color: #2f2f2f80;
 }
 
-.GoogleLoginButton {
-  justify-content: center;
-  align-items: center;
-  margin: 25px;
-}
-
 .error {
   color: red;
 }

@@ -27,6 +27,7 @@ const GoogleLoginButton = () => {
   };
 
   return (
+    <div className={styles.googleLoginConteiner}>
     <div className={styles.googleLoginButton}>
       <GoogleLogin
         clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}
@@ -35,6 +36,7 @@ const GoogleLoginButton = () => {
         onFailure={handleFailure}
         cookiePolicy={"single_host_origin"}
       />
+      </div>
     </div>
   );
 };

@@ -1,17 +1,15 @@
+.googleLoginConteiner{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+
 .googleLoginButton {
-    background-color: var(--accent);
     color: white;
     font-size: 16px;
-    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 30px;
-}
-
-.googleLoginButton:hover {
-    background-color: var(--accent-hover);
 }

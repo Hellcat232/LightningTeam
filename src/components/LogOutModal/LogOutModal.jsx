@@ -3,6 +3,7 @@ import { logout } from "../../redux/auth/operations";
 import css from "./LogOutModal.module.css";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import icons from "../../images/symbol-icons.svg";
 
 const LogOutModal = ({ showModal, handleClose }) => {
   const dispatch = useDispatch();
@@ -35,7 +36,9 @@ const LogOutModal = ({ showModal, handleClose }) => {
           }}
         >
           <button className={css.close} onClick={handleClose}>
-            ×
+        <svg className={css.icon} width="28" height="28">
+          <use href={`${icons}#icon-x`}></use>
+        </svg>
           </button>
           <h2>Log out</h2>
           <p>Do you really want to leave??</p>
