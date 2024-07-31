@@ -33,7 +33,7 @@ export const register = createAsyncThunk(
         accessToken: getToken.data.accessToken,
       };
     } catch (error) {
-      toast.error("Somesing went wrong");
+      toast.error(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -51,7 +51,7 @@ export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
 
     return response.data;
   } catch (error) {
-    toast.error("Somesing went wrong");
+    toast.error(error.message);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -65,6 +65,7 @@ export const loginGoogle = createAsyncThunk(
       setAuthToken(response.data.accessToken);
       return response.data;
     } catch (error) {
+      toast.error(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -76,6 +77,7 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     Cookies.remove("refreshToken");
     clearAuthToken();
   } catch (error) {
+    toast.error(error.message);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -97,6 +99,7 @@ export const refreshing = createAsyncThunk(
       setAuthToken(response.data.accessToken);
       return response.data;
     } catch (error) {
+      toast.error(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -110,6 +113,7 @@ export const currentUser = createAsyncThunk(
       // console.log(response);
       return response.data;
     } catch (error) {
+      toast.error(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -120,8 +124,10 @@ export const updateUser = createAsyncThunk(
   async (someValue, thunkAPI) => {
     try {
       const response = await axios.patch("/users/update", someValue);
+      toast.success("updated");
       return response.data;
     } catch (error) {
+      toast.error(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

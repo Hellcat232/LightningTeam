@@ -41,8 +41,8 @@ const SignInForm = () => {
       localStorage.setItem("refreshToken", refreshToken);
       navigate("/tracker");
     } catch (error) {
-      console.error("Login failed:", error);
-      toast.error(`Login failed: ${error}`);
+      // console.error("Login failed:", error);
+      // toast.error(`Login failed: ${error}`);
     }
   };
 
@@ -81,7 +81,10 @@ const SignInForm = () => {
             }
             {...register("password")}
           />
-          <FaRegEyeSlash className={css.togle} onClick={togglePasswordVisibility} />
+          <FaRegEyeSlash
+            className={css.togle}
+            onClick={togglePasswordVisibility}
+          />
         </div>
 
         {errors.password && (
