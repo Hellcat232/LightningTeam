@@ -137,9 +137,9 @@ const SignUpForm = () => {
         </button>
       </form>
       <div className={styles.signInLinkContainer}>
-        <p className={styles.signInPageText}>
+        <p className={styles.signUpPageText}>
           Already have an account?{" "}
-          <Link to="/signin" className={styles.SignInPageLink}>
+          <Link to="/signin" className={styles.signInPageLink}>
             Sign In
           </Link>
         </p>
