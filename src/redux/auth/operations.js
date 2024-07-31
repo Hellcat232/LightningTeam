@@ -33,7 +33,7 @@ export const register = createAsyncThunk(
         accessToken: getToken.data.accessToken,
       };
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.message || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -51,7 +51,7 @@ export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
 
     return response.data;
   } catch (error) {
-    toast.error(error.message);
+    toast.error(error.response.data.message || error.message);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -65,7 +65,7 @@ export const loginGoogle = createAsyncThunk(
       setAuthToken(response.data.accessToken);
       return response.data;
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.message || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -77,7 +77,7 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     Cookies.remove("refreshToken");
     clearAuthToken();
   } catch (error) {
-    toast.error(error.message);
+    toast.error(error.response.data.message || error.message);
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -99,7 +99,7 @@ export const refreshing = createAsyncThunk(
       setAuthToken(response.data.accessToken);
       return response.data;
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.message || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -113,7 +113,7 @@ export const currentUser = createAsyncThunk(
       // console.log(response);
       return response.data;
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.message || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -127,7 +127,7 @@ export const updateUser = createAsyncThunk(
       toast.success("User updated successfully");
       return response.data;
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.response.data.message || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

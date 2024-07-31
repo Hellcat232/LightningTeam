@@ -45,6 +45,7 @@ export const updateWater = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
+      toast.error(error.response.data.message || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -59,6 +60,7 @@ export const deleteWater = createAsyncThunk(
       toast.error("Water deleted successfully");
       return waterId;
     } catch (error) {
+      toast.error(error.response.data.message || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -85,6 +87,7 @@ export const fetchFullDay = createAsyncThunk(
         },
       };
     } catch (error) {
+      toast.error(error.response.data.message || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -98,6 +101,7 @@ export const getMonthWaterFrontConteroller = createAsyncThunk(
       const response = await axios.get(`/water/fullMonth?localDate=${date}`);
       return response.data;
     } catch (error) {
+      toast.error(error.response.data.message || error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

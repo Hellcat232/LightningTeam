@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
 import styles from "./SignUpForm.module.css";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import toast from "react-hot-toast";
 
 const SignUpSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -42,7 +43,7 @@ const SignUpForm = () => {
 
   const onSubmit = (data) => {
     if (data.password !== data.repeatPassword) {
-      alert("Passwords do not match!");
+      toast.error("Passwords do not match!");
       return;
     }
     dispatch(register({ email: data.email, password: data.password }));
