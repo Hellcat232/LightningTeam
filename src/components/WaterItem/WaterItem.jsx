@@ -5,9 +5,8 @@ import DeleteModal from "../DeleteModal/DeleteModal";
 import { useDispatch } from "react-redux";
 
 import Iconsvg from "../Icon/Icon";
-import { deleteWater } from "../../redux/water/operations";
 
-const WaterItem = ({ id, amount, time, onEdit, onDelete }) => {
+const WaterItem = ({ id, amount, time, onEdit, onDelete, date }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
@@ -20,7 +19,8 @@ const WaterItem = ({ id, amount, time, onEdit, onDelete }) => {
   const handleEdit = (newAmount, newTime) => {
     onEdit(id, newAmount, newTime);
     closeEditModal();
-  };
+  }
+    console.log(time)
 
   const dispatch = useDispatch();
 
@@ -68,6 +68,7 @@ const WaterItem = ({ id, amount, time, onEdit, onDelete }) => {
         onEdit={handleEdit}
         initialAmount={amount}
         initialTime={time}
+        date={date}
       />
       <DeleteModal
         id={id}

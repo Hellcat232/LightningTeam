@@ -25,10 +25,10 @@ const AddWaterBtn = ({ className, selectedDate }) => {
     // console.log('Sending water data:', waterData); // Log the data being sent
 
     try {
-      const response = await dispatch(addWater(waterData)).unwrap();
+      dispatch(addWater(waterData))
       dispatchDate()
       // console.log('Water added successfully:', response);
-      toast.success(`Water added successfully:${response} `);
+      toast.success(`Water added successfully`);
       setIsModalsOpen(false); // Close the modal on success
     } catch (error) {
       // console.error('Error adding water:', error);

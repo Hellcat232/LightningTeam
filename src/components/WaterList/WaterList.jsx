@@ -11,6 +11,7 @@ const WaterList = ( ) => {
     return id;
   };
 
+
   const handleEdit = (waterId) => {
     const id = waterId;
     return id;
@@ -33,6 +34,7 @@ const WaterList = ( ) => {
                 onEdit={handleEdit}
                 amount={item.waterValue}
                 id={item._id}
+                date={item.localDate}
                 time={item.localTime}
               />
             </li>
