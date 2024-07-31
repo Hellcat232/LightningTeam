@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { refreshing } from "../../redux/auth/operations";
+import toast, { Toaster } from "react-hot-toast";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const SignInPage = lazy(() => import("../../pages/SignInPage/SignInPage"));
@@ -16,6 +17,7 @@ import SharedLayout from "../SharedLayout/SharedLayout";
 import RestrictedRoute from "../RestrictedRoute/RestrictedRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
+const notify = () => toast("Here is your toast.");
 import Loader from "../Loader/Loader";
 
 const App = () => {
@@ -52,6 +54,7 @@ const App = () => {
         />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      <Toaster />
     </SharedLayout>
   );
 };

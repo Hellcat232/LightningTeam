@@ -24,9 +24,10 @@ export const register = createAsyncThunk(
       const response = await axios.post("/users/register", getDataUser);
 
       const getToken = await axios.post("/users/login", getDataUser);
-      toast.success("Success");
 
       setAuthToken(getToken.data.accessToken);
+
+      toast.success("Success");
       return {
         response: response.data,
         accessToken: getToken.data.accessToken,
@@ -45,6 +46,7 @@ export const login = createAsyncThunk("auth/login", async (text, thunkAPI) => {
     setAuthToken(response.data.accessToken);
 
     Cookies.set("refreshToken", response.data.refreshToken);
+
     toast.success("Success");
 
     return response.data;
