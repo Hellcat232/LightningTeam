@@ -1,18 +1,19 @@
-import css from './UserBarPopover.module.css';
-import spriteHref from '../../images/icons_sprite_dev.svg';
-import { useState } from 'react';
-import UserSettingsModal from '../UserSettingsModal/UserSettingsModal.jsx';
-import LogOutModal from '../LogOutModal/LogOutModal.jsx';
-import UserSettingForm from '../UserSettingsForm/UserSettingsForm.jsx';
+import css from "./UserBarPopover.module.css";
+import spriteHref from "../../images/icons_sprite_dev.svg";
+import { LuLogOut } from "react-icons/lu";
+import { GoGear } from "react-icons/go";
+import { useState } from "react";
+import UserSettingsModal from "../UserSettingsModal/UserSettingsModal.jsx";
+import LogOutModal from "../LogOutModal/LogOutModal.jsx";
+import UserSettingForm from "../UserSettingsForm/UserSettingsForm.jsx";
 
 const UserBarPopover = () => {
   const [modalType, setModalType] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleModal = modalType => {
-    setModalOpen(prevState => !prevState);
+  const handleModal = (modalType) => {
+    setModalOpen((prevState) => !prevState);
     setModalType(modalType);
-
   };
 
   return (
@@ -20,27 +21,28 @@ const UserBarPopover = () => {
       <button
         className={`${css.button} ${css.settingsBtn}`}
         onClick={() => {
-          handleModal('settingsModal');
+          handleModal("settingsModal");
         }}
       >
-        <svg className={css.icon}>
+        <GoGear />
+        {/* <svg className={css.icon}>
           <use href={`${spriteHref}#icon-settings`}></use>
-        </svg>
+        </svg> */}
         Settings
       </button>
       <button
         className={`${css.button} ${css.logOutBtn}`}
         onClick={() => {
-          handleModal('logoutModal');
-
+          handleModal("logoutModal");
         }}
       >
-        <svg className={css.iconLogOut}>
+        {/* <svg className={css.iconLogOut}>
           <use href={`${spriteHref}#icon-log_out`}></use>
-        </svg>
+        </svg> */}
+        <LuLogOut />
         Log out
       </button>
-      {modalType === 'settingsModal' ? (
+      {modalType === "settingsModal" ? (
         <UserSettingsModal showModal={modalOpen} handleClose={handleModal}>
           <UserSettingForm handleClose={handleModal} />
         </UserSettingsModal>
