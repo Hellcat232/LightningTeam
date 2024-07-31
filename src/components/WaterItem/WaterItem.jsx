@@ -19,8 +19,8 @@ const WaterItem = ({ id, amount, time, onEdit, onDelete, date }) => {
   const handleEdit = (newAmount, newTime) => {
     onEdit(id, newAmount, newTime);
     closeEditModal();
-  }
-    console.log(time)
+  };
+  // console.log(time)
 
   const dispatch = useDispatch();
 

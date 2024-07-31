@@ -19,7 +19,7 @@ const WaterModalEdit = ({
   const [amount, setAmount] = useState(initialAmount);
   const [time, setTime] = useState(initialTime);
   const { dispatchDate } = useMonthQuery();
-  console.log(date);
+  // console.log(date);
 
   useEffect(() => {
     setAmount(initialAmount);
