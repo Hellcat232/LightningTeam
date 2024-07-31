@@ -14,8 +14,6 @@ const useCalendar = waterData => {
     const daysArray = Array.from({ length: daysInMonth }, (_, index) => {
       const day = index + 1;
       const dateKey = `${day.toString().padStart(2, '0')}.${(month + 1).toString().padStart(2, '0')}.${year}`;
-      // console.log(dateKey)
-      // console.log(waterData)
       const dayData = waterData?.sortedResult?.find(record => {
         return record.localDate === dateKey});
       return { day, data: dayData };

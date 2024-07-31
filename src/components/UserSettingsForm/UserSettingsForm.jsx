@@ -6,7 +6,7 @@ import styles from "./UserSettingsForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { updateUser, currentUser } from "../../redux/auth/operations.js";
-import { selectUser } from "../../redux/auth/operations.js";
+import { selectUser } from "../../redux/auth/selectors.js";
 
 const schema = Yup.object().shape({
   avatar: Yup.mixed(),
@@ -15,9 +15,9 @@ const schema = Yup.object().shape({
   email: Yup.string()
       .email("Invalid email format")
       .required("Email is required"),
-  weight: Yup.string().required("Weight is required"),
-  sportsActivity: Yup.string().required("Active time is required"),
-  waterRate: Yup.string().required("Water intake is required"),
+  weight: Yup.number().positive("Weight must be a positive number").required("Weight is required"),
+  sportsActivity: Yup.number().positive("Active time must be a positive number").required("Active time is required"),
+  waterRate: Yup.number().positive("Water intake must be a positive number").required("Water intake is required"),
 });
 
 const UserSettingForm = ({ handleClose }) => {
@@ -25,7 +25,7 @@ const UserSettingForm = ({ handleClose }) => {
   const [avatar, setAvatar] = useState(isUser.avatar || null);
   const [avatarFile, setAvatarFile] = useState(null);
   const dispatch = useDispatch();
-  console.log(avatarFile, avatar)
+  console.log(avatarFile, avatar);
 
   const {
     register,
@@ -40,8 +40,8 @@ const UserSettingForm = ({ handleClose }) => {
       email: "",
       gender: "",
       weight: 0,
-      sportsActivity: "",
-      waterRate: "",
+      sportsActivity: 0,
+      waterRate: 0,
     },
   });
 
@@ -90,7 +90,7 @@ const UserSettingForm = ({ handleClose }) => {
 
   const requiredPerDay = () => {
     const weight = parseFloat(watch("weight")) || 0;
-    const sportsActivity = parseFloat(watch("activeTimeSport")) || 0;
+    const sportsActivity = parseFloat(watch("sportsActivity")) || 0;
     if (watch("gender") === "woman") {
       return (weight * 0.03 + sportsActivity * 0.4).toFixed(1);
     } else if (watch("gender") === "man") {
@@ -179,11 +179,7 @@ const UserSettingForm = ({ handleClose }) => {
 
             <div>
               <label className={`${styles.label} ${styles.email}`}>Email:</label>
-              <input
-                  className={styles.input}
-                  type="email"
-                  {...register("email")}
-              />
+              <input className={styles.input} type="email" {...register("email")} />
               {errors.email && <p>{errors.email.message}</p>}
             </div>
 
@@ -239,6 +235,8 @@ const UserSettingForm = ({ handleClose }) => {
                   className={styles.input}
                   type="number"
                   {...register("weight")}
+                  min="0"
+                  step="any"
               />
               {errors.weight && <p>{errors.weight.message}</p>}
             </div>
@@ -251,8 +249,10 @@ const UserSettingForm = ({ handleClose }) => {
                   className={styles.input}
                   type="number"
                   {...register("sportsActivity")}
+                  min="0"
+                  step="any"
               />
-              {errors.activeTime && <p>{errors.activeTime.message}</p>}
+              {errors.sportsActivity && <p>{errors.sportsActivity.message}</p>}
             </div>
 
             <div>
@@ -267,8 +267,10 @@ const UserSettingForm = ({ handleClose }) => {
                   className={styles.input}
                   type="number"
                   {...register("waterRate")}
+                  min="0"
+                  step="any"
               />
-              {errors.waterIntake && <p>{errors.waterIntake.message}</p>}
+              {errors.waterRate && <p>{errors.waterRate.message}</p>}
             </div>
           </div>
         </div>
