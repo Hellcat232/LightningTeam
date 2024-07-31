@@ -109,7 +109,7 @@
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="5.3333" d="M4.667 28l12-12-12-12"></path>
 </symbol>
 <symbol id="icon-left" viewBox="0 0 21 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="5.3333" d="M16.667 28l-12-12 12-12"></path>
+<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="5.3333" d="M16.167 28l-12-12 12-12"></path>
 </symbol>
 <symbol id="icon-x" viewBox="0 0 32 32">
 <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M24 8l-16 16"></path>
