@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import * as yup from "yup";
 import { register } from "../../redux/auth/operations";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import styles from "./SignUpForm.module.css";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import { selectClick } from "../../redux/auth/selectors";
 
 const SignUpSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -16,6 +17,7 @@ const SignUpSchema = yup.object().shape({
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
+  const stopClick = useSelector(selectClick);
   const {
     register: formRegister,
     handleSubmit,
@@ -132,7 +134,11 @@ const SignUpForm = () => {
           <p className={styles.errorMessage}>{errors.password.message}</p>
         )}
 
-        <button type="submit" className={styles.signUpFormBtn}>
+        <button
+          type="submit"
+          disabled={stopClick === "pending"}
+          className={styles.signUpFormBtn}
+        >
           Sign Up
         </button>
       </form>

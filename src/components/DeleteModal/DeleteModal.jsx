@@ -3,13 +3,15 @@ import styles from "./DeleteModal.module.css";
 import Iconsvg from "../Icon/Icon";
 import { deleteWater } from "../../redux/water/operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFullDayWater } from "../../redux/water/selectors";
-import {useMonthQuery} from "../../hooks/useMonthQuery.js";
+import { selectClick, selectFullDayWater } from "../../redux/water/selectors";
+import { useMonthQuery } from "../../hooks/useMonthQuery.js";
 
 Modal.setAppElement("#root");
 
 const DeleteModal = ({ id, isOpen, closeModal, onDelete }) => {
+  const stopClick = useSelector(selectClick);
   const dispatch = useDispatch();
+
   const isFull = useSelector(selectFullDayWater);
   const { dispatchDate } = useMonthQuery();
 
@@ -20,7 +22,7 @@ const DeleteModal = ({ id, isOpen, closeModal, onDelete }) => {
   const handleDelete = async () => {
     // onDelete(id);
     await dispatch(deleteWater(id));
-    dispatchDate()
+    dispatchDate();
     closeModal();
   };
 
@@ -49,7 +51,11 @@ const DeleteModal = ({ id, isOpen, closeModal, onDelete }) => {
         Are you sure you want to delete the entry?
       </p>
       <div className={styles.buttons}>
-        <button onClick={handleDelete} className={styles.deleteButton}>
+        <button
+          onClick={handleDelete}
+          disabled={stopClick === "pending"}
+          className={styles.deleteButton}
+        >
           Delete
         </button>
         <button onClick={closeModal} className={styles.cancelButton}>

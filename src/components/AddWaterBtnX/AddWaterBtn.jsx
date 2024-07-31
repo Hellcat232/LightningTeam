@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import WaterModal from '../WaterModalX/WaterModal';
-import styles from './AddWaterBtn.module.css';
-import Iconsvg from '../Icon/Icon';
+import React, { useState } from "react";
+import WaterModal from "../WaterModalX/WaterModal";
+import styles from "./AddWaterBtn.module.css";
+import Iconsvg from "../Icon/Icon";
 
 const AddWaterBtn = ({ onAddWater }) => {
   const [isAddWaterModalOpen, setIsAddWaterModalOpen] = useState(false);
@@ -17,12 +17,12 @@ const AddWaterBtn = ({ onAddWater }) => {
         type="button"
         aria-label="Add water"
       >
-         <Iconsvg
-            width="20"
-            height="20"
-            iconName="plus"
-            className={styles.iconns}
-          />
+        <Iconsvg
+          width="20"
+          height="20"
+          iconName="plus"
+          className={styles.iconns}
+        />
         <span className={styles.textStyle}>Add water</span>
       </button>
       <WaterModal

@@ -15,6 +15,7 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   isLoading: false,
+  isClick: "pending" | "fulfilled" | "rejected",
   user: {
     name: null,
     email: null,
@@ -38,6 +39,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = true;
         state.user = initialState.user;
+        state.isClick = "pending";
       })
       .addCase(register.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
@@ -46,6 +48,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = action.payload;
+        state.isClick = "fulfilled";
       })
       .addCase(register.rejected, (state, action) => {
         state.accessToken = null;
@@ -54,6 +57,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = initialState.user;
+        state.isClick = "rejected";
       })
       .addCase(login.pending, (state, action) => {
         state.accessToken = null;
@@ -62,6 +66,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = true;
         state.user = initialState.user;
+        state.isClick = "pending";
       })
       .addCase(login.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
@@ -70,6 +75,7 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = action.payload.user;
+        state.isClick = "fulfilled";
       })
       .addCase(login.rejected, (state, action) => {
         state.accessToken = null;
@@ -78,9 +84,11 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = initialState.user;
+        state.isClick = "rejected";
       })
       .addCase(logout.pending, (state, action) => {
         state.isLoading = true;
+        state.isClick = "pending";
       })
       .addCase(logout.fulfilled, (state, action) => {
         state.accessToken = null;
@@ -89,9 +97,11 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.isLoading = false;
         state.user = initialState.user;
+        state.isClick = "fulfilled";
       })
       .addCase(logout.rejected, (state, action) => {
         state.isLoading = false;
+        state.isClick = "rejected";
       })
       .addCase(refreshing.pending, (state, action) => {
         state.isRefreshing = true;
@@ -108,6 +118,7 @@ const authSlice = createSlice({
       })
       .addCase(updateUser.pending, (state, action) => {
         state.isLoading = true;
+        state.isClick = "pending";
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -115,20 +126,27 @@ const authSlice = createSlice({
           ...state.user,
           ...action.payload.user,
         };
+        state.isClick = "fulfilled";
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
+        state.isClick = "rejected";
+      })
+      .addCase(loginGoogle.pending, (state) => {
+        state.isClick = "pending";
       })
       .addCase(loginGoogle.fulfilled, (state, action) => {
         state.accessToken = action.payload.accessToken;
         // state.refreshToken = action.payload.refreshToken;
         state.isLoggedIn = true;
         state.user = action.payload.user;
+        state.isClick = "fulfilled";
       })
       .addCase(loginGoogle.rejected, (state, action) => {
         state.accessToken = null;
         state.refreshToken = null;
         state.isLoggedIn = false;
+        state.isClick = "rejected";
       })
       .addCase(currentUser.pending, (state, action) => {})
       .addCase(currentUser.fulfilled, (state, action) => {

@@ -7,7 +7,7 @@ import { LuUpload } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { updateUser, currentUser } from "../../redux/auth/operations.js";
-import { selectUser } from "../../redux/auth/selectors.js";
+import { selectClick, selectUser } from "../../redux/auth/selectors.js";
 
 const schema = Yup.object().shape({
   avatar: Yup.mixed(),
@@ -28,6 +28,7 @@ const schema = Yup.object().shape({
 });
 
 const UserSettingForm = ({ handleClose }) => {
+  const stopClick = useSelector(selectClick);
   const isUser = useSelector(selectUser);
   const [avatar, setAvatar] = useState(isUser.avatar || null);
   const [avatarFile, setAvatarFile] = useState(null);
@@ -130,13 +131,6 @@ const UserSettingForm = ({ handleClose }) => {
             className={styles["avatar-upload-input"]}
           />
           <div className={styles["upload-icon-text"]}>
-            {/* <svg
-              className={styles["upload-icon"]}
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 34 32"
-            >
-              <path d="M28.8 20v5.333A2.668 2.668 0 0 1 26.133 28H7.466a2.668 2.668 0 0 1-2.667-2.667V20M23.467 10.667 16.8 4l-6.667 6.667M16.8 4v16" />
-            </svg> */}
             <LuUpload />
             <span className={styles["upload-text"]}>upload a photo</span>
           </div>
@@ -287,7 +281,11 @@ const UserSettingForm = ({ handleClose }) => {
         </div>
       </div>
 
-      <button className={styles.button} type="submit">
+      <button
+        className={styles.button}
+        disabled={stopClick === "pending"}
+        type="submit"
+      >
         Save
       </button>
     </form>

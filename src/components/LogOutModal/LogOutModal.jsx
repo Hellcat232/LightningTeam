@@ -1,13 +1,15 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/auth/operations";
 import css from "./LogOutModal.module.css";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import icons from "../../images/symbol-icons.svg";
+import { selectClick } from "../../redux/auth/selectors";
 
 const LogOutModal = ({ showModal, handleClose }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const stopClick = useSelector(selectClick);
 
   const handleLogout = () => {
     dispatch(logout())
@@ -36,14 +38,19 @@ const LogOutModal = ({ showModal, handleClose }) => {
           }}
         >
           <button className={css.close} onClick={handleClose}>
-        <svg className={css.icon} width="28" height="28">
-          <use href={`${icons}#icon-x`}></use>
-        </svg>
+            <svg className={css.icon} width="28" height="28">
+              <use href={`${icons}#icon-x`}></use>
+            </svg>
           </button>
           <h2>Log out</h2>
           <p>Do you really want to leave??</p>
           <div className={css.btn}>
-            <button className={css.accept} type="button" onClick={handleLogout}>
+            <button
+              className={css.accept}
+              disabled={stopClick === "pending"}
+              type="button"
+              onClick={handleLogout}
+            >
               Log out
             </button>
             <button className={css.reject} type="button" onClick={handleClose}>

@@ -1,11 +1,12 @@
 import * as yup from "yup";
 import { login } from "../../redux/auth/operations";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import { selectClick } from "../../redux/auth/selectors";
 
 import css from "./SignInForm.module.css";
 import GoogleLoginButton from "../GoogleLoginButton/GoogleLoginButton";
@@ -18,7 +19,11 @@ const SignInSchema = yup.object().shape({
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
+
+  const stopClick = useSelector(selectClick);
+
   const {
     register,
     handleSubmit,
@@ -91,7 +96,11 @@ const SignInForm = () => {
           <p className={css.errorMessage}>{errors.password.message}</p>
         )}
 
-        <button type="submit" className={css.signInBtn}>
+        <button
+          type="submit"
+          disabled={stopClick === "pending"}
+          className={css.signInBtn}
+        >
           Sign In
         </button>
       </form>
