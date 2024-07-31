@@ -29,9 +29,10 @@
 }
 
 @media screen and (min-width: 1440px) {
-    .SignInPageWrapper {
-        display: flex;
-    }
+  .SignInPageWrapper {
+    display: flex;
+    gap: 32px;
+  }
 
     .SignInPageSection {
         width: 672px;

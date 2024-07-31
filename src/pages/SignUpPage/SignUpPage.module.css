@@ -29,9 +29,10 @@
 }
 
 @media screen and (min-width: 1440px) {
-    .signUpContainer {
-        display: flex;
-    }
+  .signUpContainer {
+    display: flex;
+    gap: 32px;
+  }
 
     .SignUpPageSection {
         width: 672px;
