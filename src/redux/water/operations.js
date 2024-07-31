@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 export const addWater = createAsyncThunk(
   "water/addWater",
@@ -36,9 +37,12 @@ export const updateWater = createAsyncThunk(
   async ({ _id, waterValue, localTime, localDate }, thunkAPI) => {
     try {
       const response = await axios.patch(`/water/day/${_id}`, {
-        waterValue,localTime,localDate
+        waterValue,
+        localTime,
+        localDate,
       });
-        console.log(response.data)
+      toast.success("Water updated successfully");
+      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -51,6 +55,8 @@ export const deleteWater = createAsyncThunk(
   async (waterId, thunkAPI) => {
     try {
       await axios.delete(`water/day/${waterId}`);
+
+      toast.error("Water deleted successfully");
       return waterId;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -61,13 +67,11 @@ export const deleteWater = createAsyncThunk(
 export const fetchFullDay = createAsyncThunk(
   "water/fullday",
   async (dateValue, thunkAPI) => {
-
     const state = thunkAPI.getState();
     const accessToken = state.auth.accessToken;
 
     try {
       const response = await axios.get(`water/fullday?localDate=${dateValue}`, {
-
         headers: { Authorization: `Bearer ${accessToken}` },
       });
 

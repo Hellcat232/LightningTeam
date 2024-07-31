@@ -124,7 +124,7 @@ export const updateUser = createAsyncThunk(
   async (someValue, thunkAPI) => {
     try {
       const response = await axios.patch("/users/update", someValue);
-      toast.success("updated");
+      toast.success("User updated successfully");
       return response.data;
     } catch (error) {
       toast.error(error.message);
