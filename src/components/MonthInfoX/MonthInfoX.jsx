@@ -45,7 +45,7 @@ const MonthInfoX = ({ setSelectedDate }) => {
             <svg onClick={handlePrevMonth}>
               <use href={`${icons}#icon-left`}></use>
             </svg>
-            <h2>
+            <h2  className={css.calendarMonth}>
               {currentDate.toLocaleString("default", { month: "long" })} {currentDate.getFullYear()}
             </h2>
             <svg onClick={handleNextMonth}>
