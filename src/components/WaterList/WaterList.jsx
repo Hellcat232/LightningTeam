@@ -3,7 +3,7 @@ import styles from "./WaterList.module.css";
 import { useSelector } from "react-redux";
 import {selectFullDayWater} from "../../redux/water/selectors.js";
 
-const WaterList = ( ) => {
+const WaterList = ({selectedDate} ) => {
   const fullDay = useSelector(selectFullDayWater)
 
   const handleDelete = (waterId) => {
@@ -36,6 +36,7 @@ const WaterList = ( ) => {
                 id={item._id}
                 date={item.localDate}
                 time={item.localTime}
+                selectedDate={selectedDate}
               />
             </li>
           ))

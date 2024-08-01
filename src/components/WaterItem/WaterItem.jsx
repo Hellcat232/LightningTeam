@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 import Iconsvg from "../Icon/Icon";
 
-const WaterItem = ({ id, amount, time, onEdit, onDelete, date }) => {
+const WaterItem = ({ id, amount, time, onEdit, onDelete, date,selectedDate }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
@@ -69,12 +69,14 @@ const WaterItem = ({ id, amount, time, onEdit, onDelete, date }) => {
         initialAmount={amount}
         initialTime={time}
         date={date}
+        selectedDate={selectedDate}
       />
       <DeleteModal
         id={id}
         isOpen={isDeleteModalOpen}
         closeModal={closeDeleteModal}
         onDelete={handleDelete}
+        selectedDate={selectedDate}
       />
     </div>
   );
