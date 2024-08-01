@@ -3,6 +3,7 @@
     align-items: center;
     gap: 10px;
     justify-content: flex-end;
+    margin-left: auto;
     border-radius: 30px;
     cursor: pointer;
     border: none;
@@ -26,11 +27,9 @@
 
 .button:hover, .button:focus, .button:active {
     transform: translateY(1px);
-    /*color: #9BE1A0;*/
 }
 
 .waterMainBtn {
-    width: 140px;
     padding: 14px 20px 14px 20px;
     background: #323F47;
     color: white;
@@ -70,6 +69,10 @@
         padding: 18px 30px 18px 30px;
         font-size: 16px;
         line-height: 24px;
+    }
+
+    .waterMainBtn {
+        width: 180px;
     }
 
     .waterDailyBtn {

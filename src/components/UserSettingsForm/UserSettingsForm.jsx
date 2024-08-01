@@ -30,7 +30,6 @@ const UserSettingForm = ({ handleClose }) => {
   const [avatar, setAvatar] = useState(isUser.avatar || null);
   const [avatarFile, setAvatarFile] = useState(null);
   const dispatch = useDispatch();
-  console.log(avatarFile, avatar);
 
   const {
     register,

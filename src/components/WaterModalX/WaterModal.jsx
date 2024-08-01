@@ -26,7 +26,6 @@ const WaterModal = ({ isOpen, closeModal, onAddWater }) => {
   const decreaseAmount = () => setAmount(amount > 50 ? amount - 50 : 50);
 
   const handleSave = () => {
-    console.log("Saving water data:", { amount, time });
     onAddWater(amount, time);
   };
 

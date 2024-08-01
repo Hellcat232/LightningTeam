@@ -8,7 +8,7 @@ import {useEffect, useState} from 'react';
 import { ToastContainer } from 'react-toastify';
 import '../../../node_modules/react-toastify/dist/ReactToastify.css';
 import {useDispatch} from "react-redux";
-import {currentUser} from "../../redux/auth/operations.js";
+import {currentUser, refreshing} from "../../redux/auth/operations.js";
 
 const TrackerPage = () => {
     const dispatch = useDispatch()
