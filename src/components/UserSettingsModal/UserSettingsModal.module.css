@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
-  padding-right: 20px;
+  padding: 0 10px 0 10px;
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@
 .modal-content {
   position: relative;
   background: white;
-  padding: 20px;
+  padding: 20px 7px 20px 20px;
   border-radius: 15px;
   box-sizing: border-box;
   width: 100%;
@@ -60,6 +60,7 @@
   margin-top: 40px;
   padding-right: 20px;
   overflow: auto;
+  overflow-x: hidden;
   scrollbar-width: 6px;
   scrollbar-color: #f0eff4 transparent;
 }
@@ -75,4 +76,18 @@
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: #f0eff4;
   border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  .main-modal {
+    padding: 60px;
+  }
+}
+
+@media (min-width: 1440px) {
+
+    .main-modal {
+      padding: 0;
+    }
+
 }

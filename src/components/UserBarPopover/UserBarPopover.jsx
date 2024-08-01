@@ -1,5 +1,4 @@
 import css from "./UserBarPopover.module.css";
-import spriteHref from "../../images/icons_sprite_dev.svg";
 import { LuLogOut } from "react-icons/lu";
 import { GoGear } from "react-icons/go";
 import { useState } from "react";
@@ -25,9 +24,6 @@ const UserBarPopover = () => {
         }}
       >
         <GoGear />
-        {/* <svg className={css.icon}>
-          <use href={`${spriteHref}#icon-settings`}></use>
-        </svg> */}
         Settings
       </button>
       <button
@@ -36,9 +32,6 @@ const UserBarPopover = () => {
           handleModal("logoutModal");
         }}
       >
-        {/* <svg className={css.iconLogOut}>
-          <use href={`${spriteHref}#icon-log_out`}></use>
-        </svg> */}
         <LuLogOut />
         Log out
       </button>

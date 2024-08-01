@@ -15,14 +15,14 @@
 }
 
 .icon {
-    width: 16px;
-    height: 16px;
+    width: 1em;  /* Use em units to scale with font size */
+    height: 1em;
     fill: black;
 }
 
 .iconLogOut {
-    width: 16px;
-    height: 16px;
+    width: 1em;  /* Use em units to scale with font size */
+    height: 1em;
     fill: #323F47;
     opacity: 40%;
 }
@@ -35,33 +35,32 @@
     border: none;
     width: 100%;
     height: 100%;
-    padding: 0 41px 0 20px;
+    padding: 0 10%;
     outline: none;
-    font-size: 14px;
+    font-size: 1em;
     font-weight: 700;
     white-space: nowrap;
 }
 
 .settingsBtn {
-    padding-top: 14px;
+    padding-top: 1em;
     color: #323F47;
-    line-height: 18px;
+    line-height: 1.2em;
 }
 
 .logOutBtn {
-    padding-bottom: 14px;
+    padding-bottom: 1em;
     color: #323F47;
     opacity: 40%;
-    line-height: 18px;
+    line-height: 1.2em;
 }
 
 @media (min-width: 768px) {
     .container {
-        /*width: 160px;*/
         height: 85px;
     }
 
     .button {
-        font-size: 19px;
+        font-size: 1.2em;
     }
 }

@@ -17,14 +17,11 @@ const schema = Yup.object().shape({
     .email("Invalid email format")
     .required("Email is required"),
   weight: Yup.number()
-    .positive("Weight must be a positive number")
-    .required("Weight is required"),
+    .positive("Weight must be a positive number"),
   sportsActivity: Yup.number()
-    .positive("Active time must be a positive number")
-    .required("Active time is required"),
+    .positive("Active time must be a positive number"),
   waterRate: Yup.number()
-    .positive("Water intake must be a positive number")
-    .required("Water intake is required"),
+    .positive("Water intake must be a positive number"),
 });
 
 const UserSettingForm = ({ handleClose }) => {
