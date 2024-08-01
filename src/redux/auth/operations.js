@@ -27,6 +27,8 @@ export const register = createAsyncThunk(
 
       setAuthToken(getToken.data.accessToken);
 
+      Cookies.set("refreshToken", getToken.data.refreshToken);
+
       toast.success("Success");
       return {
         response: response.data,
