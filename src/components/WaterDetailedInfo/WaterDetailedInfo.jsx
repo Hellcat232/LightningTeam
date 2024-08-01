@@ -17,7 +17,7 @@ const WaterDetailedInfo = ({
         waterItems={waterItems}
         selectedDate={selectedDate}
       />
-      <MonthInfoX setSelectedDate={setSelectedDate} />
+      <MonthInfoX setSelectedDate={setSelectedDate} selectedDate={selectedDate} />
       {/* <MonthInfo /> */}
     </section>
   );

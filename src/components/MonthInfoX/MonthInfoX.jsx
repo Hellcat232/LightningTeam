@@ -1,28 +1,39 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import css from "./MonthInfoX.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchFullDay, getMonthWaterFrontConteroller } from "../../redux/water/operations.js";
 import useCalendar from "../../hooks/getCalendar.js";
 import { selectFullMonthWaterX } from "../../redux/water/selectors.js";
 import icons from "../../images/symbol-icons.svg";
+import { useMonthQuery } from "../../hooks/useMonthQuery.js";
 
 const isFutureDay = (day, month, year) => {
   const currentDate = new Date();
   const providedDate = new Date(year, month - 1, day);
-
   return providedDate > currentDate;
 };
 
-const MonthInfoX = ({ setSelectedDate }) => {
+const MonthInfoX = ({ setSelectedDate, selectedDate }) => {
   const dispatch = useDispatch();
   const monthWaterRecord = useSelector(selectFullMonthWaterX);
+  const { currentDate, setCurrentDate, renderDays, handlePrevMonth, handleNextMonth } = useCalendar(monthWaterRecord);
+  const [initialRender, setInitialRender] = useState(true);
 
-  const { currentDate, renderDays, handlePrevMonth, handleNextMonth } = useCalendar(monthWaterRecord);
+  // console.log(currentDate)
+
+  const { dispatchDate } = useMonthQuery(currentDate);
 
   useEffect(() => {
-    const dateParam = `${(currentDate.getMonth() + 1).toString().padStart(2, "0")}-${currentDate.getFullYear()}`;
-    dispatch(getMonthWaterFrontConteroller(dateParam));
-  }, [dispatch, currentDate]);
+    if (initialRender) {
+      dispatchDate();
+      setInitialRender(false);
+    }
+  }, [initialRender]);
+
+  const handleMonthChange = (newDate) => {
+    setCurrentDate(newDate);
+    dispatchDate(newDate);
+  };
 
   const handleDayClick = (day) => {
     const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
@@ -30,6 +41,7 @@ const MonthInfoX = ({ setSelectedDate }) => {
     const dateKey = `${dayString}.${month}.${currentDate.getFullYear()}`;
     dispatch(fetchFullDay(dateKey));
     setSelectedDate(dateKey);
+    setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), day));
   };
 
   const today = new Date();
@@ -42,13 +54,13 @@ const MonthInfoX = ({ setSelectedDate }) => {
         <div className={css.calendarHeader}>
           <h2>Month</h2>
           <div className={css.calendarHeaderControl}>
-            <svg onClick={handlePrevMonth}>
+            <svg onClick={() => handleMonthChange(new Date(currentDate.setMonth(currentDate.getMonth() - 1)))}>
               <use href={`${icons}#icon-left`}></use>
             </svg>
             <h2 className={css.calendarMonth}>
               {currentDate.toLocaleString("en-US", { month: "long" })} {currentDate.getFullYear()}
             </h2>
-            <svg onClick={handleNextMonth}>
+            <svg onClick={() => handleMonthChange(new Date(currentDate.setMonth(currentDate.getMonth() + 1)))}>
               <use href={`${icons}#icon-right`}></use>
             </svg>
           </div>
