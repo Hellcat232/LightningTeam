@@ -9,7 +9,7 @@ const UserPanel = () => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const popoverRef = useRef(null);
   const buttonRef = useRef(null);
-  const userName = useSelector(selectUser);
+  const userName = useSelector(selectUser) || "Guest";
 
   const togglePopover = (event) => {
     event.stopPropagation();
