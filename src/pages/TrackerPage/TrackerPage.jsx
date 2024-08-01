@@ -4,10 +4,11 @@ import css from './TrackerPage.module.css';
 import useWaterItems from '../../hooks/useWaterItems.js';
 import DeleteWaterModal from '../../components/DeleteWaterModal/DeleteWaterModal.jsx';
 
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { ToastContainer } from 'react-toastify';
 import '../../../node_modules/react-toastify/dist/ReactToastify.css';
 import {useDispatch} from "react-redux";
+import {currentUser} from "../../redux/auth/operations.js";
 
 const TrackerPage = () => {
     const dispatch = useDispatch()
@@ -21,6 +22,10 @@ const TrackerPage = () => {
     setIsModalOpen(false);
     setRecordId(null);
   };
+    useEffect(() => {
+        dispatch(currentUser())
+    }, [dispatch]);
+
   return (
     <section className={css.section}>
       <WaterMainInfo addWaterItem={addWaterItem} selectedDate={selectedDate}/>

@@ -14,7 +14,8 @@
 .form {
   color: #2f2f2f;
   width: 100%;
-  min-width: 303px;
+  /*min-width: 303px;*/
+  max-width: 100%;
   box-sizing: border-box;
   padding-right: 7px;
 }
