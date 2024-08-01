@@ -2,7 +2,6 @@ import css from './ChooseDate.module.css';
 import { useMemo } from 'react';
 
 const ChooseDate = ({ selectedDate }) => {
-  console.log(selectedDate)
   const formattedDate = useMemo(() => {
     const today = new Date();
     const [day, month, year] = selectedDate.split('.');
